@@ -51,7 +51,6 @@ try:
     CurrentDate = StartingDate
     for i in range(days+1):
         for country in country_list:
-            print(country)
             #ouverture des fichiers 
             file = open("input/"+datetime.date.strftime(CurrentDate, "%y.%d.%m_")+country+"_output.csv",'r',encoding='utf8')
             print(file.name)
@@ -60,17 +59,23 @@ try:
             liste_releves = []
             for row in reader:         
                 with connection.cursor() as cursor:
+                    sqlTags = "INSERT into Tag (name) Values('"+row['tags']+"')"
+                    cursor.execute(sqlTags)
+
+                    sqltagID = "select tag_id from tag where name = '" + row['tags']+"'"
+                    cursor.execute(sqltagID)
+                    idTag = cursor.fetchone()
                     #ADD data in channel table 
-                    sqlChannel = "INSERT into channel Values('"+row['channelId']+"','"+row['channelTitle']+"')"
+                    sqlChannel = "INSERT ignore into channel Values('"+row['channelId']+"','"+row['channelTitle']+"')"
 
                     #ADD data in Video table
-                    sqlVideo = "INSERT ignore into Video Values('"+row['video_id']+"','"+row['title']+"','"+row['publishedAt']+"','"+row['likes']+"','"+row['dislikes']+"','"+row['comment_count']+"','"+row['categoryId']+"','"+row['comment_count']+"','"+row['thumbnail_link']+"')"
+                    sqlVideo = "INSERT ignore into Video (video_id,title_video,published_date,count_like,count_dislike,count_comment,category_id,trending_date,miniature_link,tag_id,channel_id,country)Values ('"+row['video_id']+"','"+row['title']+"','"+row['publishedAt']+"','"+row['likes']+"','"+row['dislikes']+"','"+row['comment_count']+"','"+row['categoryId']+"','"+str(CurrentDate)+"','"+row['thumbnail_link']+"','"+str(idTag[0])+"','"+row['channelId']+"','"+country+"')"
 
                     #ADD data in tags table
-                    sqlTags = "INSERT into Tag (tagName) Values('"+row['tags']+"')"
+                    #sqlTags = "INSERT into Tag (name) Values('"+row['tags']+"')"
                     cursor.execute(sqlChannel)
                     cursor.execute(sqlVideo)
-                    cursor.execute(sqlTags)
+                    #cursor.execute(sqlTags)
  
             file.close()          
         CurrentDate = CurrentDate + datetime.timedelta(days=1)
