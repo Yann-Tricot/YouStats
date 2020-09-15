@@ -42,21 +42,21 @@ for i in range(days+1):
         reader = csv.DictReader(file, delimiter=',')
         liste_releves = []
         for row in reader:
-            liste_releves.append({'video_id' : row['video_id'],
-                                'title' : row['title'],
-                                'publishedAt' : row['publishedAt'],
-                                'channelId' : row['channelId'],
-                                'channelTitle' : row['channelTitle'],
-                                'categoryId' : row['categoryId'],
-                                'trending_date' : row['trending_date'],
-                                'tags' : row['tags'],
-                                'view_count' : row['view_count'],
-                                'likes' : row['likes'],
-                                'dislikes' : row['dislikes'],
-                                'comment_count' : row['comment_count'],
-                                'thumbnail_link' : row['thumbnail_link'],
+            liste_releves.append({'video_id' : row['video_id'].replace('\'',''),
+                                'title' : row['title'].replace('\'',''),
+                                'publishedAt' : row['publishedAt'].replace('\'',''),
+                                'channelId' : row['channelId'].replace('\'',''),
+                                'channelTitle' : row['channelTitle'].replace('\'',''),
+                                'categoryId' : row['categoryId'].replace('\'',''),
+                                'trending_date' : row['trending_date'].replace('\'',''),
+                                'tags' : row['tags'].replace('\'',''),
+                                'view_count' : row['view_count'].replace('\'',''),
+                                'likes' : row['likes'].replace('\'',''),
+                                'dislikes' : row['dislikes'].replace('\'',''),
+                                'comment_count' : row['comment_count'].replace('\'',''),
+                                'thumbnail_link' : row['thumbnail_link'].replace('\'',''),
                                 'comments_disabled' : row['comments_disabled'], #ligne supprimé
-                                'ratings_disabled' : row['ratings_disabled'],
+                                'ratings_disabled' : row['ratings_disabled'].replace('\'',''),
                                 'description' : row['description'],#  #ligne supprimé
                                 'country' : country})           
         file.close()
@@ -66,7 +66,7 @@ for i in range(days+1):
         fieldnames = ['video_id','title','publishedAt','channelId','channelTitle','categoryId','trending_date','tags','view_count','likes','dislikes','comment_count','thumbnail_link','ratings_disabled','country']
         writer = csv.DictWriter(fileout, fieldnames=fieldnames)
 
-        #writer.writeheader()
+        writer.writeheader()
         for row in liste_releves: 
             #suppression des lignes que l'on ne souhaite pas
             del row['comments_disabled']  
