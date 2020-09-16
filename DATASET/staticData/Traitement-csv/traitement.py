@@ -41,6 +41,7 @@ for i in range(days+1):
         #lit le fichier
         reader = csv.DictReader(file, delimiter=',')
         liste_releves = []
+        i = 0
         for row in reader:
             liste_releves.append({'video_id' : row['video_id'].replace('\'',''),
                                 'title' : row['title'].replace('\'',''),
@@ -58,12 +59,14 @@ for i in range(days+1):
                                 'comments_disabled' : row['comments_disabled'], #ligne supprimé
                                 'ratings_disabled' : row['ratings_disabled'].replace('\'',''),
                                 'description' : row['description'],#  #ligne supprimé
-                                'country' : country})           
+                                'country' : country,
+                                'classementCountry' : (i+1)})        
+            i+=1;   
         file.close()
         
         #création des fichiers outuput
         fileout = open("output/"+datetime.date.strftime(CurrentDate, "%y.%d.%m_")+country+"_output.csv",'w+',encoding='utf8',newline='')
-        fieldnames = ['video_id','title','publishedAt','channelId','channelTitle','categoryId','trending_date','tags','view_count','likes','dislikes','comment_count','thumbnail_link','ratings_disabled','country']
+        fieldnames = ['video_id','title','publishedAt','channelId','channelTitle','categoryId','trending_date','tags','view_count','likes','dislikes','comment_count','thumbnail_link','ratings_disabled','country','classementCountry']
         writer = csv.DictWriter(fileout, fieldnames=fieldnames)
 
         writer.writeheader()
