@@ -59,6 +59,7 @@ for i in range(days+1):
                                 'comments_disabled' : row['comments_disabled'], #ligne supprimé
                                 'ratings_disabled' : row['ratings_disabled'].replace('\'',''),
                                 'description' : row['description'],#  #ligne supprimé
+                                'duration': row['duration'],
                                 'country' : country,
                                 'classementCountry' : (i+1)})        
             i+=1;   
@@ -66,7 +67,7 @@ for i in range(days+1):
         
         #création des fichiers outuput
         fileout = open("output/"+datetime.date.strftime(CurrentDate, "%y.%d.%m_")+country+"_output.csv",'w+',encoding='utf8',newline='')
-        fieldnames = ['video_id','title','publishedAt','channelId','channelTitle','categoryId','trending_date','tags','view_count','likes','dislikes','comment_count','thumbnail_link','ratings_disabled','country','classementCountry']
+        fieldnames = ['video_id','title','publishedAt','channelId','channelTitle','categoryId','trending_date','tags','view_count','likes','dislikes','comment_count','thumbnail_link','ratings_disabled','duration','country','classementCountry']
         writer = csv.DictWriter(fileout, fieldnames=fieldnames)
 
         writer.writeheader()

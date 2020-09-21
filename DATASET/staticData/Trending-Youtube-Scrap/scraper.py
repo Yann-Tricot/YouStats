@@ -41,7 +41,7 @@ unsafe_characters = ['\n', '"']
 # Used to identify columns, currently hardcoded order
 header = ["video_id"] + snippet_features + ["trending_date", "tags", "view_count", "likes", "dislikes",
                                             "comment_count", "thumbnail_link", "comments_disabled",
-                                            "ratings_disabled", "description"]
+                                            "ratings_disabled", "description","duration"]
 
 
 def setup(api_path, code_path):
@@ -63,7 +63,7 @@ def prepare_feature(feature):
 
 def api_request(page_token, country_code):
     # Builds the URL and requests the JSON from it
-    request_url = f"https://www.googleapis.com/youtube/v3/videos?part=id,statistics,snippet{page_token}chart=mostPopular&regionCode={country_code}&maxResults=50&key={api_key}"
+    request_url = f"https://www.googleapis.com/youtube/v3/videos?part=id,statistics,contentDetails,snippet{page_token}chart=mostPopular&regionCode={country_code}&maxResults=50&key={api_key}"
     request = requests.get(request_url)
     if request.status_code == 429:
         print("Temp-Banned due to excess requests, please wait and continue later")
@@ -88,12 +88,15 @@ def get_videos(items):
         if "statistics" not in video:
             continue
 
+        print(video)
         # A full explanation of all of these features can be found on the GitHub page for this project
         video_id = prepare_feature(video['id'])
 
         # Snippet and statistics are sub-dicts of video, containing the most useful info
         snippet = video['snippet']
         statistics = video['statistics']
+        contentDetails = video['contentDetails']
+        
 
         # This list contains all of the features in snippet that are 1 deep and require no special processing
         features = [prepare_feature(snippet.get(feature, "")) for feature in snippet_features]
@@ -104,6 +107,7 @@ def get_videos(items):
         trending_date = time.strftime("%y.%d.%m")
         tags = get_tags(snippet.get("tags", ["[none]"]))
         view_count = statistics.get("viewCount", 0)
+        duration = contentDetails.get('duration')
 
         # This may be unclear, essentially the way the API works is that if a video has comments or ratings disabled
         # then it has no feature for it, thus if they don't exist in the statistics dict we know they are disabled
@@ -124,7 +128,7 @@ def get_videos(items):
         # Compiles all of the various bits of info into one consistently formatted line
         line = [video_id] + features + [prepare_feature(x) for x in [trending_date, tags, view_count, likes, dislikes,
                                                                        comment_count, thumbnail_link, comments_disabled,
-                                                                       ratings_disabled, description]]
+                                                                       ratings_disabled, description,duration]]
         lines.append(",".join(line))
     return lines
 
@@ -137,7 +141,7 @@ def get_pages(country_code, next_page_token="&"):
     while next_page_token is not None:
         # A page of data i.e. a list of videos and all needed data
         video_data_page = api_request(next_page_token, country_code)
-        print(video_data_page)
+        #print(video_data_page)
         # Get the next page token and build a string which can be injected into the request with it, unless it's None,
         # then let the whole thing be None so that the loop ends after this cycle
         next_page_token = video_data_page.get("nextPageToken", None)
@@ -153,7 +157,7 @@ def get_pages(country_code, next_page_token="&"):
 
 def write_to_file(country_code, country_data):
 
-    print(f"Writing {country_code} data to file...")
+    #print(f"Writing {country_code} data to file...")
 
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
