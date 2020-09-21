@@ -69,7 +69,7 @@ try:
                     sqlChannel = "INSERT ignore into channel Values('"+row['channelId']+"','"+row['channelTitle']+"')"
 
                     #ADD data in Video table
-                    sqlVideo = "INSERT ignore into Video (video_id,title_video,published_date,count_like,count_dislike,count_comment,category_id,trending_date,miniature_link,tag_id,channel_id,country,classement)Values ('"+row['video_id']+"','"+row['title']+"','"+row['publishedAt']+"','"+row['likes']+"','"+row['dislikes']+"','"+row['comment_count']+"','"+row['categoryId']+"','"+str(CurrentDate)+"','"+row['thumbnail_link']+"','"+str(idTag[0])+"','"+row['channelId']+"','"+country+"','"+row['classementCountry']+"')"
+                    sqlVideo = "INSERT ignore into Video (video_id,title_video,published_date,count_like,count_dislike,count_comment,category_id,trending_date,miniature_link,tag_id,channel_id,country,classement,duration)Values ('"+row['video_id']+"','"+row['title']+"','"+row['publishedAt']+"','"+row['likes']+"','"+row['dislikes']+"','"+row['comment_count']+"','"+row['categoryId']+"','"+str(CurrentDate)+"','"+row['thumbnail_link']+"','"+str(idTag[0])+"','"+row['channelId']+"','"+country+"','"+row['classementCountry']+"','"+row['duration']+"')"
 
                     #ADD data in tags table
                     #sqlTags = "INSERT into Tag (name) Values('"+row['tags']+"')"
