@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="row" style="justify-content: center">
+    <h1 class="text-center display-1" style="color: black">YouStats</h1>
+    <!--<img src="images/logo2.png" title="my image" alt="my Image" style="height:110px; width: 110px">-->
+</div>
+
+
+<div id="carouselExampleControls" class="carousel slide border shadow-sm mt-5 " data-ride="carousel" style="background-color: black; opacity: 0.2">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <ul class="nav justify-content-center">
+            <li class="nav-item mr-4">
+                <a style="color:white" class="nav-link" href="#">Pays1</a>
+            </li>
+            <li class="nav-item mr-4">
+                <a style="color:white" class="nav-link" href="#">Pays2</a>
+            </li>
+            <li class="nav-item mr-4">
+                <a style="color:white" class="nav-link" href="#">Pays3</a>
+            </li>
+            <li class="nav-item mr-4">
+                <a style="color:white"class="nav-link" href="#">Pays4</a>
+            </li>
+        </ul>   
+    </div>
+    <div class="carousel-item">
+        <ul class="nav justify-content-center">
+            <li class="nav-item mr-4">
+                <a style="color:white" class="nav-link" href="#">Pays5</a>
+            </li>
+            <li class="nav-item mr-4">
+                <a style="color:white" class="nav-link" href="#">Pays6</a>
+            </li>
+            <li class="nav-item mr-4">
+                <a style="color:white" class="nav-link" href="#">Pays7</a>
+            </li>
+            <li class="nav-item mr-4">
+                <a style="color:white" class="nav-link" href="#">Pays8</a>
+            </li>
+        </ul> 
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+ <div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <div class="row mt-3 translateBox">
+                <div class="border rounded shadow-sm" style="width: 50%; background-color:#BCF8EC">
+                    <img src="images/award-icon-06.png" title="my image" alt="my Image" style="height:30px; width: 30px">
+                    <h4 class="text-center">chaine1</h4>
+                </div>
+            </div>
+            <div class="row mt-3 translateBox">
+                <div class="border rounded shadow-sm" style="width: 50%; background-color:#BCF8EC">
+                    <img src="images/award-icon-06.png" title="my image" alt="my Image" style="height:30px; width: 30px">
+                    <h4 class="text-center">chaine2</h4>
+                </div>
+            </div>
+            <div class="row mt-3 translateBox">
+                <div class="border rounded shadow-sm" style="width: 50%; background-color:#BCF8EC">
+                    <img src="images/award-icon-06.png" title="my image" alt="my Image" style="height:30px; width: 30px">
+                    <h4 class="text-center">chaine3</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            salutsalut
+        </div>
+    </div>
+ </div>
+
+    <style>
+        .translateBox:hover{
+            -webkit-transform: translate(0.5em,0);
+            -moz-transform: translate(0.5em,0);
+            -o-transform: translate(0.5em,0);
+            -ms-transform: translate(0.5em,0);
+            transform: translate(0.5em,0);
+
+            -webkit-transition: 1s ease-in-out;
+            -moz-transition: 1s ease-in-out;
+            -o-transition: 1s ease-in-out;
+            transition: 1s ease-in-out;
+        }
+    </style>
+{% endblock %}
