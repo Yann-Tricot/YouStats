@@ -1,56 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="row" style="justify-content: center">
-    <h1 class="text-center display-1" style="color: #F87E45; font-weight: bold">YouStats</h1>
-    <!--<img src="images/logo2.png" title="my image" alt="my Image" style="height:110px; width: 110px">-->
-</div>
+    <div class="row">
+        <div class="col-3 mt-4 ml-4" style="justify-content: left">
+            <div class="dropdown">
+                <button style="background-color: #F87E45; border-color: #F87E45" class="btn btn-secondary " type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-justify" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item" type="button">Menu 1</button>
+                    <button class="dropdown-item" type="button">Menu 2</button>
+                    <button class="dropdown-item" type="button">Menu 3</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-5" style="justify-content: center">
+            <h1 class="text-center display-1" style="color: #F87E45; font-weight: bold">YouStats</h1>
+            <!--<img src="images/logo2.png" title="my image" alt="my Image" style="height:110px; width: 110px">-->
+        </div>
+    </div>
 
 
-<div id="carouselExampleControls" class="carousel slide border shadow-sm mt-5 " data-ride="carousel" style="background-color: #F87E45; ">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-        <ul class="nav justify-content-center">
-            <li class="nav-item mr-4">
-                <a style="color:white" class="nav-link" href="#">Pays1</a>
-            </li>
-            <li class="nav-item mr-4">
-                <a style="color:white" class="nav-link" href="#">Pays2</a>
-            </li>
-            <li class="nav-item mr-4">
-                <a style="color:white" class="nav-link" href="#">Pays3</a>
-            </li>
-            <li class="nav-item mr-4">
-                <a style="color:white"class="nav-link" href="#">Pays4</a>
-            </li>
-        </ul>   
-    </div>
-    <div class="carousel-item">
-        <ul class="nav justify-content-center">
-            <li class="nav-item mr-4">
-                <a style="color:white" class="nav-link" href="#">Pays5</a>
-            </li>
-            <li class="nav-item mr-4">
-                <a style="color:white" class="nav-link" href="#">Pays6</a>
-            </li>
-            <li class="nav-item mr-4">
-                <a style="color:white" class="nav-link" href="#">Pays7</a>
-            </li>
-            <li class="nav-item mr-4">
-                <a style="color:white" class="nav-link" href="#">Pays8</a>
-            </li>
-        </ul> 
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
+
 
  <div class="container mt-5">
     <div class="row">
@@ -70,18 +43,45 @@
                     <p class="text-center">chaine1</p>
                 </div>
             </div>
-            <div class="row mt-3 mb-3" style="justify-content: center">
+            <div class="row mt-3" style="justify-content: center">
                 <div class="border rounded shadow-sm" style="width: 50%; background-color:white">
                     <img src="images/award-icon-06.png" title="my image" alt="my Image" style="height:20px; width: 20px">
                     <p class="text-center">chaine1</p>
                 </div>
             </div>
+            <div class="row mt-3 mb-3" style="justify-content: center">
+                <button type="button" class="translateBox btn btn-primary" style="background-color:#F87E45; border-color: #F87E45 ">Voir Plus</button>
+            </div>
         </div>
         <div class="col">
-            salutsalut
+            <div class="row mt-3" style="justify-content: center">
+                <p style="color:#F87E45;">Top 3 catégorie</p>
+            </div>
+            <div class="row mt-3" style="justify-content: center">
+                <div class="border rounded shadow-sm" style="width: 50%; background-color:white">
+                    <img src="images/award-icon-06.png" title="my image" alt="my Image" style="height:20px; width: 20px">
+                    <p class="text-center">catégorie 1</p>
+                </div>
+            </div>
+            <div class="row mt-3" style="justify-content: center">
+                <div class="border rounded shadow-sm" style="width: 50%; background-color:white">
+                    <img src="images/award-icon-06.png" title="my image" alt="my Image" style="height:20px; width: 20px">
+                    <p class="text-center">catégorie 2</p>
+                </div>
+            </div>
+            <div class="row mt-3" style="justify-content: center">
+                <div class="border rounded shadow-sm" style="width: 50%; background-color:white">
+                    <img src="images/award-icon-06.png" title="my image" alt="my Image" style="height:20px; width: 20px">
+                    <p class="text-center">catégorie 3</p>
+                </div>
+            </div>
+            <div class="row mt-3 mb-3" style="justify-content: center">
+                <button type="button" class="translateBox btn btn-primary" style="background-color:#F87E45; border-color: #F87E45 ">Voir Plus</button>
+            </div>
         </div>
     </div>
  </div>
+
 
     <style>
         .translateBox:hover{
