@@ -7,10 +7,11 @@
     {% if title is defined %}
         <h1>{{ title }}</h1>
     {% endif %}
-    {% if videos is defined %}
-    {% for video in videos %}
-        <li>{{ video.getVidCountry|e }}</li>
-        <li>{{ video.getVidTitle|e }}</li>
+
+    {% if channels is defined %}
+    {% for channel in channels %}
+            <li>{{ channel.getChannelID|e }}</li>
+           <li>{{ channel.getChannelName|e }}</li>
     {% endfor %}
     {% endif %}
 {% endblock %}
