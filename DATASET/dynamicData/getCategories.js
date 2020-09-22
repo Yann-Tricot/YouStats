@@ -16,3 +16,5 @@ async function getCategories(){
 getCategories().then((CATEGORIES_DATA) => {
     CATEGORIES_ARRAY.push(CATEGORIES_DATA.items)
 })
+
+// yes
