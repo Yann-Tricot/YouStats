@@ -14,4 +14,14 @@ class VideoRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Video::class);
     }
+
+    public function findAllByCountry($country)
+    {
+        return $this->createQueryBuilder('v')
+            ->setParameter('cnt', $country)
+            ->where('v.country = :cnt')
+            ->getQuery()
+            ->getResult();
+    }
+
 }
