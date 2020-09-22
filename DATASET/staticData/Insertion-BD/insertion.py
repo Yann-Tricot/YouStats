@@ -59,7 +59,6 @@ try:
             liste_releves = []
             for row in reader:         
                 with connection.cursor() as cursor:
-                    #ADD data in tags table
                     sqlTags = "INSERT into Tag (name) Values('"+row['tags']+"')"
                     cursor.execute(sqlTags)
 
@@ -71,7 +70,9 @@ try:
 
                     #ADD data in Video table
                     sqlVideo = "INSERT ignore into Video (video_id,title_video,published_date,count_like,count_dislike,count_comment,category_id,trending_date,miniature_link,tag_id,channel_id,country,classement,duration)Values ('"+row['video_id']+"','"+row['title']+"','"+row['publishedAt']+"','"+row['likes']+"','"+row['dislikes']+"','"+row['comment_count']+"','"+row['categoryId']+"','"+str(CurrentDate)+"','"+row['thumbnail_link']+"','"+str(idTag[0])+"','"+row['channelId']+"','"+country+"','"+row['classementCountry']+"','"+row['duration']+"')"
-                    
+
+                    #ADD data in tags table
+                    #sqlTags = "INSERT into Tag (name) Values('"+row['tags']+"')"
                     cursor.execute(sqlChannel)
                     cursor.execute(sqlVideo)
                     #cursor.execute(sqlTags)
@@ -81,6 +82,5 @@ try:
 
 finally:
     connection.commit()
-
     # Closez la connexion (Close connection).      
     connection.close()
