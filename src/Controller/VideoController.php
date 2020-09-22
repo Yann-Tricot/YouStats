@@ -3,15 +3,14 @@
 
 namespace App\Controller;
 
-use App\Entity\Channel;
+
+
+use App\Repository\VideoRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\ChannelRepository;
 
-
-class ChannelController extends AbstractController
+class VideoController extends AbstractController
 {
     /**
      * @var ChannelRepository
@@ -23,33 +22,27 @@ class ChannelController extends AbstractController
      */
     private $em;
 
-    public function __construct(ChannelRepository $repository, EntityManagerInterface $em)
+    public function __construct(VideoRepository $repository, EntityManagerInterface $em)
     {
         $this->repository = $repository;
         $this->em = $em;
     }
 
     /**
-     * @Route("/mychannels")
+     * @Route("/country")
      **/
     public function list(EntityManagerInterface $em)
     {
         $country = 'FR';
-       // $this->repository = $em->getRepository(Channel::class);
 
-        $channels = $this->repository->findAll();
         $videos = $this->repository->findAll();
         //$videos = $this->repository->findAllByCountry($country);
-        if(!$channels)
-        {
-            throw $this->createNotFoundException('Error no channels found !');
-        }
+
         if(!$videos)
         {
             throw $this->createNotFoundException('Error no videos found !');
         }
-        return $this->render('indexChannel.html.twig', ['channels'=> $channels]);
-      #  return $this->render('indexCountry.html.twig',['channels'=> $channels]);
-      #  return new JsonResponse($channels);
+        return $this->render('indexCountry.html.twig', ['videos'=> $videos]);
+        #  return new JsonResponse($channels);
     }
 }

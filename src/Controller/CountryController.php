@@ -17,7 +17,7 @@ class CountryController extends AbstractController
     {
 
         dump(['hello' => 'world']);
-        return $this->render('indexCountry.html.twig', [ 'title' => 'Hello world']);
+        return $this->render('indexCountry.html.twig', [ 'title' => 'Oui']);
     }
 
     /**
@@ -30,4 +30,8 @@ class CountryController extends AbstractController
         ];
         return new JsonResponse($data);
     }
+
+
+
+
 }
