@@ -35,8 +35,7 @@ class VideoController extends AbstractController
     {
         $country = 'FR';
 
-        $videos = $this->repository->findAll();
-        //$videos = $this->repository->findAllByCountry($country);
+        $videos = $this->repository->findAllByCountry($country);
 
         if(!$videos)
         {
