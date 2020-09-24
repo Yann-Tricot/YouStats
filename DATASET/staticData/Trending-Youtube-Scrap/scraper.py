@@ -52,6 +52,9 @@ def setup(api_path, code_path):
         country_codes = [x.rstrip() for x in file]
 
     return api_key, country_codes
+    ''' 
+    Define the country with their country_codes
+    '''
 
 
 def prepare_feature(feature):
@@ -59,6 +62,10 @@ def prepare_feature(feature):
     for ch in unsafe_characters:
         feature = str(feature).replace(ch, "")
     return f'"{feature}"'
+
+    """
+    Prepare the features, with removing the unsafe characters 
+    """
 
 
 def api_request(page_token, country_code):
@@ -69,11 +76,17 @@ def api_request(page_token, country_code):
         print("Temp-Banned due to excess requests, please wait and continue later")
         sys.exit()
     return request.json()
+    """
+    Request the Youtube API with a country code and return a json from the request 
+    """
 
 
 def get_tags(tags_list):
     # Takes a list of tags, prepares each tag and joins them into a string by the pipe character
     return prepare_feature("|".join(tags_list))
+    """
+        Prepare the differents tags and add them to a string separated with the pipe 
+    """
 
 
 def get_videos(items):
@@ -131,6 +144,9 @@ def get_videos(items):
                                                                        ratings_disabled, description,duration]]
         lines.append(",".join(line))
     return lines
+    """
+    Gets all the informations about trend videos, like description, view count and more
+    """
 
 
 def get_pages(country_code, next_page_token="&"):
@@ -153,6 +169,9 @@ def get_pages(country_code, next_page_token="&"):
         
 
     return country_data
+    """
+
+    """
 
 
 def write_to_file(country_code, country_data):
@@ -167,10 +186,17 @@ def write_to_file(country_code, country_data):
             file.write(f"{row}\n")
 
 
+    """
+    Printing a file with all the data
+    """
+
 def get_data():
     for country_code in country_codes:
         country_data = [",".join(header)] + get_pages(country_code)
         write_to_file(country_code, country_data)
+    """
+    Return all the data for each country
+    """
 
 
 if __name__ == "__main__":
