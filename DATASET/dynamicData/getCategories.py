@@ -1,4 +1,20 @@
 import requests
+import pymysql.cursors 
+import csv
+import sys
+
+try:
+    connection = pymysql.connect(host='localhost',
+                                user='root',
+                                password='',                             
+                                db='youstats',
+                                charset='utf8mb4'#,
+                                #cursorclass=pymysql.cursors.DictCursor
+                                )
+    print("connect successful!!")
+
+except ValueError:
+    print("Echec de la connection au serveur !")
 
 API_KEY = 'AIzaSyDn3jBs7OUSc0HaAzj23ee8fVdexO06kpg'
 REGION_CODE = 'US'
@@ -13,3 +29,12 @@ for categorie in categoriesFetch:
     subCategorie.append(categorie.get("id"))
     subCategorie.append(categorie.get("snippet").get("title"))
     categoriesList.append(subCategorie)
+
+try:
+    sqlCategories = "INSERT into Tag (tag_name) Values('"+row['tags'].replace('\'','')+"')"
+    cursor.execute(sqlCategories)
+finally:
+    connection.commit()
+
+    # Closez la connexion (Close connection).      
+    connection.close()
