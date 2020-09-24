@@ -30,11 +30,12 @@ for categorie in categoriesFetch:
     categoriesList.append(subCategorie)
 
 try:
-    for categorie in categoriesList:
-        categorieID = categorie[0]
-        categorieTitle = categorie[1]
-        sqlCategories = "INSERT into Category Values({categorieID},'{categorieTitle}')"
-        cursor.execute(sqlCategories)
+    with connection.cursor() as cursor:
+        for categorie in categoriesList:
+            categorieID = categorie[0]
+            categorieTitle = categorie[1]
+            sqlCategories = "INSERT into Category Values("+categorieID+",'"+categorieTitle+"')"
+            cursor.execute(sqlCategories)
     
 finally:
     connection.commit()
