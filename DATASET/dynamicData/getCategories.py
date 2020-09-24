@@ -8,8 +8,7 @@ try:
                                 user='root',
                                 password='',                             
                                 db='youstats',
-                                charset='utf8mb4'#,
-                                #cursorclass=pymysql.cursors.DictCursor
+                                charset='utf8mb4'
                                 )
     print("connect successful!!")
 
@@ -31,10 +30,13 @@ for categorie in categoriesFetch:
     categoriesList.append(subCategorie)
 
 try:
-    sqlCategories = "INSERT into Tag (tag_name) Values('"+row['tags'].replace('\'','')+"')"
-    cursor.execute(sqlCategories)
+    for categorie in categoriesList:
+        categorieID = categorie[0]
+        categorieTitle = categorie[1]
+        sqlCategories = "INSERT into Category Values({categorieID},'{categorieTitle}')"
+        cursor.execute(sqlCategories)
+    
 finally:
     connection.commit()
-
     # Closez la connexion (Close connection).      
     connection.close()
