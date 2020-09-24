@@ -61,14 +61,14 @@ try :
             for row in reader:         
                 with connection.cursor() as cursor:
                     #ADD data in tags table
-                    sqlTags = "INSERT into Tag (name) Values('"+row['tags'].replace('\'','')+"')"
+                    sqlTags = "INSERT into Tag (tag_name) Values('"+row['tags'].replace('\'','')+"')"
                     cursor.execute(sqlTags)
 
-                    sqltagID = "select tag_id from tag where name = '" + row['tags'].replace('\'','')+"'"
+                    sqltagID = "select tag_id from tag where tag_name = '" + row['tags'].replace('\'','')+"'"
                     cursor.execute(sqltagID)
                     idTag = cursor.fetchone()
                     #ADD data in channel table 
-                    sqlChannel = "INSERT ignore into channel Values('"+row['channelId'].replace('\'','')+"','"+row['channelTitle'].replace('\'','')+"')"
+                    sqlChannel = "INSERT ignore into channel Values('"+row['channelId'].replace('\'','')+"','"+row['channelTitle'].replace('\'','')+"','"+country+"')"
 
                     #ADD data in Video table
                     sqlVideo = "INSERT ignore into Video (video_id,title_video,published_date,count_like,count_dislike,count_comment,category_id,trending_date,miniature_link,tag_id,channel_id,country,classement,duration)Values ('"+row['video_id'].replace('\'','')+"','"+row['title'].replace('\'','')+"','"+row['publishedAt'].replace('\'','')+"','"+row['likes'].replace('\'','')+"','"+row['dislikes'].replace('\'','')+"','"+row['comment_count'].replace('\'','')+"','"+row['categoryId'].replace('\'','')+"','"+str(CurrentDate)+"','"+row['thumbnail_link'].replace('\'','')+"','"+str(idTag[0])+"','"+row['channelId'].replace('\'','')+"','"+country+"','"+str((i+1))+"','"+row['duration']+"')"

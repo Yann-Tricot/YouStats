@@ -116,7 +116,7 @@ def get_videos(items):
 
         # The following are special case features which require unique processing, or are not within the snippet dict
         description = snippet.get("description", "")
-        thumbnail_link = snippet.get("thumbnails", dict()).get("default", dict()).get("url", "")
+        thumbnail_link = snippet.get("thumbnails", dict()).get("standard", dict()).get("url", "")
         trending_date = time.strftime("%y.%d.%m")
         tags = get_tags(snippet.get("tags", ["[none]"]))
         view_count = statistics.get("viewCount", 0)
