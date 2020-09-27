@@ -2,6 +2,9 @@ import requests
 import pymysql.cursors 
 import csv
 import sys
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 try:
     connection = pymysql.connect(host='localhost',
@@ -15,7 +18,7 @@ try:
 except ValueError:
     print("Echec de la connexion au serveur !")
 
-API_KEY = 'AIzaSyDn3jBs7OUSc0HaAzj23ee8fVdexO06kpg'
+API_KEY = os.getenv("API_KEY")
 REGION_CODE = 'US'
 
 URL = f"https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode={REGION_CODE}&key={API_KEY}"
