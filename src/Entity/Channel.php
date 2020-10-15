@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  *
  * @ORM\Table(name="channel")
- * @ORM\Entity(repositoryClass="YouStats\src\Repository\ChannelRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ChannelRepository")
  */
 class Channel
 {
@@ -28,8 +29,24 @@ class Channel
     #@ORM\Column(name="channel_name", type="string", length=50, nullable=true, options={"default"="NULL"})
      * @ORM\Column(name="channel_name", type="string", length=50, nullable=true)
      */
-  #  private $channelName = 'NULL';
+
     private $channelName;
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="country_id", type="string", length=50, nullable=true)
+     */
+    private $countryId;
+
+
+    public function getSlug()
+    {
+        $slug = (new Slugify())->slugify($this->channelName);
+    }
+
+    public function getChannelCountryID(){
+        return $this->countryId;
+    }
 
     public function getChannelId(){
         return $this->channelId;

@@ -28,6 +28,7 @@ class ChannelRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+
     public function findOneBySomeField($value)
     {
         return $this->createQueryBuilder('c')

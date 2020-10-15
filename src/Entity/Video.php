@@ -4,11 +4,14 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Cocur\Slugify\Slugify;
+
+
 /**
  * Video
  *
  * @ORM\Table(name="video")
- * @ORM\Entity(repositoryClass="YouStats\src\Repository\ChannelRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\VideoRepository")
  */
 class Video
 {
@@ -28,10 +31,14 @@ class Video
 
     /**
      *
-     * @ORM\Column(name="title_video", type="string", length=100, nullable=true)
-     # @ORM\Column(name="title_video", type="string", length=100, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="duration", type="string", length=80, nullable=false)
      */
-    #private $titleVideo = 'NULL';
+    private $duration;
+
+    /**
+     *
+     * @ORM\Column(name="title_video", type="string", length=100, nullable=true)
+     */
     private $titleVideo;
 
     /**
@@ -40,7 +47,6 @@ class Video
      #* @ORM\Column(name="published_date", type="date", nullable=true, options={"default"="NULL"})
      */
     private $publishedDate;
-    #private $publishedDate = 'NULL';
 
     /**
      *
@@ -48,7 +54,6 @@ class Video
      #* @ORM\Column(name="count_like", type="integer", nullable=true, options={"default"="NULL"})
      */
     private $countLike;
-    #private $countLike = 'NULL';
 
     /**
      *
@@ -56,15 +61,17 @@ class Video
      #* @ORM\Column(name="count_dislike", type="integer", nullable=true, options={"default"="NULL"})
      */
     private $countDislike;
-    #private $countDislike = 'NULL';
 
     /**
      *
      * @ORM\Column(name="count_comment", type="integer", nullable=true)
-     #* @ORM\Column(name="count_comment", type="integer", nullable=true, options={"default"="NULL"})
      */
     private $countComment;
-    #private $countComment = 'NULL';
+    /**
+     *
+     * @ORM\Column(name="classement", type="integer", nullable=true)
+     */
+    private $classement;
 
     /**
      *
@@ -72,7 +79,6 @@ class Video
      #* @ORM\Column(name="category_id", type="integer", nullable=true, options={"default"="NULL"})
      */
     private $categoryId;
-    #private $categoryId = 'NULL';
 
     /**
      *
@@ -80,7 +86,6 @@ class Video
      #* @ORM\Column(name="trending_date", type="date", nullable=true, options={"default"="NULL"})
      */
     private $trendingDate;
-    #private $trendingDate = 'NULL';
 
     /**
      *
@@ -124,6 +129,15 @@ class Video
     #private $country = 'NULL';
 
 
+    public function getSlug()
+    {
+        return (new Slugify())->slugify($this->videoId);
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
     public function getVidTagId(){
         return $this->tagId;
     }

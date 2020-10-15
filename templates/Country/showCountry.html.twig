@@ -1,0 +1,66 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title "oui"%}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="row">
+
+            {% if title is defined %}
+                <div class="col">
+                    <div class="row mt-3" style="justify-content: center">
+                        <p style="color:#F87E45;">{{ title }}</p>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if videos is defined %}
+                {% for video in videos %}
+                    <div class="jumbotron">
+                        <div class="container">
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <a href="{{ path('country.showVid', {id: video.getVidId, slug: video.slug}) }}">{{ video.getVidTitle|e }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% if channels is defined %}
+                {% for channel in channels %}
+                    <div class="jumbotron">
+                        <div class="container">
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <a href="{{ path('country.showChan', {id: channel.getChannelId, slug: channel.slug}) }}">{{ channel .name|e }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {#
+            <li>{{ video.getVidCountry|e }} </li>
+            <li>{{ video.getVidTitle|e }}</li>
+            #}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <!--
+    // on insère les scripts défini dans le template base.html.twig (le parent de notre template cf extends en haut)
+
+    //ci dessous on défini notre nouveau script
+    //on oublie pas d'utiliser assets si c'est un script local
+    -->
+
+    <script src="{{asset('javascript/bousin3000.js')}}"> </script>
+
+{% endblock %}
