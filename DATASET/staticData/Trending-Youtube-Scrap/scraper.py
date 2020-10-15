@@ -28,6 +28,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import requests, sys, time, os, argparse
 
+from dotenv import load_dotenv
+load_dotenv()
+
 # List of simple to collect features
 snippet_features = ["title",
                     "publishedAt",
@@ -169,10 +172,6 @@ def get_pages(country_code, next_page_token="&"):
         
 
     return country_data
-    """
-
-    """
-
 
 def write_to_file(country_code, country_data):
 
@@ -184,7 +183,6 @@ def write_to_file(country_code, country_data):
     with open(f"{output_dir}/{time.strftime('%y.%d.%m')}_{country_code}_videos.csv", "w+", encoding='utf-8') as file:
         for row in country_data:
             file.write(f"{row}\n")
-
 
     """
     Printing a file with all the data
@@ -202,7 +200,7 @@ def get_data():
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--key_path', help='Path to the file containing the api key, by default will use api_key.txt in the same directory', default='api_key.txt')
+    parser.add_argument('--key_path', help='Path to the file containing the api key, by default will use api_key.txt in the same directory', default=os.getenv("API_KEY_SCRAPPER"))
     parser.add_argument('--country_code_path', help='Path to the file containing the list of country codes to scrape, by default will use country_codes.txt in the same directory', default='country_codes.txt')
     parser.add_argument('--output_dir', help='Path to save the outputted files in', default='output/')
 

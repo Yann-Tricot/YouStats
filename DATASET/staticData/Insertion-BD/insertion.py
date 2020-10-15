@@ -17,9 +17,10 @@ try:
 except ValueError:
     print("Echec de la connection au serveur !")
 
-try:
-  
+try :
+
     def dateTreatment(DateDebut, DateFin):
+        
         delta = DateFin - DateDebut
         return delta
 
@@ -52,31 +53,30 @@ try:
     for i in range(days+1):
         for country in country_list:
             #ouverture des fichiers 
-            file = open("input/"+datetime.date.strftime(CurrentDate, "%y.%d.%m_")+country+"_output.csv",'r',encoding='utf8')
-            print(file.name)
+            file = open("input/"+datetime.date.strftime(CurrentDate, "%y.%d.%m_")+country+"_videos.csv",'r',encoding='utf8')
             #lit le fichier
             reader = csv.DictReader(file, delimiter=',')
             liste_releves = []
+            i = 0
             for row in reader:         
                 with connection.cursor() as cursor:
                     #ADD data in tags table
-                    sqlTags = "INSERT into Tag (name) Values('"+row['tags']+"')"
+                    sqlTags = "INSERT into Tag (tag_name) Values('"+row['tags'].replace('\'','')+"')"
                     cursor.execute(sqlTags)
 
-                    sqltagID = "select tag_id from tag where name = '" + row['tags']+"'"
+                    sqltagID = "select tag_id from tag where tag_name = '" + row['tags'].replace('\'','')+"'"
                     cursor.execute(sqltagID)
                     idTag = cursor.fetchone()
                     #ADD data in channel table 
-                    sqlChannel = "INSERT ignore into channel Values('"+row['channelId']+"','"+row['channelTitle']+"')"
+                    sqlChannel = "INSERT ignore into channel Values('"+row['channelId'].replace('\'','')+"','"+row['channelTitle'].replace('\'','')+"','"+country+"')"
 
                     #ADD data in Video table
-                    sqlVideo = "INSERT ignore into Video (video_id,title_video,published_date,count_like,count_dislike,count_comment,category_id,trending_date,miniature_link,tag_id,channel_id,country,classement,duration)Values ('"+row['video_id']+"','"+row['title']+"','"+row['publishedAt']+"','"+row['likes']+"','"+row['dislikes']+"','"+row['comment_count']+"','"+row['categoryId']+"','"+str(CurrentDate)+"','"+row['thumbnail_link']+"','"+str(idTag[0])+"','"+row['channelId']+"','"+country+"','"+row['classementCountry']+"','"+row['duration']+"')"
-                    
+                    sqlVideo = "INSERT ignore into Video (video_id,title_video,published_date,count_like,count_dislike,count_comment,category_id,trending_date,miniature_link,tag_id,channel_id,country,classement,duration,count_view)Values ('"+row['video_id'].replace('\'','')+"','"+row['title'].replace('\'','')+"','"+row['publishedAt'].replace('\'','')+"','"+row['likes'].replace('\'','')+"','"+row['dislikes'].replace('\'','')+"','"+row['comment_count'].replace('\'','')+"','"+row['categoryId'].replace('\'','')+"','"+str(CurrentDate)+"','"+row['thumbnail_link'].replace('\'','')+"','"+str(idTag[0])+"','"+row['channelId'].replace('\'','')+"','"+country+"','"+str((i+1))+"','"+row['duration']+"','"+row['view_count']+"')"
+                     
                     cursor.execute(sqlChannel)
                     cursor.execute(sqlVideo)
-                    #cursor.execute(sqlTags)
- 
-            file.close()          
+                i+=1
+            file.close()
         CurrentDate = CurrentDate + datetime.timedelta(days=1)
 
 finally:
@@ -84,3 +84,4 @@ finally:
 
     # Closez la connexion (Close connection).      
     connection.close()
+
