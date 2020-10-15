@@ -1,7 +1,7 @@
-#this program enable us to send data in our database
+# this program enable us to send data in our database
 
 
-#how to use
+# how to use
 
 1) put all csv in the input folder
 
@@ -12,6 +12,6 @@
 
 
 
-#required 
+# required 
 
 none

@@ -3,6 +3,7 @@ import pymysql.cursors
 import csv
 import sys
 import os
+
 from dotenv import load_dotenv
 load_dotenv()
 
