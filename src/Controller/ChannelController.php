@@ -29,6 +29,7 @@ class ChannelController extends AbstractController
         $this->em = $em;
     }
 
+
     /**
      * @Route("/mychannels")
      **/
