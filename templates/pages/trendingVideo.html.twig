@@ -27,7 +27,25 @@
             </div>
             <div class="carousel-item">
                 <ul class="nav justify-content-center">
-                    {% for i in 9..10 %} <!-- pour les 1 autres derniers pays EXEMPLE POUR APRES-->
+                    {% for i in 9..12 %}
+                        <li>
+                            <button type="button" class="translateBox btn btn-primary ml-5"> Pays {{ i }}</button>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="carousel-item">
+                <ul class="nav justify-content-center">
+                    {% for i in 13..16 %}
+                        <li>
+                            <button type="button" class="translateBox btn btn-primary ml-5"> Pays {{ i }}</button>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="carousel-item">
+                <ul class="nav justify-content-center">
+                    {% for i in 17..17 %}
                         <li>
                             <button type="button" class="translateBox btn btn-primary ml-5"> Pays {{ i }}</button>
                         </li>
@@ -46,7 +64,7 @@
     </div>
 
 <!--CARROUSSELLE DATE-->
-    <div id="carouselExampleControls2" class="carousel slide border shadow-sm mt-5" data-ride="carousel" style="background-color: #dedbdb; width:30%; margin-left:35%">
+    <div id="carouselExampleControls2" class="carousel slide border shadow-sm mt-5" data-ride="carousel" data-interval="60000" style="background-color: #dedbdb; width:30%; margin-left:35%">
        <div class="carousel-inner">
             <div class="carousel-item active">
                 <ul class="nav justify-content-center">
@@ -113,4 +131,5 @@
             transition: 1s ease-in-out;
         }
     </style>
+
 {% endblock %}
