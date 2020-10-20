@@ -5,3 +5,7 @@
 home:
   path: /
   controller: App\Controller\HomeController::index
+
+trendingVideo:
+  path: /trendingVideo
+  controller: App\Controller\TrendingVideoController::index
