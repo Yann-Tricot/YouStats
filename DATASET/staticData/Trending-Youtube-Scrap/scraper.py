@@ -27,9 +27,27 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
 import requests, sys, time, os, argparse
+import pymysql.cursors 
+import csv
+import datetime
 
 from dotenv import load_dotenv
+from datetime import date
+
+
 load_dotenv()
+
+try:
+    connection = pymysql.connect(host='localhost',
+                                user='root',
+                                password='',                             
+                                db='youstats',
+                                charset='utf8mb4'#,
+                                #cursorclass=pymysql.cursors.DictCursor
+                                )
+    print("connect successful!!")
+except ValueError:
+    print("Echec de la connection au serveur !")
 
 # List of simple to collect features
 snippet_features = ["title",
@@ -47,14 +65,11 @@ header = ["video_id"] + snippet_features + ["trending_date", "tags", "view_count
                                             "ratings_disabled", "description","duration"]
 
 
-def setup(api_path, code_path):
-    with open(api_path, 'r') as file:
-        api_key = file.readline()
-
+def setup(code_path):
     with open(code_path) as file:
         country_codes = [x.rstrip() for x in file]
 
-    return api_key, country_codes
+    return country_codes
     ''' 
     Define the country with their country_codes
     '''
@@ -104,7 +119,7 @@ def get_videos(items):
         if "statistics" not in video:
             continue
 
-        print(video)
+        #print(video)
         # A full explanation of all of these features can be found on the GitHub page for this project
         video_id = prepare_feature(video['id'])
 
@@ -118,7 +133,7 @@ def get_videos(items):
         features = [prepare_feature(snippet.get(feature, "")) for feature in snippet_features]
 
         # The following are special case features which require unique processing, or are not within the snippet dict
-        description = snippet.get("description", "")
+        #description = snippet.get("description", "")
         thumbnail_link = snippet.get("thumbnails", dict()).get("standard", dict()).get("url", "")
         trending_date = time.strftime("%y.%d.%m")
         tags = get_tags(snippet.get("tags", ["[none]"]))
@@ -144,8 +159,8 @@ def get_videos(items):
         # Compiles all of the various bits of info into one consistently formatted line
         line = [video_id] + features + [prepare_feature(x) for x in [trending_date, tags, view_count, likes, dislikes,
                                                                        comment_count, thumbnail_link, comments_disabled,
-                                                                       ratings_disabled, description,duration]]
-        lines.append(",".join(line))
+                                                                       ratings_disabled,duration]]
+        lines.append(line)
     return lines
     """
     Gets all the informations about trend videos, like description, view count and more
@@ -190,13 +205,38 @@ def write_to_file(country_code, country_data):
 
 def get_data():
     for country_code in country_codes:
-        country_data = [",".join(header)] + get_pages(country_code)
-        write_to_file(country_code, country_data)
+        country_data = get_pages(country_code)
+        #write_to_file(country_code, country_data)
+        insert_data(country_code,country_data)
+        
     """
     Return all the data for each country
     """
 
+def dateTreatment(DateDebut, DateFin):
+        delta = DateFin - DateDebut
+        return delta
 
+def insert_data(country_code,country_data): 
+    i=0
+    for country_dat in country_data:
+        i+=1
+        country_datas = country_dat
+        with connection.cursor() as cursor:
+            #ADD data in tags table
+            sqlTags = "INSERT into Tag (tag_name) Values('"+country_datas[7].replace('\'','').replace('\"','')+"')"
+            cursor.execute(sqlTags)
+            sqltagID = "select tag_id from tag where tag_name = '" + country_datas[7].replace('\'','').replace('\"','')+"'"
+            cursor.execute(sqltagID)
+            idTag = cursor.fetchone()
+            #ADD data in channel table 
+            sqlChannel = "INSERT ignore into channel Values('"+country_datas[3].replace('\'','').replace('\"','')+"','"+country_datas[4].replace('\'','').replace('\"','')+"','"+country_code+"')"
+            #ADD data in Video table
+            sqlVideo = "INSERT ignore into Video (video_id,title_video,published_date,count_like,count_dislike,count_comment,category_id,trending_date,miniature_link,tag_id,channel_id,country,classement,duration,count_view) Values ('"+country_datas[0].replace('\'','').replace('\"','')+"','"+country_datas[1].replace('\'','').replace('\"','')+"','"+country_datas[2].replace('\'','').replace('\"','')+"','"+country_datas[9].replace('\'','').replace('\"','')+"','"+country_datas[10].replace('\'','').replace('\"','')+"','"+country_datas[11].replace('\'','').replace('\"','')+"','"+country_datas[5].replace('\'','').replace('\"','')+"','"+str(date.today())+"','"+country_datas[12].replace('\'','').replace('\"','')+"','"+str(idTag[0])+"','"+country_datas[3].replace('\'','').replace('\"','')+"','"+country_code+"','"+str(i)+"','"+country_datas[15].replace('\'','').replace('\"','')+"','"+country_datas[8].replace('\'','').replace('\"','')+"')"
+            cursor.execute(sqlChannel)
+            cursor.execute(sqlVideo)
+        
+    
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
@@ -205,8 +245,12 @@ if __name__ == "__main__":
     parser.add_argument('--output_dir', help='Path to save the outputted files in', default='output/')
 
     args = parser.parse_args()
-
+    api_key = args.key_path
     output_dir = args.output_dir
-    api_key, country_codes = setup(args.key_path, args.country_code_path)
-
-    get_data()
+    country_codes = setup(args.country_code_path)
+    try:
+        get_data()
+    finally:
+        connection.commit()
+        # Closez la connexion (Close connection).      
+        connection.close()
