@@ -4,7 +4,7 @@
             <ul class="nav justify-content-center">
                 {% for country in countries|slice(0, 4) %} <!-- pour 10 pays EXEMPLE POUR APRES-->
                     <li>
-                        <a type="button" class="translateBox btn btn-primary ml-5" href="{{ path('country.showChan', {id: country.id, slug: country.slug}) }}"> {{ country.getName|e }}</a>
+                        <a type="button" class="translateBox btn btn-primary ml-5" href="{{ path('country.showCountry', {id: country.id, slug: country.slug}) }}"> {{ country.getName|e }}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -13,7 +13,7 @@
             <ul class="nav justify-content-center">
                 {% for country in countries|slice(4, 4) %} <!-- pour 10 pays EXEMPLE POUR APRES-->
                     <li>
-                        <a type="button" class="translateBox btn btn-primary ml-5" href="{{ path('country.showChan', {id: country.id, slug: country.slug}) }}"> {{ country.getName|e }}</a>
+                        <a type="button" class="translateBox btn btn-primary ml-5" href="{{ path('country.showCountry', {id: country.id, slug: country.slug}) }}"> {{ country.getName|e }}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -23,7 +23,7 @@
             <ul class="nav justify-content-center">
                 {% for country in countries|slice(8, 4) %} <!-- pour 10 pays EXEMPLE POUR APRES-->
                     <li>
-                        <a type="button" class="translateBox btn btn-primary ml-5" href="{{ path('country.showChan', {id: country.id, slug: country.slug}) }}"> {{ country.getName|e }}</a>
+                        <a type="button" class="translateBox btn btn-primary ml-5" href="{{ path('country.showCountry', {id: country.id, slug: country.slug}) }}"> {{ country.getName|e }}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -33,7 +33,7 @@
             <ul class="nav justify-content-center">
                 {% for country in countries|slice(12, 4) %} <!-- pour 10 pays EXEMPLE POUR APRES-->
                     <li>
-                        <a type="button" class="translateBox btn btn-primary ml-5" href="{{ path('country.showChan', {id: country.id, slug: country.slug}) }}"> {{ country.getName|e }}</a>
+                        <a type="button" class="translateBox btn btn-primary ml-5" href="{{ path('country.showCountry', {id: country.id, slug: country.slug}) }}"> {{ country.getName|e }}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -43,7 +43,7 @@
             <ul class="nav justify-content-center">
                 {% for country in countries|slice(16, 4) %} <!-- pour 10 pays EXEMPLE POUR APRES-->
                     <li>
-                        <a type="button" class="translateBox btn btn-primary ml-5" href="{{ path('country.showChan', {id: country.id, slug: country.slug}) }}"> {{ country.getName|e }}</a>
+                        <a type="button" class="translateBox btn btn-primary ml-5" href="{{ path('country.showCountry', {id: country.id, slug: country.slug}) }}"> {{ country.getName|e }}</a>
                     </li>
                 {% endfor %}
             </ul>

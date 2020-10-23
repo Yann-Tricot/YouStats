@@ -3,7 +3,9 @@
 
 namespace App\Controller;
 
+use App\Repository\ChannelRepository;
 use App\Repository\CountryRepository;
+use App\Repository\VideoRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,10 +24,22 @@ class CountryController extends AbstractController
      */
     private $entityManager;
 
-    public function __construct(CountryRepository $repository, EntityManagerInterface $em)
+    /**
+     * @var VideoRepository
+     */
+    private $videoRepository;
+
+    /**
+     * @var ChannelRepository
+     */
+    private $channelRepository;
+
+    public function __construct(CountryRepository $repository, VideoRepository $vRepo, ChannelRepository $chanRepo, EntityManagerInterface $em)
     {
         $this->repository = $repository;
         $this->entityManager = $em;
+        $this->videoRepository = $vRepo;
+        $this->channelRepository = $chanRepo;
     }
 
     /**
@@ -60,29 +74,15 @@ class CountryController extends AbstractController
 
         }
 
+        $videos = $this->videoRepository->findAllByCountry($country);
+        $channels = $this->channelRepository->findAllByCountry($country->getId());
+
         return $this->render('country\showCountry.html.twig', [
-            'country' => $country,
+            'country' => $country, 'videos'=>$videos, 'channels'=>$channels
         ]);
     }
 
-    /**
-     * @Route("/countries/{slug}-{id}", name="country.showChan")
-     **/
-    #requirements={"slug": "[a-z0-9\-]*"})
-    public function showChan(\App\Entity\Channel $channel, string $slug) : Response
-    {
-        if ($channel->getSlug() !== $slug) {
-            return $this->redirectToRoute('country.showChan', [
-                'name' => $channel->getChannelId(),
-                'slug' => $channel->getSlug()
-            ], 301);
 
-        }
-
-        return $this->render('country\showCountry.html.twig', [
-            'channel' => $channel,
-        ]);
-    }
 
 
 
