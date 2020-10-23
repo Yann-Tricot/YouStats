@@ -1,7 +1,6 @@
-
 {% extends 'base.html.twig' %}
 
-{% block title "oui"%}
+{% block title "oui" %}
 
 {% block body %}
     <div class="container mt-5">
@@ -14,34 +13,31 @@
                     </div>
                 </div>
             {% endif %}
-
             {% if videos is defined %}
-                {% for video in videos %}
-                    <div class="jumbotron">
-                        <div class="container">
-
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <a href="{{ path('country.showVid', {id: video.getVidId, slug: video.slug}) }}">{{ video.getVidTitle|e }}</a>
-                                </div>
-                            </div>
-                        </div>
+                <div class="mt-5 ml-2 mr-3 row">
+                    <div class="col-3">
+                        <ul class="list-group">
+                            {% for video in videos|slice(0,9) %}
+                                <li class="list-group-item"><a
+                                            href="{{ path('country.showCountry', {id: country.getId, slug: country.getSlug}) }}">  {{ video.getVidTitle|e }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
-                {% endfor %}
+                </div>
             {% endif %}
             {% if channels is defined %}
-                {% for channel in channels %}
-                    <div class="jumbotron">
-                        <div class="container">
-
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <a href="{{ path('country.showChan', {id: channel.getChannelId, slug: channel.slug}) }}">{{ channel .name|e }}</a>
-                                </div>
-                            </div>
-                        </div>
+                <div class="mt-5 ml-2 mr-3 row">
+                    <div class="col-3">
+                        <ul class="list-group">
+                            {% for channel in channels|slice(0,9) %}
+                                <li>
+                                    <a href="{{ path('country.showCountry', {id: country.getId, slug: country.getSlug}) }}">{{ channel.getChannelName }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
-                {% endfor %}
+                </div>
             {% endif %}
             {#
             <li>{{ video.getVidCountry|e }} </li>
@@ -61,6 +57,6 @@
     //on oublie pas d'utiliser assets si c'est un script local
     -->
 
-    <script src="{{asset('javascript/bousin3000.js')}}"> </script>
+    <script src="{{ asset('javascript/bousin3000.js') }}"></script>
 
 {% endblock %}

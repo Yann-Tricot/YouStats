@@ -21,9 +21,9 @@ class ChannelRepository extends ServiceEntityRepository
 
     public function findAllByCountry($country)
     {
-        return $this->createQueryBuilder('v')
+        return $this->createQueryBuilder('c')
+            ->where('c.countryId = :cnt')
             ->setParameter('cnt', $country)
-            ->where('v.country = :cnt')
             ->getQuery()
             ->getResult();
     }
