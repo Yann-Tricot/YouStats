@@ -99,28 +99,27 @@
         </form>
     </div>
 
-    <div class="border mt-5 container-fluid" style="width:80%; margin-left:10%">
-        <p class="text-center">Titre de la vidéo 1</p>
-        <div class="text-center">
-            <img src="images/vache.jpg" class="center-block border rounded ">
+    <div class="mt-5 ml-2 mr-3 row">
+        <div class="col-3">
+            <ul class="list-group">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
         </div>
-        <div class="row justify-content-between text-center mt-4">
-            <div class="col-4">
-                <p>Titre vidéo 2</p>
-                <img src="images/vache.jpg" class="center-block border rounded" width="auto" height=50%>
-            </div>
-            <div class="col-4 mb-3">
-                <p>Titre vidéo 3</p>
-                <img src="images/vache.jpg" class="center-block border rounded" width="auto" height=50% >
-            </div>
+        <div class="col-3">
+            <ul class="list-group">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
         </div>
-        <div class=" row row-cols-5 mt-5">
-            {% for i in 4..50 %}
-                <div class="col" style="margin-top: -15%">
-                    <img src="images/vache.jpg" class="center-block border rounded" width="auto" height=33%>
-                    <p>#{{ i }} - Titre de la vidéo</p>
-                </div>
-            {% endfor %}
+        <div class="col-6 border">
+
         </div>
     </div>
 
