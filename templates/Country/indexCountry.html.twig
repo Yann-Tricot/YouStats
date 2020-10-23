@@ -6,7 +6,6 @@
 {% block body %}
 <div class="container mt-5">
     <div class="row">
-
         {% if title is defined %}
         <div class="col">
             <div class="row mt-3" style="justify-content: center">
@@ -14,20 +13,8 @@
             </div>
         </div>
         {% endif %}
-
         {% if countries is defined %}
-        {% for country in countries %}
-        <div class="jumbotron">
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-md-8">
-                        <a href="{{ path('country.showChan', {id: country.id, slug: country.slug}) }}">{{ country.getName }}</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+            {% include 'pages/carousel.html.twig' %}
         {% endif %}
 
     </div>
@@ -47,3 +34,4 @@
         <script src="{{asset('javascript/bousin3000.js')}}"> </script>
 
 {% endblock %}
+

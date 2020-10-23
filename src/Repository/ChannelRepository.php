@@ -37,4 +37,11 @@ class ChannelRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult();
     }
+
+    public function findTheTop3(){
+        return $this->createQueryBuilder('c')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+    }
 }

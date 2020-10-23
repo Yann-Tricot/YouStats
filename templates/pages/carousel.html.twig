@@ -1,0 +1,62 @@
+<div id="carouselExampleControls1" class="carousel slide border shadow-sm mt-5" data-ride="carousel" style="background-color: #dedbdb; width:70%; margin-left:15%">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <ul class="nav justify-content-center">
+                {% for country in countries|slice(0, 4) %} <!-- pour 10 pays EXEMPLE POUR APRES-->
+                    <li>
+                        <a type="button" class="translateBox btn btn-primary ml-5" href="{{ path('country.showChan', {id: country.id, slug: country.slug}) }}"> {{ country.getName|e }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="carousel-item">
+            <ul class="nav justify-content-center">
+                {% for country in countries|slice(4, 4) %} <!-- pour 10 pays EXEMPLE POUR APRES-->
+                    <li>
+                        <a type="button" class="translateBox btn btn-primary ml-5" href="{{ path('country.showChan', {id: country.id, slug: country.slug}) }}"> {{ country.getName|e }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="carousel-item">
+            <ul class="nav justify-content-center">
+                {% for country in countries|slice(8, 4) %} <!-- pour 10 pays EXEMPLE POUR APRES-->
+                    <li>
+                        <a type="button" class="translateBox btn btn-primary ml-5" href="{{ path('country.showChan', {id: country.id, slug: country.slug}) }}"> {{ country.getName|e }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="carousel-item">
+            <ul class="nav justify-content-center">
+                {% for country in countries|slice(12, 4) %} <!-- pour 10 pays EXEMPLE POUR APRES-->
+                    <li>
+                        <a type="button" class="translateBox btn btn-primary ml-5" href="{{ path('country.showChan', {id: country.id, slug: country.slug}) }}"> {{ country.getName|e }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="carousel-item">
+            <ul class="nav justify-content-center">
+                {% for country in countries|slice(16, 4) %} <!-- pour 10 pays EXEMPLE POUR APRES-->
+                    <li>
+                        <a type="button" class="translateBox btn btn-primary ml-5" href="{{ path('country.showChan', {id: country.id, slug: country.slug}) }}"> {{ country.getName|e }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+    {# Ici il faut faire en sorte que les fleches du carroussel passe au slice suivant de la boucle for #}
+    <a class="carousel-control-prev" href="#carouselExampleControls1" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls1" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>

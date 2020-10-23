@@ -35,22 +35,12 @@ class ChannelController extends AbstractController
      **/
     public function list(EntityManagerInterface $em)
     {
-        $country = 'FR';
-       // $this->repository = $em->getRepository(Channel::class);
 
         $channels = $this->repository->findAll();
-        $videos = $this->repository->findAll();
-        //$videos = $this->repository->findAllByCountry($country);
         if(!$channels)
         {
             throw $this->createNotFoundException('Error no channels found !');
         }
-        if(!$videos)
-        {
-            throw $this->createNotFoundException('Error no videos found !');
-        }
         return $this->render('indexChannel.html.twig', ['channels'=> $channels]);
-      #  return $this->render('indexCountry.html.twig',['channels'=> $channels]);
-      #  return new JsonResponse($channels);
     }
 }
