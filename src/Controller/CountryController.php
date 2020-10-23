@@ -40,30 +40,20 @@ class CountryController extends AbstractController
             throw $this->createNotFoundException('Error no videos found !');
         }
         return $this->render('country\indexCountry.html.twig', ['countries'=> $countries]);
-        #  return new JsonResponse($channels);
+
     }
 
-    /**
-     * @Route("/api", name="api_index")
-     **/
-    public function api() { // test renvoi formulaire json
-        $data = [
-            'test' => 'hello world',
-            "table" => ['C’est pas faux','oui','Johnny Halliday', 'MacDonalds']
-        ];
-        return new JsonResponse($data);
-    }
-
+//changer les slugs -> on recup le country depuis les videos et les channels
 
 
     /**
-     * @Route("/countries/{slug}-{id}", name="country.showVid")
+     * @Route("/countries/{slug}-{id}", name="country.showCountry")
      **/
     #requirements={"slug": "[a-z0-9\-]*"})
     public function show(\App\Entity\Country $country, string $slug) : Response
     {
         if ($country->getSlug() !== $slug) {
-            return $this->redirectToRoute('country.showVid', [
+            return $this->redirectToRoute('country.showCountry', [
                 'id' => $country->getId(),
                 'slug' => $country->getSlug()
             ], 301);
