@@ -1,14 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="container mt-5">
-    <div class="row">
-        CARTE
-    </div>
+<div class="d-flex justify-content-center" style="margin-top : 150px">
+    {% include 'map.html' %}
+
 </div>
 <div class="container mt-5">
-    <div class="row border rounded shadow-sm" style="background-color:white">
-        <p> Description de l'application</p>
+    <div style="background-color:#edf3f0">
+        <div class="ml-2 mr-2">
+            <h5>Bienvenue</h5>
+            <p>Description de l'application.</p>
+            <p class="blockquote-footer" >L'équipe YouStats</p>
+        </div>
     </div>
 </div>
 
@@ -16,7 +19,7 @@
     <div class="row">
         <div class="col">
             <div class="row mt-3" style="justify-content: center">
-                <p style="color:#F87E45;">Top 3 mondial</p>
+                <p style="color:black">Top 3 mondial</p>
             </div>
 
             {% for channel in channels %} <!-- METTRE LES 3 MEILLEURES CHAINES EN TENDANCES-->
@@ -28,33 +31,23 @@
                 </div>
             {% endfor %}
             <div class="row mt-3 mb-3" style="justify-content: center">
-                <button type="button" class="translateBox btn btn-primary" style="background-color:#F87E45; border-color: #F87E45 ">Voir Plus</button>
+                <button type="button" class="translateBox btn btn-primary" style="background-color:#a2a7ad; border-color: #a2a7ad ">Voir Plus</button>
             </div>
         </div>
         <div class="col">
             <div class="row mt-3" style="justify-content: center">
-                <p style="color:#F87E45;">Top 3 catégorie</p> <!-- METTRE LES TROIS MEILLEURES CATEGORIES-->
+                <p style="color:black;">Top 3 catégorie</p> <!-- METTRE LES TROIS MEILLEURES CATEGORIES-->
             </div>
-            <div class="row mt-3" style="justify-content: center">
+            {% for channel in channels %} <!-- METTRE LES 3 MEILLEURES CHAINES EN TENDANCES-->
+                <div class="row mt-3" style="justify-content: center">
                 <div class="border rounded shadow-sm" style="width: 50%; background-color:white">
                     <img src="images/award-icon-06.png" title="my image" alt="my Image" style="height:20px; width: 20px">
-                    <p class="text-center">catégorie 1</p>
+                    <p class="text-center">catégorie</p>
                 </div>
             </div>
-            <div class="row mt-3" style="justify-content: center">
-                <div class="border rounded shadow-sm" style="width: 50%; background-color:white">
-                    <img src="images/award-icon-06.png" title="my image" alt="my Image" style="height:20px; width: 20px">
-                    <p class="text-center">catégorie 2</p>
-                </div>
-            </div>
-            <div class="row mt-3" style="justify-content: center">
-                <div class="border rounded shadow-sm" style="width: 50%; background-color:white">
-                    <img src="images/award-icon-06.png" title="my image" alt="my Image" style="height:20px; width: 20px">
-                    <p class="text-center">catégorie 3</p>
-                </div>
-            </div>
+            {% endfor %}          
             <div class="row mt-3 mb-3" style="justify-content: center">
-                <button type="button" class="translateBox btn btn-primary" style="background-color:#F87E45; border-color: #F87E45 ">Voir Plus</button>
+                <button type="button" class="translateBox btn btn-primary" style="background-color:#a2a7ad; border-color: #a2a7ad ">Voir Plus</button>
             </div>
         </div>
     </div>

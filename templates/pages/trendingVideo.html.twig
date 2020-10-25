@@ -1,141 +1,61 @@
 {% extends 'base.html.twig' %}
 
+{% block title "oui" %}
+
 {% block body %}
+    <div class="container mt-5">
+        <div class="row">
 
-    <h2 class="text-center mt-3">Vidéos en tendance</h2>
-
-<!-- CARROUSSELLE PAYS-->
-    <div id="carouselExampleControls1" class="carousel slide border shadow-sm mt-5" data-ride="carousel" style="background-color: #dedbdb; width:70%; margin-left:15%">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <ul class="nav justify-content-center">
-                    {% for i in 1..4 %} <!-- pour 10 pays EXEMPLE POUR APRES-->
-                        <li>
-                            <button type="button" class="translateBox btn btn-primary ml-5"> Pays {{ i }}</button>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="carousel-item">
-                <ul class="nav justify-content-center">
-                    {% for i in 5..8 %} <!-- pour 4 autres pays EXEMPLE POUR APRES-->
-                        <li>
-                            <button type="button" class="translateBox btn btn-primary ml-5"> Pays {{ i }}</button>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="carousel-item">
-                <ul class="nav justify-content-center">
-                    {% for i in 9..12 %}
-                        <li>
-                            <button type="button" class="translateBox btn btn-primary ml-5"> Pays {{ i }}</button>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="carousel-item">
-                <ul class="nav justify-content-center">
-                    {% for i in 13..16 %}
-                        <li>
-                            <button type="button" class="translateBox btn btn-primary ml-5"> Pays {{ i }}</button>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="carousel-item">
-                <ul class="nav justify-content-center">
-                    {% for i in 17..17 %}
-                        <li>
-                            <button type="button" class="translateBox btn btn-primary ml-5"> Pays {{ i }}</button>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls1" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls1" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-
-<!--CARROUSSELLE DATE-->
-    <div id="carouselExampleControls2" class="carousel slide border shadow-sm mt-5" data-ride="carousel" data-interval="60000" style="background-color: #dedbdb; width:30%; margin-left:35%">
-       <div class="carousel-inner">
-            <div class="carousel-item active">
-                <ul class="nav justify-content-center">
-                    <li class="text-center">
-                        <p>DATE</p> <!-- METTRE DATE D'AUJOUD'HUI DANS LA PARTIE ACTIVE DU CARROUSSELLE-->
-                     </li>
-                </ul>
-            </div>
-            {% for i in 1..10 %} <!-- POUR LE NOMBRE DE DATE ANTERIEUR QUE L'ON VEUT AFFICHER-->
-                <div class="carousel-item">
-                    <ul class="nav justify-content-center">
-                        <li>
-                            <p>DATE jour d'avant</p> <!-- METTRE DATE D'AUJOUD'HUI - i -->
-                        </li>
-                    </ul>
+            {% if title is defined %}
+                <div class="col">
+                    <div class="row mt-3" style="justify-content: center">
+                        <p style="color:#F87E45;">{{ title }}</p>
+                    </div>
                 </div>
-            {% endfor %}
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls2" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls2" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-    <div class="text-center">
-        <form action="/action_page.php" class="mt-4"> <!-- UTILISER CETTE DATE EN BACK-->
-            <input type="date" id="date" name="date">
-            <input type="submit">
-        </form>
-    </div>
-
-    <div class="mt-5 ml-2 mr-3 row">
-        <div class="col-3">
-            <ul class="list-group">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-        </div>
-        <div class="col-3">
-            <ul class="list-group">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-        </div>
-        <div class="col-6 border">
-
+            {% endif %}
+            {% if videos is defined %}
+                <div class="mt-5 ml-2 mr-3 row">
+                    <div class="col-3">
+                        <ul class="list-group">
+                            {% for video in videos|slice(0,9) %}
+                                <li class="list-group-item"><a
+                                            href="{{ path('country.showCountry', {id: country.getId, slug: country.getSlug}) }}">  {{ video.getVidTitle|e }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endif %}
+            {% if channels is defined %}
+                <div class="mt-5 ml-2 mr-3 row">
+                    <div class="col-3">
+                        <ul class="list-group">
+                            {% for channel in channels|slice(0,9) %}
+                                <li>
+                                    <a href="{{ path('country.showCountry', {id: country.getId, slug: country.getSlug}) }}">{{ channel.getChannelName }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endif %}
+            {#
+            <li>{{ video.getVidCountry|e }} </li>
+            <li>{{ video.getVidTitle|e }}</li>
+            #}
         </div>
     </div>
+{% endblock %}
 
-    <style>
-        .translateBox:hover{
-            -webkit-transform: translate(0.5em,0);
-            -moz-transform: translate(0.5em,0);
-            -o-transform: translate(0.5em,0);
-            -ms-transform: translate(0.5em,0);
-            transform: translate(0.5em,0);
 
-            -webkit-transition: 1s ease-in-out;
-            -moz-transition: 1s ease-in-out;
-            -o-transition: 1s ease-in-out;
-            transition: 1s ease-in-out;
-        }
-    </style>
+{% block javascripts %}
+    {{ parent() }}
+    <!--
+    // on insère les scripts défini dans le template base.html.twig (le parent de notre template cf extends en haut)
+    //ci dessous on défini notre nouveau script
+    //on oublie pas d'utiliser assets si c'est un script local
+    -->
+
+    <script src="{{ asset('javascript/bousin3000.js') }}"></script>
 
 {% endblock %}

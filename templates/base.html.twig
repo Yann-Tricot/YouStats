@@ -7,26 +7,31 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        <div class="row">
-            <div class="col-3 mt-4 ml-4" style="justify-content: left">
-                <div class="dropdown">
-                    <button style="background-color: #F87E45; border-color: #F87E45" class="btn btn-secondary " type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-justify" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-                        </svg>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <a href ="{{ path('trendingVideo') }}"><button class="dropdown-item" type="button">Vidéos Tendances</button></a>
-                        <button class="dropdown-item" type="button">Menu 2</button>
-                        <button class="dropdown-item" type="button">Menu 3</button>
+
+                <div class="fixed-top">
+                    <div class="collapse" id="navbarToggleExternalContent">
+                        <div class="p-4" style="background-color: #a2a7ad">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href ="{{ path('trendingVideo') }}" style="text-decoration: none; color:white;">Vidéos Tendances</a></li>
+                            <li class="list-inline-item" style="color: white"> - </li>
+                            <li class="list-inline-item" style="text-decoration: none; color:white;" >Phasellus iaculis</li>
+                            <li class="list-inline-item" style="color: white" > - </li>
+                            <li class="list-inline-item" style="text-decoration: none; color:white;">Nulla volutpat</li>
+                            <div class="d-flex flex-row-reverse fixed-top mr-5">
+                                <div>
+                                    <img src="images/icon_stat.png" title="my image" alt="my Image" style="height:100px; width: 100px">
+                                </div>
+                            </div>
+                        </ul>
+                        </div>
                     </div>
+                    <nav class="navbar navbar-dark " style="background-color: #a2a7ad">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <h1 style="color: white">YouStats</h1>
+                    </nav>
                 </div>
-            </div>
-            <div class="col-5" style="justify-content: center">
-                <a href ="{{ path('home') }}"><h1 class="text-center display-1" style="color: #F87E45; font-weight: bold; text-decoration: none">YouStats</h1></a>
-                <!--<img src="images/logo2.png" title="my image" alt="my Image" style="height:110px; width: 110px">-->
-            </div>
-        </div>
 
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
@@ -35,20 +40,20 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
     </body>
-    <footer style="background-color: #F87E45">
-        <div id="carouselExampleControls" class="carousel slide border shadow-sm mt-5 " data-ride="carousel" style="background-color: #F87E45; ">
+    <footer style="background-color: #a2a7ad">
+        <div id="carouselExampleControls" class="carousel slide border shadow-sm mt-5 " data-ride="carousel" style="background-color: #a2a7ad; ">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <ul class="nav justify-content-center">
                         <li class="nav-item mr-4">
-                            <a style="color:white" class="nav-link" href="#">Article/lien 1</a>
+                            <a style="color:black" class="nav-link" href="#">Article/lien 1</a>
                         </li>
                     </ul>
                 </div>
                 <div class="carousel-item">
                     <ul class="nav justify-content-center">
                         <li class="nav-item mr-4">
-                            <a style="color:white" class="nav-link" href="#">Pied de page</a>
+                            <a style="color:black" class="nav-link" href="#">Pied de page</a>
                         </li>
                     </ul>
                 </div>
