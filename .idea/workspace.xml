@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="12f58aa8-32a8-4ab9-8269-0b44b30b6ad7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/trendingVideo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/trendingVideo.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="12f58aa8-32a8-4ab9-8269-0b44b30b6ad7" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -168,6 +165,7 @@
       <workItem from="1603196009915" duration="3960000" />
       <workItem from="1603200627056" duration="7000" />
       <workItem from="1603286625741" duration="2629000" />
+      <workItem from="1605090079238" duration="33000" />
     </task>
     <servers />
   </component>
