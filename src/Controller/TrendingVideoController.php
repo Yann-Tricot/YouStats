@@ -6,6 +6,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
+use Symfony\Component\Routing\Annotation\Route;
 
 class TrendingVideoController extends AbstractController
 {
@@ -18,6 +19,10 @@ class TrendingVideoController extends AbstractController
         $this->twig = $twig;
     }
 
+
+    /**
+     * @Route ("/trendingVideo", name="trendingVideo")
+     */
     public function index():Response{
         return $this->render('pages/trendingVideo.html.twig');
     }

@@ -1,11 +1,3 @@
-#index:
+# index:
 #    path: /
-#    controller: App\Controller\DefaultController::index
-
-home:
-  path: /
-  controller: App\Controller\HomeController::index
-
-trendingVideo:
-  path: /trendingVideo
-  controller: App\Controller\TrendingVideoController::index
+#    controller: App\Controller\CountryController::index

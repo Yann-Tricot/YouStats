@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+
 namespace App\Controller;
 
 use App\Repository\ChannelRepository;
@@ -20,6 +22,7 @@ class HomeController extends AbstractController{
 
     /**
      * @param ChannelRepository $repository
+     * @Route ("/home", name="home")
      * @return Response
      */
     public function index(ChannelRepository $repository):Response{
