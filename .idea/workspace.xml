@@ -20,8 +20,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54012460-9dfc-40b1-b96b-802addf35455" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/bootstrap/css/bootstrap.min" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/css/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/theme.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/Award-512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/award-icon-06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icon_stat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/assets/base.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/map.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Country/indexCountry.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Country/indexCountry.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Country/showCountry.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Country/showCountry.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/indexChannel.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/indexChannel.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/home.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/trendingVideo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/trendingVideo.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,6 +176,9 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Epulapp\Projet TUT\YouStats" />
+      <recent name="C:\Users\Epulapp\Projet TUT\YouStats\templates" />
+      <recent name="C:\Users\Epulapp\Projet TUT\YouStats\public\images" />
       <recent name="C:\Users\Epulapp\Projet TUT\YouStats\templates\Country" />
     </key>
   </component>
@@ -190,6 +209,8 @@
       <workItem from="1603446847027" duration="4256000" />
       <workItem from="1606149309598" duration="495000" />
       <workItem from="1606149840846" duration="1439000" />
+      <workItem from="1606378657946" duration="1459000" />
+      <workItem from="1606382213886" duration="937000" />
     </task>
     <servers />
   </component>
@@ -220,6 +241,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="827" y="217" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1602748423856" />
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606382710847">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606382710847" />
     <state x="497" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600929383332">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -240,6 +265,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="256" y="151" width="1236" height="810" key="dock-window-1/0.0.1536.824@0.0.1536.824" timestamp="1600791294533" />
+    <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1606382906984">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="667" y="253" width="585" height="534" key="find.popup/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606382906984" />
     <state x="740" y="233" key="git4idea.branch.GitSmartOperationDialog" timestamp="1606151286202">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
