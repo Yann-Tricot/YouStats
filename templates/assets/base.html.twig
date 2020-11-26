@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}YouStats!{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+
+                <div class="fixed-top">
+                    <div class="collapse" id="navbarToggleExternalContent">
+                        <div class="p-4" style="background-color: #a2a7ad">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href ="{{ path('trendingVideo') }}" style="text-decoration: none; color:white;">Tendances</a></li>
+                            <li class="list-inline-item" style="color: white"> - </li>
+                            <li class="list-inline-item" style="text-decoration: none; color:white;" >Phasellus iaculis</li>
+                            <li class="list-inline-item" style="color: white" > - </li>
+                            <li class="list-inline-item" style="text-decoration: none; color:white;">Nulla volutpat</li>
+                            <div class="d-flex flex-row-reverse fixed-top mr-5">
+                                <div>
+                                    <img src="images/icon_stat.png" title="my image" alt="my Image" style="height:100px; width: 100px">
+                                </div>
+                            </div>
+                        </ul>
+                        </div>
+                    </div>
+                    <nav class="navbar navbar-dark " style="background-color: #a2a7ad">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <h1 style="color: white">YouStats</h1>
+                    </nav>
+                </div>
+
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    </body>
+    <footer style="background-color: #a2a7ad">
+        <div id="carouselExampleControls" class="carousel slide border shadow-sm mt-5 " data-ride="carousel" style="background-color: #a2a7ad; ">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item mr-4">
+                            <a style="color:black" class="nav-link" href="#">Article/lien 1</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="carousel-item">
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item mr-4">
+                            <a style="color:black" class="nav-link" href="#">Pied de page</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </footer>
+</html>
