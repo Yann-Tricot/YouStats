@@ -4,14 +4,11 @@ import csv
 import sys
 import os
 
-from dotenv import load_dotenv
-load_dotenv()
-
 try:
-    connection = pymysql.connect(host='localhost',
-                                user='root',
-                                password='',                             
-                                db='youstats',
+    connection = pymysql.connect(host='db5001224558.hosting-data.io',
+                                user='dbu1233491',
+                                password='368h/xLLU?tN',                             
+                                db='dbs1046878',
                                 charset='utf8mb4'
                                 )
     print("connect successful!!")
@@ -19,7 +16,7 @@ try:
 except ValueError:
     print("Echec de la connexion au serveur !")
 
-API_KEY = os.getenv("API_KEY")
+API_KEY = 'AIzaSyDn3jBs7OUSc0HaAzj23ee8fVdexO06kpg'
 REGION_CODE = 'US'
 
 URL = f"https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode={REGION_CODE}&key={API_KEY}"
