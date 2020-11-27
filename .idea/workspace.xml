@@ -20,24 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54012460-9dfc-40b1-b96b-802addf35455" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/bootstrap/css/bootstrap.min" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/css/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/js/theme.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/Award-512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/award-icon-06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icon_stat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/assets/base.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/map.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Country/indexCountry.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Country/indexCountry.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Country/showCountry.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Country/showCountry.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/indexChannel.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/indexChannel.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/home.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/trendingVideo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/trendingVideo.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,6 +196,7 @@
       <workItem from="1606149840846" duration="1439000" />
       <workItem from="1606378657946" duration="1459000" />
       <workItem from="1606382213886" duration="937000" />
+      <workItem from="1606478001801" duration="27000" />
     </task>
     <servers />
   </component>
