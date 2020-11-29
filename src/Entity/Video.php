@@ -10,7 +10,7 @@ use Cocur\Slugify\Slugify;
 /**
  * Video
  *
- * @ORM\Table(name="video")
+ * @ORM\Table(name="VIDEO")
  * @ORM\Entity(repositoryClass="App\Repository\VideoRepository")
  */
 class Video
