@@ -41,7 +41,7 @@ try:
         for categorie in categoriesList:
             categorieID = categorie[0]
             categorieTitle = categorie[1]
-            sqlCategories = "INSERT into Category Values("+categorieID+",'"+categorieTitle+"')"
+            sqlCategories = "INSERT into CATEGORY Values("+categorieID+",'"+categorieTitle+"')"
             cursor.execute(sqlCategories)
     
 finally:
