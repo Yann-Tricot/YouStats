@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <title>{% block title %}YouStats!{% endblock %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        {% block stylesheets %}{% endblock %}
     </head>
     <body>
 
@@ -12,11 +11,9 @@
                     <div class="collapse" id="navbarToggleExternalContent">
                         <div class="p-4" style="background-color: #a2a7ad">
                         <ul class="list-inline">
-                            <li class="list-inline-item"><a href ="{{ path('trendingVideo') }}" style="text-decoration: none; color:white;">Tendances</a></li>
+                            <li class="list-inline-item"><a href ="{{ path('trendingVideo') }}" style="text-decoration: none; color:white;">Tendances pays par pays</a></li>
                             <li class="list-inline-item" style="color: white"> - </li>
-                            <li class="list-inline-item" style="text-decoration: none; color:white;" >Phasellus iaculis</li>
-                            <li class="list-inline-item" style="color: white" > - </li>
-                            <li class="list-inline-item" style="text-decoration: none; color:white;">Nulla volutpat</li>
+                            <li class="list-inline-item" <a href ="#"style="text-decoration: none; color:white;" >Votre vidéo parfaite !</a></li>
                             <div class="d-flex flex-row-reverse fixed-top mr-5">
                                 <div>
                                     <img src="images/icon_stat.png" title="my image" alt="my Image" style="height:100px; width: 100px">
@@ -29,7 +26,7 @@
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         </button>
-                        <h1 style="color: white">YouStats</h1>
+                        <a href="{{path('home')}}"><h1 style="text-decoration: none;color: white">YouStats</h1></a>
                     </nav>
                 </div>
 
@@ -68,4 +65,10 @@
             </a>
         </div>
     </footer>
+
+    <style>
+        a:hover{
+            text-decoration:none;
+        }
+    </style>
 </html>

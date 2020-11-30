@@ -4,7 +4,6 @@
 
 {% block body %}
 <div class="container mt-5">
-    <div class="row">
         {% if title is defined %}
         <div class="col">
             <div class="row mt-3" style="justify-content: center">
@@ -13,10 +12,8 @@
         </div>
         {% endif %}
         {% if countries is defined %}
-            {% include 'pages/carousel.html.twig' %}
+            {% include 'assets/carousel.html.twig' %}
         {% endif %}
-
-    </div>
 </div>
 {% endblock %}
 

@@ -1,0 +1,1064 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.22/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.2/fc-3.3.1/fh-3.1.7/kt-2.5.3/r-2.2.6/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.0/sp-1.2.1/sl-1.3.1/datatables.min.css" />
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.22/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.2/fc-3.3.1/fh-3.1.7/kt-2.5.3/r-2.2.6/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.0/sp-1.2.1/sl-1.3.1/datatables.min.js"></script>
+
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Test de dataTable</h1>
+    </div>
+
+    <div class="container">
+        <table class="table" id="table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Classe</th=>
+                    <th>Taille </thscope=>
+                    <th>Spécialité</thscope=>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th><strong>Nom</strong></th>
+                    <th><strong>Classe</strong></th>
+                    <th><strong>Taille</strong></th>
+                    <th><strong>Spécialité</strong></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- modal -->
+    <div class="modal fade" id="DescModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">�</button> -->
+                    <h3 class="modal-title">Video</h3>
+
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div id="imageMiniature" class="col"></div>
+                            <div class="col">
+                                <h5 id="nom"></h5>
+                                <h5 id="classe"></h5>
+                            </div>
+                        </div>
+                        <h5 id="nom"></h5>
+                        <h5 id="classe"></h5>
+                        <h5 id="taille"></h5>
+                        <h5 id="spec"></h5>
+                        <h5 id="img"></h5>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+</body>
+<script>
+    $.noConflict();
+    var cors = "http://cors-anywhere.herokuapp.com/";
+    var data =
+        [
+            [
+
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ], [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ], [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ], [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ], [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ], [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ], [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ], [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+            [
+                "antoine", "3A", "180", "informatique"
+            ],
+        ]
+
+
+
+    $(document).ready(function () {
+
+
+
+        $('table').DataTable({
+            data: data,
+            dom: '<"row d-flex justify-content-between"<"col-3"B><"col-2"f><"col-4"l>>t<"row"<"col-4"i><"col-4"p><"col-4"r>>',
+            responsive: true,
+            paging: true,
+            fixedHeader: true,
+            searching: true,
+            colReorder: true,
+            select: true,
+            keys: true,
+            paginate:
+            {
+                "previous": "Previous page"
+            },
+            rowReorder: false,
+            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            pageLength: 15,
+            initComplete: function () {
+                this.api().columns().every(function () {
+                    var that = this;
+
+                    $('input', this.footer()).on('keyup change clear', function () {
+                        if (that.search() !== this.value) {
+                            that
+                                .search(this.value)
+                                .draw();
+                        }
+                    });
+                });
+            },
+            buttons: [
+                { extend: 'csv', className: 'testBouton' },
+                { extend: 'excel', className: 'testBouton' },
+                { extend: 'pdfHtml5', className: 'testBouton', orientation: 'landscape', pageSize: 'A3' },
+                { extend: 'print', className: 'testBouton' },
+            ],
+        })
+
+    });
+
+    $('table tfoot th').each(function () {
+        var title = $('table tfoot th').eq($(this).index()).text();
+        $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+    });
+
+    $.extend(true, $.fn.dataTable.defaults, {
+        columnDefs: [
+            {
+                targets: '_all',
+                defaultContent: '-'
+            }
+        ],
+        language: {
+            processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>Processing...'
+        },
+    });
+
+    $('table tbody').on('dblclick', 'tr', function () {
+        var lien = cors + "https://i.ytimg.com/vi/dBX_mLT5f3c/sddefault.jpg";
+        var lien2 = cors + "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdeveloper.mozilla.org%2Ffr%2Fdocs%2FWeb%2FHTML%2FElement%2FImg&psig=AOvVaw18gr0YP4N_5daIKW_ssPag&ust=1606481499287000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKC8_JagoO0CFQAAAAAdAAAAABAD";
+        var elt = document.getElementById("imageMiniature");
+        elt.innerHTML = '';
+        var name = "Nom : " + $('td', this).eq(0).text();
+        var classe = "Classe : " + $('td', this).eq(1).text();
+        var taille = "Taille : " + $('td', this).eq(2).text();
+        var spécialité = "Spécialité : " + $('td', this).eq(3).text();
+        $('#DescModal').modal("show");
+        $('#nom').text(name);
+        $('#classe').text(classe);
+        $('#taille').text(taille);
+        $('#spec').text(spécialité);
+        var img = document.createElement("img");
+        img.crossOrigin = "anonymous";
+        img.src = lien;
+        img.width = 200;
+        img.height = 200;
+        elt.appendChild(img);
+    });
+
+
+
+
+</script>
+
+<style>
+    .dataTables_processing {
+        z-index: 3000;
+    }
+
+    .btn-primary {
+        background-color: #4e73df;
+        border-color: #4e73df;
+        left: 25px;
+    }
+
+    .ui-state-active {
+        background-color: rgba(97, 134, 255, 0.993);
+        color: black;
+        font-weight: bold;
+    }
+
+    .ui-autocomplete {
+        max-height: 200px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    .list-group-item {
+        right: 20px;
+    }
+
+    /* couleur des boutons */
+    .testBouton {
+        background-color: rgb(201, 128, 19);
+        border-color: rgb(201, 128, 19);
+    }
+
+
+    /* couleur des boutons plus et moins */
+    table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before,
+    table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+
+        background-color: rgba(201, 128, 19);
+    }
+
+    /* ligne paire */
+    .even {
+        background-color: rgba(92, 91, 97, 0.3);
+    }
+
+    /* ligne impaire */
+    .odd {
+        background-color: rgba(200, 173, 127, 0.3);
+    }
+
+    /* ligne selectionné */
+    table.dataTable tbody>tr.selected,
+    table.dataTable tbody>tr>.selected {
+        background-color: rgb(201, 128, 19, 0.5);
+    }
+
+        /* numérotation des pages mais qui marche moyen   */
+
+        /* .page-item.active {
+        z-index: 1;
+        color: #000000;
+        background-color: rgba(201, 128, 19);
+        border-color: rgba(201, 128, 19);
+    }
+    
+    .page-link{
+        color: #000000;
+        background-color: rgba(201, 128, 19);
+        border-color: rgba(201, 128, 19);
+    } */
+</style>
+
+</html>
