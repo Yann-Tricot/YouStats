@@ -2,1063 +2,1672 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.22/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.2/fc-3.3.1/fh-3.1.7/kt-2.5.3/r-2.2.6/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.0/sp-1.2.1/sl-1.3.1/datatables.min.css" />
-    <script type="text/javascript"
-        src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.22/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.2/fc-3.3.1/fh-3.1.7/kt-2.5.3/r-2.2.6/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.0/sp-1.2.1/sl-1.3.1/datatables.min.js"></script>
-
-
-    <title>Hello, world!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!--Nouveaux imports-->
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script> 
+  
+  
+  <!--Générateur de pdf -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+  <!--Double click et autre fonctionnalités (je pense)-->
+  <script type="text/javascript"  src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/jszip-2.5.0/dt-1.10.23/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.3/fc-3.3.2/fh-3.1.7/kt-2.5.3/r-2.2.6/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.1/datatables.min.js" defer></script>
+  <script type="text/javascript"  src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/jszip-2.5.0/dt-1.10.23/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.3/fc-3.3.2/fh-3.1.7/kt-2.5.3/r-2.2.6/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.1/datatables.min.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.23/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.3/fc-3.3.2/fh-3.1.7/kt-2.5.3/r-2.2.6/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.1/datatables.min.css" />
+  
+  <!--Le tableau en lui meme-->
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" defer ></script>
+  <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js" defer></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" defer></script> 
+  
+  
+  <!--Import des boutons-->
+  <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"defer></script>
+  <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"defer></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"defer></script>
+  <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"defer></script>  
+  
+  <title>Hello, world!</title>
 </head>
 
 <body>
     <div class="container" style="margin-top: 160px">
         <h1>Test de dataTable</h1>
     </div>
-
     <div class="container">
-        <table class="table" id="table">
+         <table class="table" id="table">
             <thead>
                 <tr>
-                    <th>Nom</th>
-                    <th>Classe</th=>
-                    <th>Taille </thscope=>
-                    <th>Spécialité</thscope=>
+                    <th>Titre de la vidéo</th>
+                    <th>Date de publication</th>
+                    <th>Nombre de j'aime </th>
+                    <th>Nombre de j'aime pas </th>
+                    <th>Nombre de commentaire</th>
+                    <th>Nombre de vue </th>
+                    <th>Catégorie </th>
+                    <th>Date de tendance </th>
+                    <th>Pays </th>
+                    <th>Classement </th>
+                    <th>Durée  </th>
+                    
                 </tr>
             </thead>
             <tbody>
 
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th><strong>Nom</strong></th>
-                    <th><strong>Classe</strong></th>
-                    <th><strong>Taille</strong></th>
-                    <th><strong>Spécialité</strong></th>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-
-    <!-- modal -->
-    <div class="modal fade" id="DescModal" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">�</button> -->
-                    <h3 class="modal-title">Video</h3>
-
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="row">
-                            <div id="imageMiniature" class="col"></div>
-                            <div class="col">
-                                <h5 id="nom"></h5>
-                                <h5 id="classe"></h5>
-                            </div>
-                        </div>
-                        <h5 id="nom"></h5>
-                        <h5 id="classe"></h5>
-                        <h5 id="taille"></h5>
-                        <h5 id="spec"></h5>
-                        <h5 id="img"></h5>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
+<body>
+  <div class="container">
+    <h1>Test de dataTable</h1>
+  </div>
+  <div class="container">
+    <table class="table" id="table">
+      <thead>
+        <tr>
+          <th>Titre de la vidéo</th>
+          <th>Date de publication</th>
+          <th>Nombre de j'aime </th>
+          <th>Nombre de j'aime pas </th>
+          <th>Nombre de commentaire</th>
+          <th>Nombre de vue </th>
+          <th>Catégorie </th>
+          <th>Date de tendance </th>
+          <th>Pays </th>
+          <th>Classement </th>
+          <th>Durée  </th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        
+      </tbody>
+      <tfoot>
+        <tr>
+          <th><strong>Titre de la vidéo</strong></th>
+          <th><strong>Date de publication</strong></th>
+          <th><strong>Nombre de j'aime</strong></th>
+          <th><strong>Nombre de j'aime pas </strong></th>
+          <th><strong>Nombre de commentaire</strong></th>
+          <th><strong>Nombre de vue</strong></th>
+          <th><strong>Catégorie</strong></th>
+          <th><strong>Date de tendance</strong></th>
+          <th><strong>Pays</strong></th>
+          <th><strong>Classement</strong></th>
+          <th><strong>Durée</strong></th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  
+  <!-- modal -->
+  <div class="modal fade" id="DescModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">�</button> -->
+          <h3 class="modal-title">Video</h3>
+          
         </div>
-
-</body>
-<script>
-    $.noConflict();
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div id="imageMiniature" class="col"></div>
+              <div class="col">
+                <h5 id="nom"></h5>
+                <h5 id="classe"></h5>
+              </div>
+            </div>
+            <h5 id="nom"></h5>
+            <h5 id="classe"></h5>
+            <h5 id="taille"></h5>
+            <h5 id="spec"></h5>
+            <h5 id="img"></h5>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    
+  </body>
+  
+  
+  
+  <script>
+    
+    
+    
+    
     var cors = "http://cors-anywhere.herokuapp.com/";
-    var data =
-        [
-            [
+    
+    
+    
+    var data3 = [
+    {
+      "Titre": "",
+      "date": "",
+      "number": 1,
+      "number2": 6717727,
+      "comments": 777507,
+      "view": 654,
+      "category": "",
+      "date": "",
+      "country": "",
+      "classement": 1,
+      "durée": ""
+    },
+    {
+      "Titre": "Jamal",
+      "date": "18.03.21",
+      "number": 1,
+      "number2": 6717727,
+      "comments": 777507,
+      "view": 654,
+      "category": "Id Magna Et Associates",
+      "date": "04.03.20",
+      "country": "Cyprus",
+      "classement": 1,
+      "durée": "03/23/2020"
+    },
+    {
+      "Titre": "Bert",
+      "date": "06.02.21",
+      "number": 2,
+      "number2": 2002068,
+      "comments": 406654,
+      "view": 1654,
+      "category": "Purus Maecenas Foundation",
+      "date": "05.06.21",
+      "country": "Saint Martin",
+      "classement": 2,
+      "durée": "10/12/2020"
+    },
+    {
+      "Titre": "Rudyard",
+      "date": "12.10.20",
+      "number": 3,
+      "number2": 393931,
+      "comments": 81721,
+      "view": 2654,
+      "category": "Enim Diam Vel LLC",
+      "date": "04.09.21",
+      "country": "Turkmenistan",
+      "classement": 3,
+      "durée": "01/21/2020"
+    },
+    {
+      "Titre": "Darrel",
+      "date": "31.03.21",
+      "number": 4,
+      "number2": 4999712,
+      "comments": 899720,
+      "view": 3654,
+      "category": "Quis Associates",
+      "date": "11.26.21",
+      "country": "Pitcairn Islands",
+      "classement": 4,
+      "durée": "01/10/2021"
+    },
+    {
+      "Titre": "Octavia",
+      "date": "05.01.20",
+      "number": 5,
+      "number2": 5614347,
+      "comments": 943308,
+      "view": 4654,
+      "category": "Sed Est Nunc Corp.",
+      "date": "10.15.20",
+      "country": "Saint Kitts and Nevis",
+      "classement": 5,
+      "durée": "09/30/2021"
+    },
+    {
+      "Titre": "Xanthus",
+      "date": "30.01.20",
+      "number": 6,
+      "number2": 7969167,
+      "comments": 27909,
+      "view": 5654,
+      "category": "Sodales Nisi Magna Corporation",
+      "date": "02.12.20",
+      "country": "Serbia",
+      "classement": 6,
+      "durée": "08/12/2020"
+    },
+    {
+      "Titre": "Lana",
+      "date": "24.11.21",
+      "number": 7,
+      "number2": 8303762,
+      "comments": 386919,
+      "view": 6654,
+      "category": "Nam Associates",
+      "date": "02.18.21",
+      "country": "Kuwait",
+      "classement": 7,
+      "durée": "02/12/2020"
+    },
+    {
+      "Titre": "Julian",
+      "date": "26.05.21",
+      "number": 8,
+      "number2": 7084992,
+      "comments": 609603,
+      "view": 7654,
+      "category": "Mauris Blandit Ltd",
+      "date": "12.29.20",
+      "country": "Kuwait",
+      "classement": 8,
+      "durée": "03/23/2020"
+    },
+    {
+      "Titre": "Cleo",
+      "date": "15.07.20",
+      "number": 9,
+      "number2": 5803497,
+      "comments": 82320,
+      "view": 8654,
+      "category": "Vel Turpis Aliquam Foundation",
+      "date": "04.30.20",
+      "country": "Saint Barthélemy",
+      "classement": 9,
+      "durée": "03/15/2021"
+    },
+    {
+      "Titre": "Caesar",
+      "date": "22.09.20",
+      "number": 10,
+      "number2": 1128831,
+      "comments": 491781,
+      "view": 9654,
+      "category": "Neque Pellentesque Massa Associates",
+      "date": "12.17.21",
+      "country": "Eritrea",
+      "classement": 10,
+      "durée": "01/31/2020"
+    },
+    {
+      "Titre": "Sara",
+      "date": "27.11.20",
+      "number": 11,
+      "number2": 8109205,
+      "comments": 808307,
+      "view": 10654,
+      "category": "Tincidunt PC",
+      "date": "06.20.21",
+      "country": "Mauritania",
+      "classement": 11,
+      "durée": "04/26/2020"
+    },
+    {
+      "Titre": "Wynter",
+      "date": "20.02.20",
+      "number": 12,
+      "number2": 6295630,
+      "comments": 384147,
+      "view": 11654,
+      "category": "Tincidunt LLP",
+      "date": "02.18.20",
+      "country": "Svalbard and Jan Mayen Islands",
+      "classement": 12,
+      "durée": "02/26/2021"
+    },
+    {
+      "Titre": "Lucy",
+      "date": "19.10.20",
+      "number": 13,
+      "number2": 8890964,
+      "comments": 943709,
+      "view": 12654,
+      "category": "Ullamcorper Industries",
+      "date": "07.07.21",
+      "country": "Panama",
+      "classement": 13,
+      "durée": "02/18/2021"
+    },
+    {
+      "Titre": "Clinton",
+      "date": "05.04.20",
+      "number": 14,
+      "number2": 9312206,
+      "comments": 892236,
+      "view": 13654,
+      "category": "Libero Mauris Aliquam Foundation",
+      "date": "10.18.20",
+      "country": "Philippines",
+      "classement": 14,
+      "durée": "02/24/2020"
+    },
+    {
+      "Titre": "Quincy",
+      "date": "03.10.20",
+      "number": 15,
+      "number2": 1304152,
+      "comments": 945483,
+      "view": 14654,
+      "category": "Ligula Aliquam Erat Corporation",
+      "date": "08.06.21",
+      "country": "Kuwait",
+      "classement": 15,
+      "durée": "04/27/2020"
+    },
+    {
+      "Titre": "Kibo",
+      "date": "02.12.20",
+      "number": 16,
+      "number2": 3831966,
+      "comments": 365372,
+      "view": 15654,
+      "category": "Risus Corporation",
+      "date": "07.19.21",
+      "country": "Georgia",
+      "classement": 16,
+      "durée": "05/09/2021"
+    },
+    {
+      "Titre": "Felix",
+      "date": "26.01.20",
+      "number": 17,
+      "number2": 755645,
+      "comments": 595699,
+      "view": 16654,
+      "category": "Odio Phasellus At Corporation",
+      "date": "12.07.21",
+      "country": "Svalbard and Jan Mayen Islands",
+      "classement": 17,
+      "durée": "09/08/2020"
+    },
+    {
+      "Titre": "Jordan",
+      "date": "05.07.21",
+      "number": 18,
+      "number2": 1444489,
+      "comments": 847350,
+      "view": 17654,
+      "category": "Convallis Convallis Limited",
+      "date": "06.14.21",
+      "country": "British Indian Ocean Territory",
+      "classement": 18,
+      "durée": "03/18/2021"
+    },
+    {
+      "Titre": "Dominic",
+      "date": "16.07.20",
+      "number": 19,
+      "number2": 7607696,
+      "comments": 846313,
+      "view": 18654,
+      "category": "Nostra Corp.",
+      "date": "02.28.21",
+      "country": "Guinea-Bissau",
+      "classement": 19,
+      "durée": "02/05/2021"
+    },
+    {
+      "Titre": "Shoshana",
+      "date": "08.04.21",
+      "number": 20,
+      "number2": 6724458,
+      "comments": 570932,
+      "view": 19654,
+      "category": "Nunc Nulla Company",
+      "date": "08.20.20",
+      "country": "Swaziland",
+      "classement": 20,
+      "durée": "03/16/2021"
+    },
+    {
+      "Titre": "Judith",
+      "date": "20.01.20",
+      "number": 21,
+      "number2": 8540466,
+      "comments": 436176,
+      "view": 20654,
+      "category": "Vestibulum Nec Inc.",
+      "date": "06.19.20",
+      "country": "Egypt",
+      "classement": 21,
+      "durée": "04/07/2020"
+    },
+    {
+      "Titre": "Aiko",
+      "date": "15.10.21",
+      "number": 22,
+      "number2": 270025,
+      "comments": 713020,
+      "view": 21654,
+      "category": "Sed Dui Fusce PC",
+      "date": "12.11.20",
+      "country": "Korea, South",
+      "classement": 22,
+      "durée": "05/17/2021"
+    },
+    {
+      "Titre": "Ivory",
+      "date": "09.07.21",
+      "number": 23,
+      "number2": 2212407,
+      "comments": 301689,
+      "view": 22654,
+      "category": "Aenean Inc.",
+      "date": "11.21.20",
+      "country": "Myanmar",
+      "classement": 23,
+      "durée": "07/08/2021"
+    },
+    {
+      "Titre": "Slade",
+      "date": "20.12.19",
+      "number": 24,
+      "number2": 7448179,
+      "comments": 568267,
+      "view": 23654,
+      "category": "Mi PC",
+      "date": "02.21.20",
+      "country": "Macedonia",
+      "classement": 24,
+      "durée": "07/02/2021"
+    },
+    {
+      "Titre": "Kai",
+      "date": "18.11.21",
+      "number": 25,
+      "number2": 1554328,
+      "comments": 1472,
+      "view": 24654,
+      "category": "Ipsum Consulting",
+      "date": "04.26.20",
+      "country": "Greece",
+      "classement": 25,
+      "durée": "04/22/2021"
+    },
+    {
+      "Titre": "Ahmed",
+      "date": "18.06.20",
+      "number": 26,
+      "number2": 4814614,
+      "comments": 359288,
+      "view": 25654,
+      "category": "Scelerisque Foundation",
+      "date": "09.07.21",
+      "country": "Slovenia",
+      "classement": 26,
+      "durée": "03/10/2021"
+    },
+    {
+      "Titre": "Nehru",
+      "date": "23.10.21",
+      "number": 27,
+      "number2": 8041245,
+      "comments": 641061,
+      "view": 26654,
+      "category": "Facilisis Eget Ipsum Ltd",
+      "date": "10.30.21",
+      "country": "Greece",
+      "classement": 27,
+      "durée": "01/14/2021"
+    },
+    {
+      "Titre": "Gary",
+      "date": "06.11.20",
+      "number": 28,
+      "number2": 8287334,
+      "comments": 26805,
+      "view": 27654,
+      "category": "Et Consulting",
+      "date": "02.06.20",
+      "country": "Jamaica",
+      "classement": 28,
+      "durée": "06/14/2021"
+    },
+    {
+      "Titre": "Tad",
+      "date": "26.03.21",
+      "number": 29,
+      "number2": 2599280,
+      "comments": 286878,
+      "view": 28654,
+      "category": "Vel Faucibus Inc.",
+      "date": "01.15.20",
+      "country": "Andorra",
+      "classement": 29,
+      "durée": "09/30/2020"
+    },
+    {
+      "Titre": "Neve",
+      "date": "26.11.21",
+      "number": 30,
+      "number2": 4946202,
+      "comments": 444495,
+      "view": 29654,
+      "category": "Tristique Incorporated",
+      "date": "11.29.21",
+      "country": "South Georgia and The South Sandwich Islands",
+      "classement": 30,
+      "durée": "07/15/2020"
+    },
+    {
+      "Titre": "Ashely",
+      "date": "05.05.20",
+      "number": 31,
+      "number2": 4421324,
+      "comments": 945649,
+      "view": 30654,
+      "category": "Sed Nec LLP",
+      "date": "12.12.21",
+      "country": "Burundi",
+      "classement": 31,
+      "durée": "03/18/2021"
+    },
+    {
+      "Titre": "Denton",
+      "date": "24.05.20",
+      "number": 32,
+      "number2": 2664774,
+      "comments": 476960,
+      "view": 31654,
+      "category": "Nullam Associates",
+      "date": "03.01.21",
+      "country": "Seychelles",
+      "classement": 32,
+      "durée": "11/06/2021"
+    },
+    {
+      "Titre": "Hasad",
+      "date": "13.08.20",
+      "number": 33,
+      "number2": 8136945,
+      "comments": 797427,
+      "view": 32654,
+      "category": "Sed Pede Consulting",
+      "date": "05.15.20",
+      "country": "Botswana",
+      "classement": 33,
+      "durée": "01/17/2020"
+    },
+    {
+      "Titre": "Fritz",
+      "date": "11.07.20",
+      "number": 34,
+      "number2": 3559436,
+      "comments": 84403,
+      "view": 33654,
+      "category": "Libero Nec LLP",
+      "date": "12.23.20",
+      "country": "Germany",
+      "classement": 34,
+      "durée": "01/25/2021"
+    },
+    {
+      "Titre": "Xanthus",
+      "date": "07.06.21",
+      "number": 35,
+      "number2": 5668820,
+      "comments": 309994,
+      "view": 34654,
+      "category": "Faucibus Company",
+      "date": "05.25.21",
+      "country": "Bhutan",
+      "classement": 35,
+      "durée": "06/28/2020"
+    },
+    {
+      "Titre": "Cassidy",
+      "date": "06.04.20",
+      "number": 36,
+      "number2": 7037734,
+      "comments": 469663,
+      "view": 35654,
+      "category": "Orci Consectetuer Industries",
+      "date": "06.22.21",
+      "country": "South Africa",
+      "classement": 36,
+      "durée": "02/16/2020"
+    },
+    {
+      "Titre": "Gregory",
+      "date": "24.11.20",
+      "number": 37,
+      "number2": 1839263,
+      "comments": 516537,
+      "view": 36654,
+      "category": "Suspendisse Consulting",
+      "date": "12.02.20",
+      "country": "Hong Kong",
+      "classement": 37,
+      "durée": "09/09/2021"
+    },
+    {
+      "Titre": "Tashya",
+      "date": "01.03.21",
+      "number": 38,
+      "number2": 3557237,
+      "comments": 30051,
+      "view": 37654,
+      "category": "Enim Nunc Ltd",
+      "date": "02.06.20",
+      "country": "Poland",
+      "classement": 38,
+      "durée": "07/30/2021"
+    },
+    {
+      "Titre": "Mira",
+      "date": "18.02.21",
+      "number": 39,
+      "number2": 6646503,
+      "comments": 167268,
+      "view": 38654,
+      "category": "Aliquet Inc.",
+      "date": "09.24.21",
+      "country": "South Georgia and The South Sandwich Islands",
+      "classement": 39,
+      "durée": "12/02/2020"
+    },
+    {
+      "Titre": "Benedict",
+      "date": "16.03.20",
+      "number": 40,
+      "number2": 3950166,
+      "comments": 907259,
+      "view": 39654,
+      "category": "Libero Dui Corporation",
+      "date": "07.24.21",
+      "country": "Viet Nam",
+      "classement": 40,
+      "durée": "10/04/2020"
+    },
+    {
+      "Titre": "Justina",
+      "date": "13.11.21",
+      "number": 41,
+      "number2": 31757,
+      "comments": 216025,
+      "view": 40654,
+      "category": "Mattis Cras Company",
+      "date": "04.07.20",
+      "country": "Cayman Islands",
+      "classement": 41,
+      "durée": "04/27/2020"
+    },
+    {
+      "Titre": "Destiny",
+      "date": "30.07.20",
+      "number": 42,
+      "number2": 6613419,
+      "comments": 117716,
+      "view": 41654,
+      "category": "Gravida Nunc Sed Ltd",
+      "date": "01.25.20",
+      "country": "Turkey",
+      "classement": 42,
+      "durée": "08/25/2021"
+    },
+    {
+      "Titre": "Graiden",
+      "date": "23.09.21",
+      "number": 43,
+      "number2": 3734194,
+      "comments": 216129,
+      "view": 42654,
+      "category": "Lacus Ut Limited",
+      "date": "02.20.21",
+      "country": "Cape Verde",
+      "classement": 43,
+      "durée": "08/09/2021"
+    },
+    {
+      "Titre": "Barbara",
+      "date": "22.01.20",
+      "number": 44,
+      "number2": 4643940,
+      "comments": 952758,
+      "view": 43654,
+      "category": "Luctus Associates",
+      "date": "08.17.21",
+      "country": "Cape Verde",
+      "classement": 44,
+      "durée": "02/13/2021"
+    },
+    {
+      "Titre": "Carson",
+      "date": "06.08.20",
+      "number": 45,
+      "number2": 9960066,
+      "comments": 447501,
+      "view": 44654,
+      "category": "Laoreet Foundation",
+      "date": "12.12.21",
+      "country": "Estonia",
+      "classement": 45,
+      "durée": "04/23/2020"
+    },
+    {
+      "Titre": "Elvis",
+      "date": "12.08.20",
+      "number": 46,
+      "number2": 8708218,
+      "comments": 578962,
+      "view": 45654,
+      "category": "Egestas Fusce Aliquet Foundation",
+      "date": "08.26.20",
+      "country": "San Marino",
+      "classement": 46,
+      "durée": "12/18/2021"
+    },
+    {
+      "Titre": "Adele",
+      "date": "05.12.21",
+      "number": 47,
+      "number2": 5420448,
+      "comments": 219365,
+      "view": 46654,
+      "category": "Elit Sed Consequat Limited",
+      "date": "09.27.20",
+      "country": "Monaco",
+      "classement": 47,
+      "durée": "04/29/2021"
+    },
+    {
+      "Titre": "Quynn",
+      "date": "26.04.21",
+      "number": 48,
+      "number2": 2169003,
+      "comments": 620302,
+      "view": 47654,
+      "category": "Tellus PC",
+      "date": "01.02.20",
+      "country": "Palau",
+      "classement": 48,
+      "durée": "09/07/2021"
+    },
+    {
+      "Titre": "Piper",
+      "date": "10.04.21",
+      "number": 49,
+      "number2": 7829428,
+      "comments": 495879,
+      "view": 48654,
+      "category": "Aliquam Corporation",
+      "date": "12.26.19",
+      "country": "Saint Barthélemy",
+      "classement": 49,
+      "durée": "10/11/2020"
+    },
+    {
+      "Titre": "Allen",
+      "date": "17.08.20",
+      "number": 50,
+      "number2": 4937355,
+      "comments": 608660,
+      "view": 49654,
+      "category": "Mauris Eu Institute",
+      "date": "03.08.20",
+      "country": "Saudi Arabia",
+      "classement": 50,
+      "durée": "08/14/2021"
+    },
+    {
+      "Titre": "Grady",
+      "date": "08.09.21",
+      "number": 51,
+      "number2": 143397,
+      "comments": 869768,
+      "view": 50654,
+      "category": "Luctus LLP",
+      "date": "11.30.20",
+      "country": "Montenegro",
+      "classement": 51,
+      "durée": "05/27/2021"
+    },
+    {
+      "Titre": "Dora",
+      "date": "22.11.20",
+      "number": 52,
+      "number2": 4487583,
+      "comments": 611544,
+      "view": 51654,
+      "category": "Eget Dictum Incorporated",
+      "date": "11.01.20",
+      "country": "Argentina",
+      "classement": 52,
+      "durée": "08/04/2021"
+    },
+    {
+      "Titre": "Callie",
+      "date": "14.04.20",
+      "number": 53,
+      "number2": 3653990,
+      "comments": 594885,
+      "view": 52654,
+      "category": "Porttitor Incorporated",
+      "date": "02.16.21",
+      "country": "Antarctica",
+      "classement": 53,
+      "durée": "10/03/2020"
+    },
+    {
+      "Titre": "Tyrone",
+      "date": "10.11.21",
+      "number": 54,
+      "number2": 9256080,
+      "comments": 904241,
+      "view": 53654,
+      "category": "Eget Magna LLP",
+      "date": "05.26.20",
+      "country": "Nepal",
+      "classement": 54,
+      "durée": "09/30/2020"
+    },
+    {
+      "Titre": "Bianca",
+      "date": "02.03.20",
+      "number": 55,
+      "number2": 9257581,
+      "comments": 927109,
+      "view": 54654,
+      "category": "Eget Lacus Mauris Incorporated",
+      "date": "12.14.20",
+      "country": "Jersey",
+      "classement": 55,
+      "durée": "11/05/2021"
+    },
+    {
+      "Titre": "Mechelle",
+      "date": "25.12.20",
+      "number": 56,
+      "number2": 3301784,
+      "comments": 859511,
+      "view": 55654,
+      "category": "Nisl Nulla Industries",
+      "date": "10.06.20",
+      "country": "Togo",
+      "classement": 56,
+      "durée": "08/09/2021"
+    },
+    {
+      "Titre": "Deacon",
+      "date": "27.12.20",
+      "number": 57,
+      "number2": 8078630,
+      "comments": 180817,
+      "view": 56654,
+      "category": "Sit Amet Ltd",
+      "date": "10.17.20",
+      "country": "Japan",
+      "classement": 57,
+      "durée": "02/02/2021"
+    },
+    {
+      "Titre": "Adam",
+      "date": "20.09.20",
+      "number": 58,
+      "number2": 582592,
+      "comments": 842173,
+      "view": 57654,
+      "category": "Ac Institute",
+      "date": "12.18.21",
+      "country": "Saint Vincent and The Grenadines",
+      "classement": 58,
+      "durée": "01/29/2021"
+    },
+    {
+      "Titre": "Ahmed",
+      "date": "29.05.20",
+      "number": 59,
+      "number2": 2753802,
+      "comments": 738988,
+      "view": 58654,
+      "category": "Arcu Curabitur Ut Corporation",
+      "date": "07.01.20",
+      "country": "Bulgaria",
+      "classement": 59,
+      "durée": "04/22/2021"
+    },
+    {
+      "Titre": "Joel",
+      "date": "10.02.21",
+      "number": 60,
+      "number2": 2291236,
+      "comments": 137598,
+      "view": 59654,
+      "category": "Suspendisse Limited",
+      "date": "03.10.20",
+      "country": "Armenia",
+      "classement": 60,
+      "durée": "05/19/2021"
+    },
+    {
+      "Titre": "Amery",
+      "date": "05.09.20",
+      "number": 61,
+      "number2": 9150261,
+      "comments": 865649,
+      "view": 60654,
+      "category": "Quis LLP",
+      "date": "09.02.21",
+      "country": "Peru",
+      "classement": 61,
+      "durée": "02/22/2021"
+    },
+    {
+      "Titre": "Erasmus",
+      "date": "19.07.21",
+      "number": 62,
+      "number2": 5016208,
+      "comments": 596530,
+      "view": 61654,
+      "category": "Diam Consulting",
+      "date": "12.04.21",
+      "country": "Costa Rica",
+      "classement": 62,
+      "durée": "08/25/2021"
+    },
+    {
+      "Titre": "Nicholas",
+      "date": "14.07.20",
+      "number": 63,
+      "number2": 267747,
+      "comments": 289604,
+      "view": 62654,
+      "category": "Aenean Euismod Corp.",
+      "date": "01.26.20",
+      "country": "Albania",
+      "classement": 63,
+      "durée": "05/31/2020"
+    },
+    {
+      "Titre": "Lawrence",
+      "date": "10.10.21",
+      "number": 64,
+      "number2": 393511,
+      "comments": 133353,
+      "view": 63654,
+      "category": "Magnis Dis Corp.",
+      "date": "10.10.21",
+      "country": "Myanmar",
+      "classement": 64,
+      "durée": "11/06/2021"
+    },
+    {
+      "Titre": "Jarrod",
+      "date": "15.09.21",
+      "number": 65,
+      "number2": 8542696,
+      "comments": 105972,
+      "view": 64654,
+      "category": "Orci Tincidunt Adipiscing Inc.",
+      "date": "03.30.20",
+      "country": "Northern Mariana Islands",
+      "classement": 65,
+      "durée": "08/19/2020"
+    },
+    {
+      "Titre": "Price",
+      "date": "16.04.21",
+      "number": 66,
+      "number2": 9694407,
+      "comments": 162623,
+      "view": 65654,
+      "category": "Ac Facilisis Facilisis Associates",
+      "date": "02.27.21",
+      "country": "Zimbabwe",
+      "classement": 66,
+      "durée": "10/14/2020"
+    },
+    {
+      "Titre": "Marcia",
+      "date": "03.04.20",
+      "number": 67,
+      "number2": 7466303,
+      "comments": 773958,
+      "view": 66654,
+      "category": "Aliquet Vel Consulting",
+      "date": "05.24.20",
+      "country": "Malawi",
+      "classement": 67,
+      "durée": "08/19/2021"
+    },
+    {
+      "Titre": "Todd",
+      "date": "26.07.20",
+      "number": 68,
+      "number2": 3890254,
+      "comments": 158416,
+      "view": 67654,
+      "category": "Lectus Incorporated",
+      "date": "10.02.20",
+      "country": "Yemen",
+      "classement": 68,
+      "durée": "03/08/2020"
+    },
+    {
+      "Titre": "Wallace",
+      "date": "11.04.21",
+      "number": 69,
+      "number2": 787857,
+      "comments": 501229,
+      "view": 68654,
+      "category": "Ac Arcu Inc.",
+      "date": "09.12.21",
+      "country": "Macedonia",
+      "classement": 69,
+      "durée": "12/17/2021"
+    },
+    {
+      "Titre": "Garth",
+      "date": "02.11.21",
+      "number": 70,
+      "number2": 6277550,
+      "comments": 474183,
+      "view": 69654,
+      "category": "Sed Sapien Nunc Institute",
+      "date": "12.31.20",
+      "country": "Italy",
+      "classement": 70,
+      "durée": "11/17/2020"
+    },
+    {
+      "Titre": "Veronica",
+      "date": "19.09.20",
+      "number": 71,
+      "number2": 4813916,
+      "comments": 544396,
+      "view": 70654,
+      "category": "Velit Eget Laoreet Associates",
+      "date": "06.29.21",
+      "country": "Saint Lucia",
+      "classement": 71,
+      "durée": "08/30/2020"
+    },
+    {
+      "Titre": "Kiayada",
+      "date": "10.01.20",
+      "number": 72,
+      "number2": 8704154,
+      "comments": 568043,
+      "view": 71654,
+      "category": "Massa LLP",
+      "date": "12.06.21",
+      "country": "India",
+      "classement": 72,
+      "durée": "08/23/2020"
+    },
+    {
+      "Titre": "Chandler",
+      "date": "11.09.20",
+      "number": 73,
+      "number2": 540917,
+      "comments": 480980,
+      "view": 72654,
+      "category": "Fusce Mi Lorem PC",
+      "date": "05.05.21",
+      "country": "Malawi",
+      "classement": 73,
+      "durée": "07/01/2020"
+    },
+    {
+      "Titre": "Germaine",
+      "date": "14.01.20",
+      "number": 74,
+      "number2": 2740861,
+      "comments": 361965,
+      "view": 73654,
+      "category": "Aliquam Corporation",
+      "date": "03.22.21",
+      "country": "Colombia",
+      "classement": 74,
+      "durée": "10/20/2021"
+    },
+    {
+      "Titre": "Audrey",
+      "date": "10.04.20",
+      "number": 75,
+      "number2": 8899941,
+      "comments": 291209,
+      "view": 74654,
+      "category": "Ut Semper Consulting",
+      "date": "07.01.20",
+      "country": "Sweden",
+      "classement": 75,
+      "durée": "01/24/2020"
+    },
+    {
+      "Titre": "May",
+      "date": "01.09.20",
+      "number": 76,
+      "number2": 8988908,
+      "comments": 877654,
+      "view": 75654,
+      "category": "Ipsum Ltd",
+      "date": "01.12.20",
+      "country": "Armenia",
+      "classement": 76,
+      "durée": "12/30/2020"
+    },
+    {
+      "Titre": "Blaze",
+      "date": "01.12.21",
+      "number": 77,
+      "number2": 6264801,
+      "comments": 240693,
+      "view": 76654,
+      "category": "Semper Erat In Ltd",
+      "date": "06.04.20",
+      "country": "Botswana",
+      "classement": 77,
+      "durée": "04/12/2021"
+    },
+    {
+      "Titre": "Zachery",
+      "date": "05.10.20",
+      "number": 78,
+      "number2": 5930800,
+      "comments": 363756,
+      "view": 77654,
+      "category": "Leo Foundation",
+      "date": "12.15.20",
+      "country": "Namibia",
+      "classement": 78,
+      "durée": "05/11/2020"
+    },
+    {
+      "Titre": "Vivien",
+      "date": "07.11.20",
+      "number": 79,
+      "number2": 496134,
+      "comments": 666928,
+      "view": 78654,
+      "category": "Euismod Et Commodo PC",
+      "date": "06.16.21",
+      "country": "Christmas Island",
+      "classement": 79,
+      "durée": "02/11/2021"
+    },
+    {
+      "Titre": "Jordan",
+      "date": "03.02.20",
+      "number": 80,
+      "number2": 7593226,
+      "comments": 737508,
+      "view": 79654,
+      "category": "Mauris Sagittis Placerat Company",
+      "date": "03.10.20",
+      "country": "Sierra Leone",
+      "classement": 80,
+      "durée": "08/21/2020"
+    },
+    {
+      "Titre": "Herrod",
+      "date": "14.06.21",
+      "number": 81,
+      "number2": 6919215,
+      "comments": 321613,
+      "view": 80654,
+      "category": "Ornare Consulting",
+      "date": "05.07.20",
+      "country": "Suriname",
+      "classement": 81,
+      "durée": "11/06/2020"
+    },
+    {
+      "Titre": "Nasim",
+      "date": "15.03.21",
+      "number": 82,
+      "number2": 1696684,
+      "comments": 242812,
+      "view": 81654,
+      "category": "Sagittis Company",
+      "date": "02.10.20",
+      "country": "Bulgaria",
+      "classement": 82,
+      "durée": "10/11/2021"
+    },
+    {
+      "Titre": "Lionel",
+      "date": "25.08.20",
+      "number": 83,
+      "number2": 4993021,
+      "comments": 325251,
+      "view": 82654,
+      "category": "Pharetra Inc.",
+      "date": "01.12.20",
+      "country": "Costa Rica",
+      "classement": 83,
+      "durée": "12/11/2020"
+    },
+    {
+      "Titre": "Daphne",
+      "date": "15.07.20",
+      "number": 84,
+      "number2": 3152733,
+      "comments": 608438,
+      "view": 83654,
+      "category": "Egestas Urna Company",
+      "date": "11.08.20",
+      "country": "Saint Vincent and The Grenadines",
+      "classement": 84,
+      "durée": "02/26/2021"
+    },
+    {
+      "Titre": "Kuame",
+      "date": "10.04.21",
+      "number": 85,
+      "number2": 2999241,
+      "comments": 847020,
+      "view": 84654,
+      "category": "Etiam LLP",
+      "date": "05.03.20",
+      "country": "Costa Rica",
+      "classement": 85,
+      "durée": "09/09/2020"
+    },
+    {
+      "Titre": "Michelle",
+      "date": "24.11.20",
+      "number": 86,
+      "number2": 6988499,
+      "comments": 394824,
+      "view": 85654,
+      "category": "Amet Institute",
+      "date": "12.19.20",
+      "country": "Ireland",
+      "classement": 86,
+      "durée": "03/01/2020"
+    },
+    {
+      "Titre": "Kathleen",
+      "date": "11.09.21",
+      "number": 87,
+      "number2": 6090123,
+      "comments": 513401,
+      "view": 86654,
+      "category": "Ut Tincidunt PC",
+      "date": "12.16.21",
+      "country": "San Marino",
+      "classement": 87,
+      "durée": "03/21/2020"
+    },
+    {
+      "Titre": "Travis",
+      "date": "21.12.19",
+      "number": 88,
+      "number2": 9481880,
+      "comments": 941729,
+      "view": 87654,
+      "category": "Donec Egestas Duis Foundation",
+      "date": "09.21.20",
+      "country": "Grenada",
+      "classement": 88,
+      "durée": "04/08/2020"
+    },
+    {
+      "Titre": "Basia",
+      "date": "11.11.20",
+      "number": 89,
+      "number2": 7881651,
+      "comments": 710762,
+      "view": 88654,
+      "category": "Massa Associates",
+      "date": "07.03.20",
+      "country": "Macao",
+      "classement": 89,
+      "durée": "03/28/2020"
+    },
+    {
+      "Titre": "Ivory",
+      "date": "16.02.20",
+      "number": 90,
+      "number2": 1303655,
+      "comments": 605201,
+      "view": 89654,
+      "category": "Non Feugiat Nec Corporation",
+      "date": "10.17.20",
+      "country": "Spain",
+      "classement": 90,
+      "durée": "10/16/2020"
+    },
+    {
+      "Titre": "Deirdre",
+      "date": "05.08.21",
+      "number": 91,
+      "number2": 1658697,
+      "comments": 133298,
+      "view": 90654,
+      "category": "Quis Diam Pellentesque Company",
+      "date": "08.03.21",
+      "country": "Trinidad and Tobago",
+      "classement": 91,
+      "durée": "09/22/2020"
+    },
+    {
+      "Titre": "Chava",
+      "date": "07.12.21",
+      "number": 92,
+      "number2": 1688076,
+      "comments": 514308,
+      "view": 91654,
+      "category": "Felis Donec Tempor Inc.",
+      "date": "01.27.20",
+      "country": "Equatorial Guinea",
+      "classement": 92,
+      "durée": "10/02/2021"
+    },
+    {
+      "Titre": "Alice",
+      "date": "01.08.21",
+      "number": 93,
+      "number2": 5179699,
+      "comments": 426755,
+      "view": 92654,
+      "category": "Penatibus Et Magnis Incorporated",
+      "date": "01.07.20",
+      "country": "United Arab Emirates",
+      "classement": 93,
+      "durée": "10/19/2021"
+    },
+    {
+      "Titre": "Fitzgerald",
+      "date": "05.01.20",
+      "number": 94,
+      "number2": 7265123,
+      "comments": 512547,
+      "view": 93654,
+      "category": "Fermentum Arcu Vestibulum Associates",
+      "date": "04.09.21",
+      "country": "South Africa",
+      "classement": 94,
+      "durée": "07/25/2021"
+    },
+    {
+      "Titre": "Emerson",
+      "date": "28.06.21",
+      "number": 95,
+      "number2": 2317839,
+      "comments": 871642,
+      "view": 94654,
+      "category": "Varius Et Company",
+      "date": "06.10.20",
+      "country": "Uruguay",
+      "classement": 95,
+      "durée": "03/22/2020"
+    },
+    {
+      "Titre": "Paula",
+      "date": "25.11.20",
+      "number": 96,
+      "number2": 5445270,
+      "comments": 213777,
+      "view": 95654,
+      "category": "Ultrices Mauris Ipsum Corp.",
+      "date": "05.13.21",
+      "country": "Somalia",
+      "classement": 96,
+      "durée": "03/25/2021"
+    },
+    {
+      "Titre": "Blake",
+      "date": "10.01.20",
+      "number": 97,
+      "number2": 1491911,
+      "comments": 498025,
+      "view": 96654,
+      "category": "Faucibus Leo Corporation",
+      "date": "06.20.20",
+      "country": "Portugal",
+      "classement": 97,
+      "durée": "01/06/2020"
+    },
+    {
+      "Titre": "Kevin",
+      "date": "25.01.20",
+      "number": 98,
+      "number2": 3848920,
+      "comments": 538962,
+      "view": 97654,
+      "category": "At Inc.",
+      "date": "07.11.20",
+      "country": "Nauru",
+      "classement": 98,
+      "durée": "11/11/2020"
+    },
+    {
+      "Titre": "Hermione",
+      "date": "19.05.20",
+      "number": 99,
+      "number2": 8249890,
+      "comments": 222335,
+      "view": 98654,
+      "category": "Justo Corporation",
+      "date": "03.05.20",
+      "country": "Tuvalu",
+      "classement": 99,
+      "durée": "11/15/2021"
+    },
+    {
+      "Titre": "Brady",
+      "date": "16.01.21",
+      "number": 100,
+      "number2": 9654477,
+      "comments": 863400,
+      "view": 99654,
+      "category": "A LLC",
+      "date": "10.11.20",
+      "country": "Gabon",
+      "classement": 100,
+      "durée": "05/13/2021"
+    }
+    ];
 
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ], [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ], [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ], [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ], [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ], [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ], [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ], [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-            [
-                "antoine", "3A", "180", "informatique"
-            ],
-        ]
-
-
-
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    
+    
     $(document).ready(function () {
-
-
-
-        $('table').DataTable({
-            data: data,
-            dom: '<"row d-flex justify-content-between"<"col-3"B><"col-2"f><"col-4"l>>t<"row"<"col-4"i><"col-4"p><"col-4"r>>',
-            responsive: true,
-            paging: true,
-            fixedHeader: true,
-            searching: true,
-            colReorder: true,
-            select: true,
-            keys: true,
-            paginate:
-            {
-                "previous": "Previous page"
-            },
-            rowReorder: false,
-            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-            pageLength: 15,
-            initComplete: function () {
-                this.api().columns().every(function () {
-                    var that = this;
-
-                    $('input', this.footer()).on('keyup change clear', function () {
-                        if (that.search() !== this.value) {
-                            that
-                                .search(this.value)
-                                .draw();
-                        }
-                    });
-                });
-            },
-            buttons: [
-                { extend: 'csv', className: 'testBouton' },
-                { extend: 'excel', className: 'testBouton' },
-                { extend: 'pdfHtml5', className: 'testBouton', orientation: 'landscape', pageSize: 'A3' },
-                { extend: 'print', className: 'testBouton' },
-            ],
-        })
-
-    });
-
-    $('table tfoot th').each(function () {
-        var title = $('table tfoot th').eq($(this).index()).text();
-        $(this).html('<input type="text" placeholder="Search ' + title + '" />');
-    });
-
-    $.extend(true, $.fn.dataTable.defaults, {
-        columnDefs: [
-            {
-                targets: '_all',
-                defaultContent: '-'
-            }
-        ],
-        language: {
-            processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>Processing...'
+      
+      $('table').DataTable({
+        data: data3,
+        dom :"Bfrtip",
+        columns: [ 
+        {
+          data: "Titre",    
+          defaultContent: '-'            
         },
+        {
+          data: "date",  
+        },
+        {
+          data: "number", 
+        },
+        {
+          data: "number2",
+        }, 
+        {
+          data: "comments",
+        },
+        {
+          data: "view",                
+        },
+        {
+          data: "category", 
+        }, 
+        {
+          data: "date",
+        },
+        {
+          data: "country", 
+        },
+        {
+          data: "classement",
+        },             
+        {
+          data: "durée",                
+        }          
+        
+        ],
+        responsive: true,
+        paging: true,
+        fixedHeader: true,
+        searching: true,
+        colReorder: true,
+        select: true,
+        keys: true,
+        paginate:
+        {
+          "previous": "Previous page"
+        },
+        rowReorder: false,
+        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        pageLength: 15,
+        initComplete: function () {
+          this.api().columns().every(function () {
+            var that = this;
+            
+            $('input', this.footer()).on('keyup change clear', function () {
+              if (that.search() !== this.value) {
+                that
+                .search(this.value)
+                .draw();
+              }
+            });
+          });
+        },
+        buttons: [
+        { extend: 'csv', className: 'testBouton' },
+        { extend: 'excel', className: 'testBouton' },
+        { extend: 'pdfHtml5', className: 'testBouton', orientation: 'landscape', pageSize: 'A3' },
+        { extend: 'print', className: 'testBouton' },
+        ]
+      })
+    });      
+    
+    
+    $('table tfoot th').each(function () {
+      var title = $('table tfoot th').eq($(this).index()).text();
+      $(this).html('<input type="text" placeholder="Search ' + title + '" />');
     });
-
-    $('table tbody').on('dblclick', 'tr', function () {
-        var lien = cors + "https://i.ytimg.com/vi/dBX_mLT5f3c/sddefault.jpg";
-        var lien2 = cors + "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdeveloper.mozilla.org%2Ffr%2Fdocs%2FWeb%2FHTML%2FElement%2FImg&psig=AOvVaw18gr0YP4N_5daIKW_ssPag&ust=1606481499287000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKC8_JagoO0CFQAAAAAdAAAAABAD";
-        var elt = document.getElementById("imageMiniature");
-        elt.innerHTML = '';
-        var name = "Nom : " + $('td', this).eq(0).text();
-        var classe = "Classe : " + $('td', this).eq(1).text();
-        var taille = "Taille : " + $('td', this).eq(2).text();
-        var spécialité = "Spécialité : " + $('td', this).eq(3).text();
-        $('#DescModal').modal("show");
-        $('#nom').text(name);
-        $('#classe').text(classe);
-        $('#taille').text(taille);
-        $('#spec').text(spécialité);
-        var img = document.createElement("img");
-        img.crossOrigin = "anonymous";
-        img.src = lien;
-        img.width = 200;
-        img.height = 200;
-        elt.appendChild(img);
+    
+    $.extend(true, $.fn.dataTable.defaults, {
+      columnDefs: [
+      {
+        targets: '_all',
+        defaultContent: '-'
+      }
+      ],
+      language: {
+        processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>Processing...'
+      },
     });
-
-
-
-
-</script>
-
-<style>
+    
+    $('table tbody').on('dblclick', 'tr', function () {   
+      
+      
+      var lien = cors + "https://i.ytimg.com/vi/dBX_mLT5f3c/sddefault.jpg";
+      var lien2 = cors + "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdeveloper.mozilla.org%2Ffr%2Fdocs%2FWeb%2FHTML%2FElement%2FImg&psig=AOvVaw18gr0YP4N_5daIKW_ssPag&ust=1606481499287000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKC8_JagoO0CFQAAAAAdAAAAABAD";
+      var elt = document.getElementById("imageMiniature");
+      elt.innerHTML = '';
+      var name = "Nom : " + $('td', this).eq(0).text();
+      var classe = "Classe : " + $('td', this).eq(1).text();
+      var taille = "Taille : " + $('td', this).eq(2).text();
+      var spécialité = "Spécialité : " + $('td', this).eq(3).text();
+      $('#DescModal').modal("show");
+      $('#nom').text(name);
+      $('#classe').text(classe);
+      $('#taille').text(taille);
+      $('#spec').text(spécialité);
+      var img = document.createElement("img");
+      img.crossOrigin = "anonymous";
+      img.src = lien;
+      img.width = 200;
+      img.height = 200;
+      elt.appendChild(img);
+    });
+    
+    
+    
+    
+    
+  </script>
+  
+  <style>
     .dataTables_processing {
-        z-index: 3000;
+      z-index: 3000;
     }
-
+    
     .btn-primary {
-        background-color: #4e73df;
-        border-color: #4e73df;
-        left: 25px;
+      background-color: #4e73df;
+      border-color: #4e73df;
+      left: 25px;
     }
-
+    
     .ui-state-active {
-        background-color: rgba(97, 134, 255, 0.993);
-        color: black;
-        font-weight: bold;
+      background-color: rgba(97, 134, 255, 0.993);
+      color: black;
+      font-weight: bold;
     }
-
+    
     .ui-autocomplete {
-        max-height: 200px;
-        overflow-y: scroll;
-        overflow-x: hidden;
+      max-height: 200px;
+      overflow-y: scroll;
+      overflow-x: hidden;
     }
-
+    
     .list-group-item {
-        right: 20px;
+      right: 20px;
     }
-
+    
     /* couleur des boutons */
     .testBouton {
-        background-color: rgb(201, 128, 19);
-        border-color: rgb(201, 128, 19);
+      background-color: rgb(201, 128, 19);
+      border-color: rgb(201, 128, 19);
     }
-
-
+    
+    
     /* couleur des boutons plus et moins */
     table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before,
     table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
-
-        background-color: rgba(201, 128, 19);
+      
+      background-color: rgba(201, 128, 19);
     }
-
-    /* ligne paire */
-    .even {
-        background-color: rgba(92, 91, 97, 0.3);
-    }
-
-    /* ligne impaire */
-    .odd {
-        background-color: rgba(200, 173, 127, 0.3);
-    }
-
+    
+    /* ligne paire 
+    { .even {
+      background-color: rgba(92, 91, 97, 0.3);
+    } }
+    
+    
+    /* ligne impaire 
+    {.odd {
+      background-color: rgba(200, 173, 127, 0.3);
+    } }
+    */
+    
     /* ligne selectionné */
     table.dataTable tbody>tr.selected,
     table.dataTable tbody>tr>.selected {
-        background-color: rgb(201, 128, 19, 0.5);
+      background-color: rgb(201, 128, 19, 0.5);
     }
-
-        /* numérotation des pages mais qui marche moyen   */
-
-        /* .page-item.active {
-        z-index: 1;
-        color: #000000;
-        background-color: rgba(201, 128, 19);
-        border-color: rgba(201, 128, 19);
+    
+    /* numérotation des pages mais qui marche moyen   */
+    
+    /* .page-item.active {
+      z-index: 1;
+      color: #000000;
+      background-color: rgba(201, 128, 19);
+      border-color: rgba(201, 128, 19);
     }
     
     .page-link{
-        color: #000000;
-        background-color: rgba(201, 128, 19);
-        border-color: rgba(201, 128, 19);
+      color: #000000;
+      background-color: rgba(201, 128, 19);
+      border-color: rgba(201, 128, 19);
     } */
-</style>
-
-</html>
+  </style>
+  
+  </html>

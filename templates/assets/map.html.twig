@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Home - travel geovinum</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
@@ -21,11 +21,8 @@
 <body>
 
     <body>
-        <script
-            src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"></script>
-        <link rel="stylesheet"
-            href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css"
-            type="text/css" />
+        <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"></script>
+        <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css" type="text/css" />
 
         <main class="page lanidng-page">
             <section class="portfolio-block block-intro" style="padding: 30px 0;padding-top: 30;padding-bottom: 30;">
@@ -34,12 +31,12 @@
                         <div id='map' style='width: 1200px; height: 600px; margin:auto;'></div>
                     </div>
                 </div>
-                <div id="menu">
+                <!-- <div id="menu">
                     <input id="light-v10" type="radio" name="rtoggle" value="streets" checked="checked" />
                     <label for="light-v10">light</label>
                     <input id="dark-v10" type="radio" name="rtoggle" value="dark" />
                     <label for="dark-v10">dark</label>
-                </div>
+                </div> -->
             </section>
         </main>
     </body>
@@ -102,31 +99,45 @@
     </style>
     <script>
 
-        var backgroundMap = document.getElementById('menu');
-        var inputs = backgroundMap.getElementsByTagName('input');
+        // var backgroundMap = document.getElementById('menu');
+        // var inputs = backgroundMap.getElementsByTagName('input');
 
-        function switchLayer(layer) {
-            removeAllLayer();
-            var layerId = layer.target.id;
-            map.setStyle('mapbox://styles/mapbox/' + layerId);
-        }
+        // function switchLayer(layer) {
+        //     removeAllLayer();
+        //     var layerId = layer.target.id;
+        //     map.setStyle('mapbox://styles/mapbox/' + layerId);
+        // }
 
-        for (var i = 0; i < inputs.length; i++) {
-            inputs[i].onclick = switchLayer;
-        }
+        // for (var i = 0; i < inputs.length; i++) {
+        //     inputs[i].onclick = switchLayer;
+        // }
 
         var normalColor = '#E6731F';
         var highlightedColor = '#877875';
 
-        var listCountry = [{ 'country': 'allCountry', 'url': 'https://run.mocky.io/v3/0aba1712-5f32-414b-a975-a2f70b15386f' },
-        { 'country': 'France', 'url': 'https://run.mocky.io/v3/edf8faab-49f9-48ac-b0b2-53654219d11c' },
-        { 'country': 'Espagne', 'url': 'https://run.mocky.io/v3/915ae0c1-f21d-4745-9f6a-1a3db2bdbd23' },
-        { 'country': 'Allemagne', 'url': 'https://run.mocky.io/v3/35d9bc65-7ae2-4839-855e-df48c8593296' },
-        { 'country': 'Mexique', 'url': 'https://run.mocky.io/v3/4ada98d3-3c96-49e1-bcc1-633350972fde' },
-        { 'country': 'Italie', 'url': 'https://run.mocky.io/v3/195198e0-7f46-4cbf-80be-082d75bee53a' },
-        { 'country': 'Canada', 'url': 'https://run.mocky.io/v3/ed2876c8-6937-47ff-bb64-9063ea4e76cb' },
-        { 'country': 'USA', 'url': 'https://run.mocky.io/v3/71ccba88-341b-4954-9215-03e6a10fa20c' },
-        { 'country': 'AllCountrySelected', 'url': 'https://run.mocky.io/v3/44a459e1-4316-4f0e-9499-dfcf292ebb22' }];
+        var listCountry = [
+        { 'country': 'allCountry', 'url': 'https://run.mocky.io/v3/9ee67ec2-6a62-4cae-b113-71512f1ed2ba' },
+
+        { 'country': 'France', 'url': 'https://run.mocky.io/v3/3524e702-e967-423e-82a7-065261dd5f7f' },
+        { 'country': 'Allemagne', 'url': 'https://run.mocky.io/v3/44197a2d-dc2d-41af-9f0b-75915045af54' },
+        { 'country': 'Mexique', 'url': 'https://run.mocky.io/v3/85f0c8d5-899d-4dcb-9c90-5266c4cda866' },
+        { 'country': 'Italie', 'url': 'https://run.mocky.io/v3/a4a79341-beff-4482-8ca7-5ee9461c36b3' },
+        { 'country': 'Canada', 'url': 'https://run.mocky.io/v3/49038d1f-1f3a-485e-aa08-fa8b99575e06' },
+        { 'country': 'USA', 'url': 'https://run.mocky.io/v3/2d81b4ee-ec8e-47c1-affd-972b3fa5b280' },
+
+        { 'country': 'Bresil', 'url': 'https://run.mocky.io/v3/4cc22920-d3d0-4b73-ab93-658edb1ed552' },
+        { 'country': 'Argentine', 'url': 'https://run.mocky.io/v3/7251d029-c1ba-48e2-af97-f5923169215c' },
+        { 'country': 'Chili', 'url': 'https://run.mocky.io/v3/1454d1bf-dbbb-4fcc-a973-3eb3a828575b' },
+        { 'country': 'Corée', 'url': 'https://run.mocky.io/v3/eee28db9-a0b5-4850-bcf2-bd752fd3aa15' },
+        { 'country': 'Algérie', 'url': 'https://run.mocky.io/v3/dc53df75-f320-4398-b16f-aeeb12e176c7' },
+        { 'country': 'Maroc', 'url': 'https://run.mocky.io/v3/25738159-ddb3-480c-bc97-8e34d49f92e1' },
+        { 'country': 'AfriqueDuSud', 'url': 'https://run.mocky.io/v3/11c64d25-4198-4d7b-95ee-8fcf46571532' },
+        { 'country': 'Japon', 'url': 'https://run.mocky.io/v3/ba7163ed-c811-40ac-938d-bb943e2f3782' },
+        { 'country': 'Australie', 'url': 'https://run.mocky.io/v3/63599f4d-26fc-4762-a6b2-a70727722c5d' },
+        { 'country': 'Russie', 'url': 'https://run.mocky.io/v3/a4077f66-e02d-4c1c-962a-ce83b292279c' },
+        { 'country': 'Inde', 'url': 'https://run.mocky.io/v3/222614f1-2111-4ead-b824-55c58a434333' },
+
+        { 'country': 'AllCountrySelected', 'url': 'https://run.mocky.io/v3/9f79bd78-43ef-46d1-9e00-3e74f401834d' }];
         mapboxgl.accessToken =
             'pk.eyJ1IjoiYWI4OTk3OTkiLCJhIjoiY2tmZjBlMXFnMGE4ZzJzczIxZ3lhOXJkNSJ9.Ii7MCkFbUkXZn5vZjicIGg';
         var map = new mapboxgl.Map({
@@ -163,7 +174,7 @@
 
             map.on('click', 'France', function (e) {
                 console.log('France');
-                onclick=document.location.href="{{ path('country.showCountry', {id: "FR", slug: "fr"}) }}";
+                onclick=document.location.href="{{ path('country.showCountry', {id: \"FR\", slug: \"fr\"}) }}";
             });
             map.on('mouseover', 'Espagne', function (e) {
                 map.setPaintProperty('Espagne', 'fill-opacity',  0.8);
@@ -175,7 +186,7 @@
 
             map.on('click', 'Espagne', function (e) {
                 console.log('Espagne');
-                onclick=document.location.href="{{ path('country.showCountry', {id: "FR", slug: "fr"}) }}";
+                onclick=document.location.href="{{ path('country.showCountry', {id: \"ES\", slug: \"es\"}) }}";
             });
 
             map.on('mouseover', 'Italie', function (e) {
@@ -188,7 +199,7 @@
 
             map.on('click', 'Italie', function (e) {
                 console.log('Italie');
-                onclick=document.location.href="{{ path('country.showCountry', {id: "IT", slug: "it"}) }}";
+                onclick=document.location.href="{{ path('country.showCountry', {id: \"IT\", slug: \"it\"}) }}";
 
 
 
@@ -203,7 +214,7 @@
 
             map.on('click', 'Allemagne', function (e) {
                 console.log('Allemagne');
-                onclick=document.location.href="{{ path('country.showCountry', {id: "DE", slug: "de"}) }}";
+                onclick=document.location.href="{{ path('country.showCountry', {id: \"DE\", slug: \"de\"}) }}";
             });
             map.on('mouseover', 'Canada', function (e) {
                 map.setPaintProperty('Canada', 'fill-opacity',  0.8);
@@ -215,7 +226,7 @@
 
             map.on('click', 'Canada', function (e) {
                 console.log('Canada');
-                onclick=document.location.href="{{ path('country.showCountry', {id: "CA", slug: "ca"}) }}";
+                onclick=document.location.href="{{ path('country.showCountry', {id: \"CA\", slug: \"ca\"}) }}";
             });
 
 
@@ -229,7 +240,7 @@
 
             map.on('click', 'USA', function (e) {
                 console.log('USA');
-                onclick=document.location.href="{{ path('country.showCountry', {id: "US", slug: "us"}) }}";
+                onclick=document.location.href="{{ path('country.showCountry', {id: \"US\", slug: \"us\"}) }}";
             });
 
             map.on('mouseover', 'Mexique', function (e) {
@@ -242,8 +253,111 @@
 
             map.on('click', 'Mexique', function (e) {
                 console.log('Mexique');
-                onclick=document.location.href="{{ path('country.showCountry', {id: "MX", slug: "mx"}) }}";
+                onclick=document.location.href="{{ path('country.showCountry', {id: \"MX\", slug: \"mx\"}) }}";
             });
+
+            map.on('click', 'Corée', function (e) {
+               //  console.log('Corée');
+            });
+            
+            map.on('mouseover', 'Corée', function (e) {
+                map.setPaintProperty('Corée', 'fill-opacity', 1);
+            });
+
+            map.on('mouseout', 'Corée', function (e) {
+                map.setPaintProperty('Corée', 'fill-opacity', 0.4);
+            });
+
+            map.on('click', 'Corée', function (e) {
+               //  console.log('Corée');
+            });
+
+            map.on('mouseover', 'Algérie', function (e) {
+                map.setPaintProperty('Algérie', 'fill-opacity', 1);
+            });
+
+            map.on('mouseout', 'Algérie', function (e) {
+                map.setPaintProperty('Algérie', 'fill-opacity', 0.4);
+            });
+
+            map.on('click', 'Algérie', function (e) {
+               //  console.log('Algérie');
+            });
+
+            map.on('mouseover', 'Maroc', function (e) {
+                map.setPaintProperty('Maroc', 'fill-opacity', 1);
+            });
+
+            map.on('mouseout', 'Maroc', function (e) {
+                map.setPaintProperty('Maroc', 'fill-opacity', 0.4);
+            });
+
+            map.on('click', 'Maroc', function (e) {
+               //  console.log('Maroc');
+
+                
+            });
+
+            map.on('mouseover', 'AfriqueDuSud', function (e) {
+                map.setPaintProperty('AfriqueDuSud', 'fill-opacity', 1);
+            });
+
+            map.on('mouseout', 'AfriqueDuSud', function (e) {
+                map.setPaintProperty('AfriqueDuSud', 'fill-opacity', 0.4);
+            });
+
+            map.on('click', 'AfriqueDuSud', function (e) {
+               //  console.log('AfriqueDuSud');
+            });
+
+            map.on('mouseover', 'AfriqueDJaponuSud', function (e) {
+                map.setPaintProperty('Japon', 'fill-opacity', 1);
+            });
+
+            map.on('mouseout', 'Japon', function (e) {
+                map.setPaintProperty('Japon', 'fill-opacity', 0.4);
+            });
+
+            map.on('click', 'Japon', function (e) {
+               //  console.log('Japon');
+            });
+            map.on('mouseover', 'Australie', function (e) {
+                map.setPaintProperty('Australie', 'fill-opacity', 1);
+            });
+
+            map.on('mouseout', 'Australie', function (e) {
+                map.setPaintProperty('Australie', 'fill-opacity', 0.4);
+            });
+
+            map.on('click', 'Australie', function (e) {
+                // console.log('Australie');
+            });
+            map.on('mouseover', 'Russie', function (e) {
+                map.setPaintProperty('Russie', 'fill-opacity', 1);
+            });
+
+            map.on('mouseout', 'Russie', function (e) {
+                map.setPaintProperty('Russie', 'fill-opacity', 0.4);
+            });
+
+            map.on('click', 'Russie', function (e) {
+               //  console.log('Russie');
+            });
+            map.on('mouseover', 'Inde', function (e) {
+                map.setPaintProperty('Inde', 'fill-opacity', 1);
+            });
+
+            map.on('mouseout', 'Inde', function (e) {
+                map.setPaintProperty('Inde', 'fill-opacity', 0.4);
+            });
+
+            map.on('click', 'Inde', function (e) {
+               //  console.log('Inde');
+            });
+
+
+
+
 
         }
 
@@ -253,7 +367,7 @@
                 var color = "";
 
                 var country = listCountry[c]['country'];
-                console.log(country);
+                // console.log(country);
                 var url = listCountry[c]['url'];
 
                 map.addSource(country, {
@@ -289,7 +403,7 @@
 
         function removeAllLayer() {
 
-            console.log(map);
+            // console.log(map);
 
         }
         map.on('style.load', function () {
