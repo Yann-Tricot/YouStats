@@ -175,5 +175,8 @@ class Video
     public function getMiniatureLink(){
         return $this->miniatureLink;
     }
+    public function getMiniatureLinkHD(){	
+        return $this->miniatureLinkHd;	}
+    }
 
 }
