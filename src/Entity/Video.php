@@ -100,6 +100,8 @@ class Video
      * @ORM\Column(name="miniature_link_hd", type="string", length=50, nullable=true)
      #* @ORM\Column(name="miniature_link_hd", type="string", length=50, nullable=true, options={"default"="NULL"})
      */
+    private $miniatureLinkHd;	
+    #private $miniatureLinkHd = 'NULL';
 
     /**
      * @var int|null
