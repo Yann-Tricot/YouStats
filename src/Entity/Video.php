@@ -96,12 +96,15 @@ class Video
     #private $miniatureLink = 'NULL';
 
     /**
+<<<<<<< HEAD
      *
      * @ORM\Column(name="miniature_link_hd", type="string", length=50, nullable=true)
      #* @ORM\Column(name="miniature_link_hd", type="string", length=50, nullable=true, options={"default"="NULL"})
      */
 
     /**
+=======
+>>>>>>> 6c940ce (fix: suppresion miniaturelinkHd dans Video.php (#29))
      * @var int|null
      *
      * @ORM\Column(name="tag_id", type="integer", nullable=true)
@@ -173,5 +176,8 @@ class Video
     public function getMiniatureLink(){
         return $this->miniatureLink;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6c940ce (fix: suppresion miniaturelinkHd dans Video.php (#29))
 }
