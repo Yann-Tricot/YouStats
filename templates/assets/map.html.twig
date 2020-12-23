@@ -174,20 +174,9 @@
 
             map.on('click', 'France', function (e) {
                 console.log('France');
-                onclick=document.location.href="{{ path('country.showCountry', {id: \"FR\", slug: \"fr\"}) }}";
+                onclick=document.location.href="{{ path('country.showCountry', {id: "FR", slug: "fr"}) }}";
             });
-            map.on('mouseover', 'Espagne', function (e) {
-                map.setPaintProperty('Espagne', 'fill-opacity',  0.8);
-            });
-
-            map.on('mouseout', 'Espagne', function (e) {
-                map.setPaintProperty('Espagne', 'fill-opacity', 0.3);
-            });
-
-            map.on('click', 'Espagne', function (e) {
-                console.log('Espagne');
-                onclick=document.location.href="{{ path('country.showCountry', {id: \"ES\", slug: \"es\"}) }}";
-            });
+          
 
             map.on('mouseover', 'Italie', function (e) {
                 map.setPaintProperty('Italie', 'fill-opacity',  0.8);
@@ -199,7 +188,7 @@
 
             map.on('click', 'Italie', function (e) {
                 console.log('Italie');
-                onclick=document.location.href="{{ path('country.showCountry', {id: \"IT\", slug: \"it\"}) }}";
+                onclick=document.location.href="{{ path('country.showCountry', {id: "IT", slug: "it"}) }}";
 
 
 
@@ -214,7 +203,7 @@
 
             map.on('click', 'Allemagne', function (e) {
                 console.log('Allemagne');
-                onclick=document.location.href="{{ path('country.showCountry', {id: \"DE\", slug: \"de\"}) }}";
+                onclick=document.location.href="{{ path('country.showCountry', {id: "DE", slug: "de"}) }}";
             });
             map.on('mouseover', 'Canada', function (e) {
                 map.setPaintProperty('Canada', 'fill-opacity',  0.8);
@@ -226,7 +215,7 @@
 
             map.on('click', 'Canada', function (e) {
                 console.log('Canada');
-                onclick=document.location.href="{{ path('country.showCountry', {id: \"CA\", slug: \"ca\"}) }}";
+                onclick=document.location.href="{{ path('country.showCountry', {id: "CA", slug: "ca"}) }}";
             });
 
 
@@ -240,7 +229,7 @@
 
             map.on('click', 'USA', function (e) {
                 console.log('USA');
-                onclick=document.location.href="{{ path('country.showCountry', {id: \"US\", slug: \"us\"}) }}";
+                onclick=document.location.href="{{ path('country.showCountry', {id: "US", slug: "us"}) }}";
             });
 
             map.on('mouseover', 'Mexique', function (e) {
@@ -253,13 +242,14 @@
 
             map.on('click', 'Mexique', function (e) {
                 console.log('Mexique');
-                onclick=document.location.href="{{ path('country.showCountry', {id: \"MX\", slug: \"mx\"}) }}";
+                onclick=document.location.href="{{ path('country.showCountry', {id: "MX", slug: "mx"}) }}";
             });
 
             map.on('click', 'Corée', function (e) {
                //  console.log('Corée');
+               
             });
-            
+///
             map.on('mouseover', 'Corée', function (e) {
                 map.setPaintProperty('Corée', 'fill-opacity', 1);
             });
