@@ -28,15 +28,22 @@
     <div class="container" style="margin-top: 160px">
         <h1>Test de dataTable</h1>
     </div>
-
     <div class="container">
-        <table class="table" id="table">
+         <table class="table" id="table">
             <thead>
                 <tr>
-                    <th>Nom</th>
-                    <th>Classe</th=>
-                    <th>Taille </thscope=>
-                    <th>Spécialité</thscope=>
+                    <th>Titre de la vidéo</th>
+                    <th>Date de publication</th>
+                    <th>Nombre de j'aime </th>
+                    <th>Nombre de j'aime pas </th>
+                    <th>Nombre de commentaire</th>
+                    <th>Nombre de vue </th>
+                    <th>Catégorie </th>
+                    <th>Date de tendance </th>
+                    <th>Pays </th>
+                    <th>Classement </th>
+                    <th>Durée  </th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -44,10 +51,17 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th><strong>Nom</strong></th>
-                    <th><strong>Classe</strong></th>
-                    <th><strong>Taille</strong></th>
-                    <th><strong>Spécialité</strong></th>
+                    <th><strong>Titre de la vidéo</strong></th>
+                    <th><strong>Date de publication</strong></th>
+                    <th><strong>Nombre de j'aime</strong></th>
+                    <th><strong>Nombre de j'aime pas </strong></th>
+                    <th><strong>Nombre de commentaire</strong></th>
+                    <th><strong>Nombre de vue</strong></th>
+                    <th><strong>Catégorie</strong></th>
+                    <th><strong>Date de tendance</strong></th>
+                    <th><strong>Pays</strong></th>
+                    <th><strong>Classement</strong></th>
+                    <th><strong>Durée</strong></th>
                 </tr>
             </tfoot>
         </table>
@@ -91,8 +105,7 @@
 <script>
     $.noConflict();
     var cors = "http://cors-anywhere.herokuapp.com/";
-    var data =
-        [
+    var data =  [
             [
 
             ],
@@ -896,16 +909,31 @@
             [
                 "antoine", "3A", "180", "informatique"
             ],
-        ]
+        ];
 
-
-
+    var data2 = [
+    [
+        "Titre de la vidéo","12/05/1201","1250","52152","1250","25625","Gaming","15/52/5201","France","1","12:25"
+    ],
+    [
+        "Titre de la vidéo","12/05/1201","1250","52152","1250","25625","Gaming","15/52/5201","France","1","12:25"
+    ],
+    [
+        "Titre de la vidéo","12/05/1201","1250","52152","1250","25625","Gaming","15/52/5201","France","1","12:25"
+    ],
+    [
+        "Titre de la vidéo","12/05/1201","1250","52152","1250","25625","Gaming","15/52/5201","France","1","12:25"
+    ],
+];
+    
+    
+    
     $(document).ready(function () {
 
 
 
         $('table').DataTable({
-            data: data,
+            data: data2,
             dom: '<"row d-flex justify-content-between"<"col-3"B><"col-2"f><"col-4"l>>t<"row"<"col-4"i><"col-4"p><"col-4"r>>',
             responsive: true,
             paging: true,
