@@ -154,88 +154,95 @@
 
 
             map.on('mouseover', 'France', function (e) {
-                map.setPaintProperty('France', 'fill-opacity', 1);
+                map.setPaintProperty('France', 'fill-opacity', 0.8);
             });
 
             map.on('mouseout', 'France', function (e) {
-                map.setPaintProperty('France', 'fill-opacity', 0.4);
+                map.setPaintProperty('France', 'fill-opacity', 0.3);
             });
 
             map.on('click', 'France', function (e) {
                 console.log('France');
+                onclick=document.location.href="{{ path('country.showCountry', {id: "FR", slug: "fr"}) }}";
             });
             map.on('mouseover', 'Espagne', function (e) {
-                map.setPaintProperty('Espagne', 'fill-opacity', 1);
+                map.setPaintProperty('Espagne', 'fill-opacity',  0.8);
             });
 
             map.on('mouseout', 'Espagne', function (e) {
-                map.setPaintProperty('Espagne', 'fill-opacity', 0.4);
+                map.setPaintProperty('Espagne', 'fill-opacity', 0.3);
             });
 
             map.on('click', 'Espagne', function (e) {
                 console.log('Espagne');
+                onclick=document.location.href="{{ path('country.showCountry', {id: "FR", slug: "fr"}) }}";
             });
 
             map.on('mouseover', 'Italie', function (e) {
-                map.setPaintProperty('Italie', 'fill-opacity', 1);
+                map.setPaintProperty('Italie', 'fill-opacity',  0.8);
             });
 
             map.on('mouseout', 'Italie', function (e) {
-                map.setPaintProperty('Italie', 'fill-opacity', 0.4);
+                map.setPaintProperty('Italie', 'fill-opacity', 0.3);
             });
 
             map.on('click', 'Italie', function (e) {
                 console.log('Italie');
+                onclick=document.location.href="{{ path('country.showCountry', {id: "IT", slug: "it"}) }}";
 
 
 
             });
             map.on('mouseover', 'Allemagne', function (e) {
-                map.setPaintProperty('Allemagne', 'fill-opacity', 1);
+                map.setPaintProperty('Allemagne', 'fill-opacity',  0.8);
             });
 
             map.on('mouseout', 'Allemagne', function (e) {
-                map.setPaintProperty('Allemagne', 'fill-opacity', 0.4);
+                map.setPaintProperty('Allemagne', 'fill-opacity', 0.3);
             });
 
             map.on('click', 'Allemagne', function (e) {
                 console.log('Allemagne');
+                onclick=document.location.href="{{ path('country.showCountry', {id: "DE", slug: "de"}) }}";
             });
             map.on('mouseover', 'Canada', function (e) {
-                map.setPaintProperty('Canada', 'fill-opacity', 1);
+                map.setPaintProperty('Canada', 'fill-opacity',  0.8);
             });
 
             map.on('mouseout', 'Canada', function (e) {
-                map.setPaintProperty('Canada', 'fill-opacity', 0.4);
+                map.setPaintProperty('Canada', 'fill-opacity', 0.3);
             });
 
             map.on('click', 'Canada', function (e) {
                 console.log('Canada');
+                onclick=document.location.href="{{ path('country.showCountry', {id: "CA", slug: "ca"}) }}";
             });
 
 
             map.on('mouseover', 'USA', function (e) {
-                map.setPaintProperty('USA', 'fill-opacity', 1);
+                map.setPaintProperty('USA', 'fill-opacity',  0.8);
             });
 
             map.on('mouseout', 'USA', function (e) {
-                map.setPaintProperty('USA', 'fill-opacity', 0.4);
+                map.setPaintProperty('USA', 'fill-opacity', 0.3);
             });
 
             map.on('click', 'USA', function (e) {
                 console.log('USA');
+                onclick=document.location.href="{{ path('country.showCountry', {id: "US", slug: "us"}) }}";
             });
 
             map.on('mouseover', 'Mexique', function (e) {
-                map.setPaintProperty('Mexique', 'fill-opacity', 1);
+                map.setPaintProperty('Mexique', 'fill-opacity',  0.8);
             });
 
             map.on('mouseout', 'Mexique', function (e) {
-                map.setPaintProperty('Mexique', 'fill-opacity', 0.4);
+                map.setPaintProperty('Mexique', 'fill-opacity', 0.3);
             });
 
             map.on('click', 'Mexique', function (e) {
                 console.log('Mexique');
+                onclick=document.location.href="{{ path('country.showCountry', {id: "MX", slug: "mx"}) }}";
             });
 
         }

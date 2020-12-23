@@ -1,6 +1,6 @@
 {% extends 'assets/base.html.twig' %}
 
-{% block title "Countries"%}
+{% block title "indexCountry"%}
 
 {% block body %}
 <div class="container mt-5">
@@ -20,14 +20,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <!--
-    // on insère les scripts défini dans le template base.html.twig (le parent de notre template cf extends en haut)
-
-    //ci dessous on défini notre nouveau script
-    //on oublie pas d'utiliser assets si c'est un script local
-    -->
-
-        <script src="{{asset('javascript/bousin3000.js')}}"> </script>
 
 {% endblock %}
 
