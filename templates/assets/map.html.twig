@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Home - travel geovinum</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    {# <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> #}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
@@ -124,7 +124,6 @@
         { 'country': 'Italie', 'url': 'https://run.mocky.io/v3/a4a79341-beff-4482-8ca7-5ee9461c36b3' },
         { 'country': 'Canada', 'url': 'https://run.mocky.io/v3/49038d1f-1f3a-485e-aa08-fa8b99575e06' },
         { 'country': 'USA', 'url': 'https://run.mocky.io/v3/2d81b4ee-ec8e-47c1-affd-972b3fa5b280' },
-
         { 'country': 'Bresil', 'url': 'https://run.mocky.io/v3/4cc22920-d3d0-4b73-ab93-658edb1ed552' },
         { 'country': 'Argentine', 'url': 'https://run.mocky.io/v3/7251d029-c1ba-48e2-af97-f5923169215c' },
         { 'country': 'Chili', 'url': 'https://run.mocky.io/v3/1454d1bf-dbbb-4fcc-a973-3eb3a828575b' },
@@ -138,6 +137,7 @@
         { 'country': 'Inde', 'url': 'https://run.mocky.io/v3/222614f1-2111-4ead-b824-55c58a434333' },
 
         { 'country': 'AllCountrySelected', 'url': 'https://run.mocky.io/v3/9f79bd78-43ef-46d1-9e00-3e74f401834d' }];
+       
         mapboxgl.accessToken =
             'pk.eyJ1IjoiYWI4OTk3OTkiLCJhIjoiY2tmZjBlMXFnMGE4ZzJzczIxZ3lhOXJkNSJ9.Ii7MCkFbUkXZn5vZjicIGg';
         var map = new mapboxgl.Map({
@@ -177,7 +177,6 @@
                 onclick=document.location.href="{{ path('country.showCountry', {id: "FR", slug: "fr"}) }}";
             });
           
-
             map.on('mouseover', 'Italie', function (e) {
                 map.setPaintProperty('Italie', 'fill-opacity',  0.8);
             });
@@ -189,10 +188,8 @@
             map.on('click', 'Italie', function (e) {
                 console.log('Italie');
                 onclick=document.location.href="{{ path('country.showCountry', {id: "IT", slug: "it"}) }}";
-
-
-
             });
+
             map.on('mouseover', 'Allemagne', function (e) {
                 map.setPaintProperty('Allemagne', 'fill-opacity',  0.8);
             });
@@ -217,7 +214,6 @@
                 console.log('Canada');
                 onclick=document.location.href="{{ path('country.showCountry', {id: "CA", slug: "ca"}) }}";
             });
-
 
             map.on('mouseover', 'USA', function (e) {
                 map.setPaintProperty('USA', 'fill-opacity',  0.8);
@@ -245,47 +241,40 @@
                 onclick=document.location.href="{{ path('country.showCountry', {id: "MX", slug: "mx"}) }}";
             });
 
-            map.on('click', 'Corée', function (e) {
-               //  console.log('Corée');
-               
-            });
-///
             map.on('mouseover', 'Corée', function (e) {
-                map.setPaintProperty('Corée', 'fill-opacity', 1);
+                map.setPaintProperty('Corée', 'fill-opacity', 0.8);
             });
 
             map.on('mouseout', 'Corée', function (e) {
-                map.setPaintProperty('Corée', 'fill-opacity', 0.4);
+                map.setPaintProperty('Corée', 'fill-opacity', 0.3);
             });
 
             map.on('click', 'Corée', function (e) {
-               //  console.log('Corée');
+               onclick=document.location.href="{{ path('country.showCountry', {id: "KR", slug: "kr"}) }}";
             });
 
             map.on('mouseover', 'Algérie', function (e) {
-                map.setPaintProperty('Algérie', 'fill-opacity', 1);
+                map.setPaintProperty('Algérie', 'fill-opacity', 0.8);
             });
 
             map.on('mouseout', 'Algérie', function (e) {
-                map.setPaintProperty('Algérie', 'fill-opacity', 0.4);
+                map.setPaintProperty('Algérie', 'fill-opacity', 0.3);
             });
 
             map.on('click', 'Algérie', function (e) {
-               //  console.log('Algérie');
+               onclick=document.location.href="{{ path('country.showCountry', {id: "DZ", slug: "dz"}) }}";
             });
 
             map.on('mouseover', 'Maroc', function (e) {
-                map.setPaintProperty('Maroc', 'fill-opacity', 1);
+                map.setPaintProperty('Maroc', 'fill-opacity', 0.8);
             });
 
             map.on('mouseout', 'Maroc', function (e) {
-                map.setPaintProperty('Maroc', 'fill-opacity', 0.4);
+                map.setPaintProperty('Maroc', 'fill-opacity', 0.3);
             });
 
             map.on('click', 'Maroc', function (e) {
-               //  console.log('Maroc');
-
-                
+               onclick=document.location.href="{{ path('country.showCountry', {id: "MA", slug: "ma"}) }}";
             });
 
             map.on('mouseover', 'AfriqueDuSud', function (e) {
@@ -297,7 +286,7 @@
             });
 
             map.on('click', 'AfriqueDuSud', function (e) {
-               //  console.log('AfriqueDuSud');
+               onclick=document.location.href="{{ path('country.showCountry', {id: "ZA", slug: "za"}) }}";
             });
 
             map.on('mouseover', 'AfriqueDJaponuSud', function (e) {
@@ -309,46 +298,89 @@
             });
 
             map.on('click', 'Japon', function (e) {
-               //  console.log('Japon');
+               onclick=document.location.href="{{ path('country.showCountry', {id: "JP", slug: "jp"}) }}";
             });
             map.on('mouseover', 'Australie', function (e) {
-                map.setPaintProperty('Australie', 'fill-opacity', 1);
+                map.setPaintProperty('Australie', 'fill-opacity', 0.8);
             });
 
             map.on('mouseout', 'Australie', function (e) {
-                map.setPaintProperty('Australie', 'fill-opacity', 0.4);
+                map.setPaintProperty('Australie', 'fill-opacity', 0.3);
             });
 
             map.on('click', 'Australie', function (e) {
-                // console.log('Australie');
+                onclick=document.location.href="{{ path('country.showCountry', {id: "AU", slug: "au"}) }}";
             });
             map.on('mouseover', 'Russie', function (e) {
-                map.setPaintProperty('Russie', 'fill-opacity', 1);
+                map.setPaintProperty('Russie', 'fill-opacity', 0.8);
             });
 
             map.on('mouseout', 'Russie', function (e) {
-                map.setPaintProperty('Russie', 'fill-opacity', 0.4);
+                map.setPaintProperty('Russie', 'fill-opacity', 0.3);
             });
 
             map.on('click', 'Russie', function (e) {
-               //  console.log('Russie');
+               onclick=document.location.href="{{ path('country.showCountry', {id: "RU", slug: "ru"}) }}";
             });
             map.on('mouseover', 'Inde', function (e) {
-                map.setPaintProperty('Inde', 'fill-opacity', 1);
+                map.setPaintProperty('Inde', 'fill-opacity', 0.8);
             });
 
             map.on('mouseout', 'Inde', function (e) {
-                map.setPaintProperty('Inde', 'fill-opacity', 0.4);
+                map.setPaintProperty('Inde', 'fill-opacity', 0.3);
             });
 
             map.on('click', 'Inde', function (e) {
-               //  console.log('Inde');
+               onclick=document.location.href="{{ path('country.showCountry', {id: "IN", slug: "in"}) }}";
             });
 
+            map.on('mouseover', 'Bresil', function (e) {
+                map.setPaintProperty('Bresil', 'fill-opacity', 0.8);
+            });
 
+            map.on('mouseout', 'Bresil', function (e) {
+                map.setPaintProperty('Bresil', 'fill-opacity', 0.3);
+            });
 
+            map.on('click', 'Bresil', function (e) {
+               onclick=document.location.href="{{ path('country.showCountry', {id: "BR", slug: "br"}) }}";
+            });
 
+            map.on('mouseover', 'Argentine', function (e) {
+                map.setPaintProperty('Argentine', 'fill-opacity', 0.8);
+            });
 
+            map.on('mouseout', 'Argentine', function (e) {
+                map.setPaintProperty('Argentine', 'fill-opacity', 0.3);
+            });
+
+            map.on('click', 'Argentine', function (e) {
+               onclick=document.location.href="{{ path('country.showCountry', {id: "AR", slug: "ar"}) }}";
+            });
+
+            map.on('mouseover', 'Chili', function (e) {
+                map.setPaintProperty('Chili', 'fill-opacity', 0.8);
+            });
+
+            map.on('mouseout', 'Chili', function (e) {
+                map.setPaintProperty('Chili', 'fill-opacity', 0.3);
+            });
+
+            map.on('click', 'Chili', function (e) {
+               onclick=document.location.href="{{ path('country.showCountry', {id: "CL", slug: "cl"}) }}";
+            });
+
+            map.on('mouseover', 'Japon', function (e) {
+                map.setPaintProperty('Japon', 'fill-opacity', 0.8);
+            });
+
+            map.on('mouseout', 'Japon', function (e) {
+                map.setPaintProperty('Japon', 'fill-opacity', 0.3);
+            });
+
+            map.on('click', 'Japon', function (e) {
+               onclick=document.location.href="{{ path('country.showCountry', {id: "JP", slug: "jp"}) }}";
+            });
         }
 
         function addAllSources() {
