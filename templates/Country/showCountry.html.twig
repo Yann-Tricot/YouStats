@@ -4,7 +4,9 @@
 
 {% block body %}
     <div class="container mt-5">
+        {% if (videos is defined) and (channels is defined) %}
         {% include 'assets/tabCountry.html.twig' %}
+        {% endif %}
         <!--<div class="row">
 
             {# {% if title is defined %} #}
