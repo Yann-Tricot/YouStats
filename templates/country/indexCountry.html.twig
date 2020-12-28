@@ -11,15 +11,15 @@
             </div>
         </div>
         {% endif %}
-        {% if countries is defined %}
+        {# {% if countries is defined %}
             {% include 'assets/carousel.html.twig' %}
-        {% endif %}
+        {% endif %} #}
+    
 </div>
 {% endblock %}
 
 
 {% block javascripts %}
-    {{ parent() }}
-
+    <script>console.log("salut");</script>
 {% endblock %}
 

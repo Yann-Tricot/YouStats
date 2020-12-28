@@ -41,6 +41,6 @@ class ChannelController extends AbstractController
         {
             throw $this->createNotFoundException('Error no channels found !');
         }
-        return $this->render('indexChannel.html.twig', ['channels'=> $channels]);
+        return $this->render('showCountry.html.twig', ['channels'=> $channels]);
     }
 }

@@ -4,46 +4,12 @@
 
 {% block body %}
     <div class="container mt-5">
+        <div style="margin-top : 190px">
+            {% include 'assets/carousel.html.twig' %}
+        </div>
         {% if (videos is defined) and (channels is defined) %}
         {% include 'assets/tabCountry.html.twig' %}
         {% endif %}
-        <!--<div class="row">
-
-            {# {% if title is defined %} #}
-                <div class="col">
-                    <div class="row mt-3" style="justify-content: center">
-                        {# <p style="color:#F87E45;">{{ title }}</p> #}
-                    </div>
-                </div>
-            {# {% endif %} #}
-            {# {% if videos is defined %} #}
-                <div class="mt-5 ml-2 mr-3 row">
-                    <div class="col-3">
-                        <ul class="list-group">
-                            {# {% for video in videos|slice(0,9) %} #}
-                                <li class="list-group-item"><a
-                                            {# href="{{ path('country.showCountry', {id: country.getId, slug: country.getSlug}) }}">  {{ video.getVidTitle|e }}</a> #}
-                                </li>
-                            {# {% endfor %} #}
-                        </ul>
-                    </div>
-                </div>
-            {# {% endif %} #}
-            {# {% if channels is defined %} #}
-                <div class="mt-5 ml-2 mr-3 row">
-                    <div class="col-3">
-                        <ul class="list-group">
-                            {# {% for channel in channels|slice(0,9) %} #}
-                                <li>
-                                    {# <a href="{{ path('country.showCountry', {id: country.getId, slug: country.getSlug}) }}">{{ channel.getChannelName }}</a> #}
-                                </li>
-                            {# {% endfor %} #}
-                        </ul>
-                    </div>
-                </div>
-            {# {% endif %} #}
-
-        </div>-->
     </div>
 {% endblock %}
 

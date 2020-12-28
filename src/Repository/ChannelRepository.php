@@ -46,7 +46,7 @@ class ChannelRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-
+    
     public function findChannelIdFromVidId(Video $VidId)
     {
         $query = $this->createQueryBuilder('ch');
