@@ -96,12 +96,6 @@ class Video
     #private $miniatureLink = 'NULL';
 
     /**
-     *
-     * @ORM\Column(name="miniature_link_hd", type="string", length=50, nullable=true)
-     #* @ORM\Column(name="miniature_link_hd", type="string", length=50, nullable=true, options={"default"="NULL"})
-     */
-
-    /**
      * @var int|null
      *
      * @ORM\Column(name="tag_id", type="integer", nullable=true)
@@ -173,5 +167,4 @@ class Video
     public function getMiniatureLink(){
         return $this->miniatureLink;
     }
-
 }
