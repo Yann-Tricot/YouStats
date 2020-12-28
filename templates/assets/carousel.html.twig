@@ -1,4 +1,5 @@
-<div id="carouselExampleControls1" class="carousel slide border shadow-sm mt-5" data-ride="carousel" style="background-color: #dedbdb; width:70%; margin-left:15%">
+<!-- CARROUSSELLE PAYS-->
+<div id="carouselExampleControls1" class="carousel slide border shadow-sm" data-ride="carousel" style="background-color:rgba(162, 167, 173, 0.7); width:70%; margin-left:12%;margin-top : 150px">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <ul class="nav justify-content-center">
@@ -60,3 +61,63 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
+<!--CARROUSSELLE DATE-->
+<div id="carouselExampleControls2" class="carousel slide border shadow-sm mt-5" data-ride="carousel" data-interval="60000" style="background-color:rgba(162, 167, 173, 0.7); width:30%; margin-left:35%">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <ul class="nav justify-content-center">
+                <li class="text-center">
+                    <p>DATE</p> <!-- METTRE DATE D'AUJOUD'HUI DANS LA PARTIE ACTIVE DU CARROUSSELLE-->
+                </li>
+            </ul>
+        </div>
+        {% for i in 1..10 %} <!-- POUR LE NOMBRE DE DATE ANTERIEUR QUE L'ON VEUT AFFICHER-->
+            <div class="carousel-item">
+                <ul class="nav justify-content-center">
+                    <li>
+                        <p>DATE jour d'avant</p> <!-- METTRE DATE D'AUJOUD'HUI - i -->
+                    </li>
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls2" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls2" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div class="text-center">
+    <form action="/action_page.php" class="mt-4"> <!-- UTILISER CETTE DATE EN BACK-->
+        <input type="date" id="date" name="date">
+        <input type="submit">
+    </form>
+</div>
+
+<style>
+    .translateBox:hover{
+        -webkit-transform: translate(0.5em,0);
+        -moz-transform: translate(0.5em,0);
+        -o-transform: translate(0.5em,0);
+        -ms-transform: translate(0.5em,0);
+        transform: translate(0.5em,0);
+        -webkit-transition: 1s ease-in-out;
+        -moz-transition: 1s ease-in-out;
+        -o-transition: 1s ease-in-out;
+        transition: 1s ease-in-out;
+    }
+
+    .btn{
+        background-color:#a2a7ad;
+        border-color: #a2a7ad;
+    }
+    .btn:hover{
+        background-color:rgba(255, 176, 111, 0.7);
+        border-color: rgba(255, 176, 111, 0.7);
+    }
+</style>
