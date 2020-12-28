@@ -57,6 +57,12 @@ class Video
 
     /**
      *
+     * @ORM\Column(name="count_view", type="integer", nullable=true)
+     */
+    private $countView;
+
+    /**
+     *
      * @ORM\Column(name="count_dislike", type="integer", nullable=true)
      #* @ORM\Column(name="count_dislike", type="integer", nullable=true, options={"default"="NULL"})
      */
@@ -167,4 +173,17 @@ class Video
     public function getMiniatureLink(){
         return $this->miniatureLink;
     }
+
+    public function getDuration(){
+        return $this->duration;
+    }
+
+    public function getClassement(){
+        return $this->classement;
+    }
+
+    public function getCountView(){
+        return $this->countView;
+    }
+
 }
