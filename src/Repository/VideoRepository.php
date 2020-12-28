@@ -4,6 +4,7 @@
 namespace App\Repository;
 
 use App\Entity\Video;
+use App\Entity\Channel;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

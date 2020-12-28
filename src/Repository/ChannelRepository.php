@@ -4,6 +4,7 @@
 namespace App\Repository;
 
 use App\Entity\Channel;
+use App\Entity\Video;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -43,5 +44,18 @@ class ChannelRepository extends ServiceEntityRepository
             ->setMaxResults(3)
             ->getQuery()
             ->getResult();
+    }
+
+
+    public function findChannelIdFromVidId(Video $VidId)
+    {
+        $query = $this->createQueryBuilder('ch');
+
+        $query= $query
+            ->join('ch.channelName','vid')
+            ->andWhere('vid.channelId = :vidchannelId')
+            ->setParameter('vidchannelId', $VidId->getVidChannelId());
+
+        return $query->getQuery()->getResult();
     }
 }

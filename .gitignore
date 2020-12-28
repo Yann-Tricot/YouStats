@@ -1,5 +1,7 @@
-
 ###> symfony/framework-bundle ###
+composer.phar
+public/.htaccess
+/public/.htaccess
 /.env.local
 /.env.local.php
 /.env.*.local
@@ -7,6 +9,8 @@
 /public/bundles/
 /src/preload.php
 /var/
+var/
+vendor/
 /vendor/
 /node_modules/
 ###< symfony/framework-bundle ###

@@ -1,10 +1,9 @@
 {% extends 'assets/base.html.twig' %}
 
-{% block title "Countries"%}
+{% block title "indexCountry"%}
 
 {% block body %}
 <div class="container mt-5">
-    <div class="row">
         {% if title is defined %}
         <div class="col">
             <div class="row mt-3" style="justify-content: center">
@@ -13,24 +12,14 @@
         </div>
         {% endif %}
         {% if countries is defined %}
-            {% include 'pages/carousel.html.twig' %}
+            {% include 'assets/carousel.html.twig' %}
         {% endif %}
-
-    </div>
 </div>
 {% endblock %}
 
 
 {% block javascripts %}
     {{ parent() }}
-    <!--
-    // on insère les scripts défini dans le template base.html.twig (le parent de notre template cf extends en haut)
-
-    //ci dessous on défini notre nouveau script
-    //on oublie pas d'utiliser assets si c'est un script local
-    -->
-
-        <script src="{{asset('javascript/bousin3000.js')}}"> </script>
 
 {% endblock %}
 

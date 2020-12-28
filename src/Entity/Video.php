@@ -185,5 +185,4 @@ class Video
     public function getCountView(){
         return $this->countView;
     }
-
 }
