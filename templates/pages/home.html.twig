@@ -1,15 +1,20 @@
 {% extends 'assets/base.html.twig' %}
 
 {% block body %}
-    <div class="d-flex justify-content-center" style="margin-top : 150px">
-        {% include 'map.html.twig' %}
+    <div class="d-flex justify-content-center" style="margin-top : 170px">
+        {% include 'assets/map.html.twig' %} 
 
     </div>
     <div class="container mt-5">
         <div style="background-color:#edf3f0">
             <div class="ml-2 mr-2">
                 <h5>Bienvenue</h5>
-                <p>Description de l'application.</p>
+                <p>Dans cette application vous allez pouvoir entrer dans le coeur de Youtube. Cliquez sur un pays et découvrez 
+                ses tendances et ses meilleurs youtubeurs ! Ne passez plus votre temps devant des vidéos de mauvaise qualité, allez directement 
+                au meilleur ! </br>
+                Enfin, si vous voulez vous lancer dans une carrière, vous pourrez apprendre à créer votre vidéos parfaite. </br>
+                On vous donne de quoi vous occuper !
+                </p>
                 <p class="blockquote-footer" >L'équipe YouStats</p>
             </div>
         </div>
@@ -30,9 +35,6 @@
                         </div>
                     </div>
                 {% endfor %}
-                <div class="row mt-3 mb-3" style="justify-content: center">
-                    <button type="button" class="translateBox btn btn-primary" style="background-color:#a2a7ad; border-color: #a2a7ad ">Voir Plus</button>
-                </div>
             </div>
             <div class="col">
                 <div class="row mt-3" style="justify-content: center">
@@ -42,13 +44,10 @@
                     <div class="row mt-3" style="justify-content: center">
                         <div class="border rounded shadow-sm" style="width: 50%; background-color:white">
                             <img src="images/award-icon-06.png" title="my image" alt="my Image" style="height:20px; width: 20px">
-                            <p class="text-center">catégorie</p>
+                            <p class="text-center">...</p>
                         </div>
                     </div>
                 {% endfor %}
-                <div class="row mt-3 mb-3" style="justify-content: center">
-                    <button type="button" class="translateBox btn btn-primary" style="background-color:#a2a7ad; border-color: #a2a7ad ">Voir Plus</button>
-                </div>
             </div>
         </div>
     </div>
