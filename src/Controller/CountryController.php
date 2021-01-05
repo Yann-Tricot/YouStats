@@ -66,6 +66,8 @@ class CountryController extends AbstractController
     #requirements={"slug": "[a-z0-9\-]*"})
     public function show(\App\Entity\Country $country, string $slug) : Response
     {
+        $countries = $this->repository->findAll();
+
         if ($country->getSlug() !== $slug) {
             return $this->redirectToRoute('country.showCountry', [
                 'id' => $country->getId(),
@@ -78,7 +80,7 @@ class CountryController extends AbstractController
         $channels = $this->channelRepository->findAllByCountry($country->getId());
 
         return $this->render('country\showCountry.html.twig', [
-            'country' => $country, 'videos'=>$videos, 'channels'=>$channels
+            'country' => $country, 'videos'=>$videos, 'channels'=>$channels, 'countries'=> $countries
         ]);
     }
 
