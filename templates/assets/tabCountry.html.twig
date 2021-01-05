@@ -17,6 +17,7 @@
       <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" defer ></script>
       <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js" defer></script>
       <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" defer></script> 
+
       <!--Import des boutons-->
       <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"defer></script>
       <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"defer></script>
@@ -219,6 +220,7 @@
                 data: "PublishedDate", 
               },
               {
+
                 data: "TrendingDate :",
               },
                 {
@@ -226,7 +228,7 @@
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                 $(nTd).html("<a target=_blank href='"+sData+"'>"+sData+"</a>");
                 },
-                
+
              },           
             
             ],
@@ -309,6 +311,7 @@
             console.log(link);
 
             $('#modalTab').modal("show");
+
             $('#titre').text(titre);
             $('#chaine').text(id);
             $('#tag').text(tagId);
@@ -319,8 +322,6 @@
             $('#dislike').text(DislikeCount);
             $('#published').text(PublishedDate);
             $('#trending').text(TrendingDate);
-         
-
             var img = document.createElement("img");
             img.crossOrigin = "anonymous";
             img.src = link;
@@ -331,11 +332,7 @@
 
  
         });
-
-        
-        
-        
-        
+       
       </script>
       
       <style>
@@ -343,7 +340,6 @@
       li[data-dtr-index='11'] {
           visibility : hidden;  
         }
-
         .dataTables_processing {
           z-index: 3000;
         }
@@ -416,9 +412,6 @@
           background-color: rgba(201, 128, 19);
           border-color: rgba(201, 128, 19);
         } */
-
-
-
       </style>
       
       </html>
