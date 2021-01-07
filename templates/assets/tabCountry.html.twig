@@ -1,75 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
    <head>
       <meta charset="utf-8">
+      <title>Test      </title>
+
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <!--Nouveaux imports-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>  -->
       <!--Générateur de pdf -->
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+      {# <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
       <!--Double click et autre fonctionnalités (je pense)-->
       <script type="text/javascript"  src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/jszip-2.5.0/dt-1.10.23/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.3/fc-3.3.2/fh-3.1.7/kt-2.5.3/r-2.2.6/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.1/datatables.min.js" defer></script>
       <script type="text/javascript"  src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/jszip-2.5.0/dt-1.10.23/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.3/fc-3.3.2/fh-3.1.7/kt-2.5.3/r-2.2.6/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.1/datatables.min.js"></script>
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.23/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.3/fc-3.3.2/fh-3.1.7/kt-2.5.3/r-2.2.6/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.1/datatables.min.css" />
-      <!--Le tableau en lui meme-->
+      <!--Le tableau en lui meme--> #}
       <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" defer ></script>
       <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js" defer></script>
       <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" defer></script> 
       <!--Import des boutons-->
-      <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"defer></script>
-      <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"defer></script>
-      <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"defer></script>
-      <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"defer></script>  
-      <script src="https://cdn.datatables.net/colreorder/1.5.3/js/dataTables.colReorder.min.js"defer></script>  
+      <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js" defer></script>
+      <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js" defer></script>
+      <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js" defer></script>
+      <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js" defer></script>  
+      <script src="https://cdn.datatables.net/colreorder/1.5.3/js/dataTables.colReorder.min.js" defer></script>  
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> 
+
+
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.23/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.3/fc-3.3.2/fh-3.1.7/kt-2.5.3/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.1/datatables.min.css"/>
+      
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.23/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.3/fc-3.3.2/fh-3.1.7/kt-2.5.3/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.1/datatables.min.js"></script>
+
+
+
    </head>
    <body>
-      <div class="container">
-         <h1>Test de dataTable</h1>
-      </div>
-      <div class="col-xl">
-         <div class="col-xl">
-            <table class="table" id="myDatatable">
-               <thead>
-                  <tr>
-                     <th><strong>Titre de la vidéo</strong></th>
-                     <th><strong>ID</strong></th>
-                     <th><strong>Tag ID</strong></th>
-                     <th><strong>Pays</strong></th>
-                     <th><strong>Channel ID</strong></th>
-                     <th><strong>Catégorie ID</strong></th>
-                     <th><strong>Nombre de commentaire</strong></th>
-                     <th><strong>Nombre de j'aime</strong></th>
-                     <th><strong>Nombre de j'aime pas </strong></th>
-                     <th><strong>Date de publication</strong></th>
-                     <th><strong>Date de tendance</strong></th>
-                     <th><strong>MiniatureLink</strong></th>
-                  </tr>
-               </thead>
-               <tbody>
-               </tbody>
-               <tfoot>
-                  <tr>
-                     <th><strong>Titre de la vidéo</strong></th>
-                     <th><strong>ID</strong></th>
-                     <th><strong>Tag ID</strong></th>
-                     <th><strong>Pays</strong></th>
-                     <th><strong>Channel ID</strong></th>
-                     <th><strong>Catégorie ID</strong></th>
-                     <th><strong>Nombre de commentaire</strong></th>
-                     <th><strong>Nombre de j'aime</strong></th>
-                     <th><strong>Nombre de j'aime pas </strong></th>
-                     <th><strong>Date de publication</strong></th>
-                     <th><strong>Date de tendance</strong></th>
-                     <th><strong>MiniatureLink</strong></th>
-                  </tr>
-               </tfoot>
-            </table>
-         </div>
-         <!-- modal -->
-         <div class="modal fade bd-example-modal-lg" id="modalTab" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+  
+
+   <!-- modal -->
+    
+         
+
+       <div class="modal " id="modalTab" role="dialog">
+            <div class="modal-dialog modal-lg" >
                <div class="modal-content">
                   <div class="modal-header">
                      <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">�</button> -->
@@ -85,12 +61,8 @@
                               </div>
 
                               <h5 >Chaine</h5>
-                              <div id="chaine">
-                              </div>
-
-
+                              <div id="chaine">    </div>
                            </div>
-                        </div>
                      </div>
                      <div class="row">
                         <div class="col">
@@ -138,6 +110,7 @@
                            </div> 
                         </div>                        
                         <div class="col">
+                            <canvas id="chartModal" width="400" height="400"></canvas>
                         </div>
                      </div>
                      <div class="modal-footer">
@@ -150,76 +123,242 @@
             </div>
          </div>
       </div>
+<div class="container">
+      <div class="row">
+         <div class="col-sm-8">
+            <table class="table" id="myDatatable">
+               <thead>
+                  <tr>
+                     <th><strong>Titre de la vidéo</strong></th>
+                    <th><strong>Durée</strong></th>
+                     <th><strong>Classement</strong></th>
+                     <th><strong>Nombre de vues</strong></th>
+                     <th><strong>ID</strong></th>
+                     <th><strong>Tag ID</strong></th>
+                     <th><strong>Pays</strong></th>
+                     <th><strong>Channel ID</strong></th>
+                     <th><strong>Catégorie ID</strong></th>
+                     <th><strong>Nombre de commentaire</strong></th>
+                     <th><strong>Nombre de j'aime</strong></th>
+                     <th><strong>Nombre de j'aime pas </strong></th>
+                     <th><strong>Date de publication</strong></th>
+                     <th><strong>Date de tendance</strong></th>
+                     <th><strong>MiniatureLink</strong></th>
+                  </tr>
+               </thead>
+               <tbody>
+               </tbody>
+               <tfoot>
+                  <tr>
+                     <th><strong>Titre de la vidéo</strong></th>
+                     <th><strong>Durée</strong></th>
+                     <th><strong>Classement</strong></th>
+                     <th><strong>Nombre de vues</strong></th>
+                     <th><strong>ID</strong></th>
+                     <th><strong>Tag ID</strong></th>
+                     <th><strong>Pays</strong></th>
+                     <th><strong>Channel ID</strong></th>
+                     <th><strong>Catégorie ID</strong></th>
+                     <th><strong>Nombre de commentaire</strong></th>
+                     <th><strong>Nombre de j'aime</strong></th>
+                     <th><strong>Nombre de j'aime pas </strong></th>
+                     <th><strong>Date de publication</strong></th>
+                     <th><strong>Date de tendance</strong></th>
+                     <th><strong>MiniatureLink</strong></th>
+                  </tr>
+               </tfoot>
+            </table>
+         </div>
+
+<div class="col-sm-4">
+    <div class="card">
+      <div class="card-header"><span>Durée Moyenne</span></div>
+      <div class="card-body">
+      <canvas id="chartCategory" width="400" height="400"></canvas>
+      </div>
+  </div> 
+  <div class="card">
+      <div class="card-header"><span>Durée Moyenne</span></div>
+      <div class="card-body">
+      <canvas id="chartDuration" width="400" height="400"></canvas>      
+      </div>
+  </div>
+  
+
+ 
+      <div class="card">
+        <div class="card-header"><span>Catégorie</span></div>
+        <div class="card-body">
+          <div class="row align-items-center no-gutters">
+            <div class="col mr-2">
+              <div class="text-uppercase text-primary font-weight-bold text-xs mb-1">
+              </div>
+              <div class="text-dark font-weight-bold h5 mb-0" id="Producteurs"><span></span>
+              </div>
+            </div>
+              <div class="col-auto"><i class="icon ion-person-stalker fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+         
    </body>
       
       
       <script>
+      
 
 
-      var data = [];
 
-        {% for v in 0..598%}
+      var options = {
+        title: {
+                  display: true,
+                  text: "Proportion de J'aime / J'aime pas ",
+                  position: 'top',
+
+              },
+              animation : {
+                duration : 500,
+                easing : 'easeInCirc'
+              },
+              
+    };
+             
+      
+
+      
+        var data2 = {
+            labels: ["Nombre de j'aime", "Nombre de j'aime pas"],
+              datasets: [
+                {
+                    fill: true,
+                    backgroundColor: [
+                        'green',
+                        'red'],
+                    data: [5, 95],
+        // Notice the borderColor 
+                    borderColor:	['black', 'black'],
+                    borderWidth: [2,2]
+                }
+            ]
+        };
+
+
+          var ctx= document.getElementById("chartModal").getContext("2d");
+          var chartModal = new Chart(ctx, {
+                type: 'doughnut',
+                data: data2,
+                options: options
+            });
+
+
+      var videos = [];
+      var categories = [];
+
+        {% for v in 0..99%}
         var object = {
-          "Title" : "{{videos[loop.index].getVidTitle}}",
-          "Id" : "{{videos[loop.index].getId}}",
-          "Tag" : "{{videos[loop.index].getVidTagId}}",
-          "Country" : "{{videos[loop.index].getVidCountry}}",
-          "ChannelId" : "{{videos[loop.index].getVidChannelId}}",
-          "CategoryId" : "{{videos[loop.index].getVidCategoryId}}",
-          "CommentCount" : "{{videos[loop.index].getVidCommentCount}}",
-          "DislikeCount": "{{videos[loop.index].getVidDislikeCount}}",
-          "LikeCount" : "{{videos[loop.index].getVidLikeCount}}",
-          "PublishedDate" : "{{videos[loop.index].getVidPublishDate|date('d-m-Y')}}",
-          "TrendingDate :" : "{{videos[loop.index].getVidTrendingDate|date('d-m-Y')}}",
-          "MiniatureLink" : "{{videos[loop.index].getMiniatureLink}}",
+          "Title" : "{{videos[loop.index0].getVidTitle}}",
+          "Id" : "{{videos[loop.index0].getId}}",
+          "Tag" : "{{videos[loop.index0].getVidTagId}}",
+          "Country" : "{{videos[loop.index0].getVidCountry}}",
+          "ChannelId" : "{{videos[loop.index0].getVidChannelId}}",
+          "CategoryId" : "{{videos[loop.index0].getVidCategoryId}}",
+          "CommentCount" : "{{videos[loop.index0].getVidCommentCount}}",
+          "DislikeCount": "{{videos[loop.index0].getVidDislikeCount}}",
+          "LikeCount" : "{{videos[loop.index0].getVidLikeCount}}",
+          "PublishedDate" : "{{videos[loop.index0].getVidPublishDate|date('d-m-Y')}}",
+          "MiniatureLink" : "{{videos[loop.index0].getMiniatureLink}}",
+          "TrendingDate :" : "{{videos[loop.index0].getVidTrendingDate|date('d-m-Y')}}",
+          "Duration" : "{{videos[loop.index0].getDuration}}",
+          "Classement" : "{{videos[loop.index0].getClassement}}",
+          "Views" : "{{videos[loop.index0].getCountView}}"
 
         }; 
 
-          data.push(object);
+          videos.push(object);
+
+          categories.push("{{videos[loop.index0].getVidCategoryId}}");
+
+
         {% endfor %}       
+
+        var orderCategories = {};
+        categories.forEach(function(i) { orderCategories[i] = (orderCategories[i]||0) + 1;});
+        console.log(orderCategories[1]);
         
+
+        createChart(categories);
         var cors = "https://cors-anywhere.herokuapp.com/";   
 
         $(document).ready(function () {
           
           $('#myDatatable').DataTable({
-            data: data,
+            data: videos,
             dom :"Bfrtip",
+            autoWidth : false,
             columns: [ 
               {
                 data: "Title",    
-                defaultContent: '-'            
+                defaultContent: '-',
+                width : "20px"            
               },
-             
+              {
+                data: "Duration",  
+                width : "1px"
+              },
+               {
+                data: "Classement",  
+                width : "5%"
+              }, 
+              {
+                data: "Views",  
+                width : "5%"
+              },
               {
                 data: "Id",  
+                width : "5%"
               },
               {
                 data: "Tag", 
+                width : "5%"
               },
               {
                 data: "Country",
+                width : "5%"
               }, 
               {
                 data: "ChannelId",
+                width : "20%"
               },
               {
-                data: "CategoryId",                
+                data: "CategoryId",        
+                width : "20%"        
               },
               {
                 data: "CommentCount", 
+                width : "20%"
               }, 
               {
                 data: "LikeCount",
+                width : "20%"
               },
               {
                 data: "DislikeCount",
+                width : "20%"
               },
               {
                 data: "PublishedDate", 
+                width : "20%"
               },
               {
                 data: "TrendingDate :",
+                width : "20%"
               },
                 {
                 data: "MiniatureLink",
@@ -238,6 +377,8 @@
             colReorder: true,
             select: true,
             keys: true,
+            scrollX : true,
+            details : true,
             paginate:
             {
               "previous": "Previous page"
@@ -283,30 +424,41 @@
             processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>Processing...'
           },
         });
-        
+
+
         $('#myDatatable tbody').on('dblclick', 'tr', function (e, dt, type, indexes) {  
 
           //évite les bugs 
           if (e.currentTarget.className != "child" )
           {
-            var lien = cors + data["MiniatureLink"];
-            console.log($('td', this).eq(11).text());
+            
+            
+            var lien = cors + videos["MiniatureLink"];
             var lien2 = cors + "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdeveloper.mozilla.org%2Ffr%2Fdocs%2FWeb%2FHTML%2FElement%2FImg&psig=AOvVaw18gr0YP4N_5daIKW_ssPag&ust=1606481499287000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKC8_JagoO0CFQAAAAAdAAAAABAD";
             var elt = document.getElementById("imageMiniature");
             elt.innerHTML = '';
             var titre = $('td', this).eq(0).text();
-            var id =  $('td', this).eq(1).text();
-            var tagId =  $('td', this).eq(2).text();
-            var country = $('td', this).eq(3).text();
-            var channelID =  $('td', this).eq(4).text();
-            var categoryID =  $('td', this).eq(5).text();
-            var CommentCount = + $('td', this).eq(6).text();
-            var LikeCount = $('td', this).eq(7).text();
-            var DislikeCount =  $('td', this).eq(8).text();
-            var PublishedDate = $('td', this).eq(9).text();
-            var TrendingDate =  $('td', this).eq(10).text();
-            var link = cors + $('td', this).eq(11).text();
-            console.log(link);
+            var duree = $('td', this).eq(1).text();
+            var classement = $('td', this).eq(2).text();
+            var viewCount = $('td', this).eq(3).text();
+            var id =  $('td', this).eq(4).text();
+            var tagId =  $('td', this).eq(5).text();
+            var country = $('td', this).eq(6).text();
+            var channelID =  $('td', this).eq(7).text();
+            var categoryID =  $('td', this).eq(8).text();
+            var CommentCount = + $('td', this).eq(9).text();
+            var LikeCount = $('td', this).eq(10).text();
+            var DislikeCount =  $('td', this).eq(11).text();
+            var PublishedDate = $('td', this).eq(12).text();
+            var TrendingDate =  $('td', this).eq(13).text();
+            var link = cors + $('td', this).eq(14).text();
+
+            var testLike = videos[classement-1];
+
+            var nbLike = testLike["LikeCount"];
+            var nbDislike =testLike["DislikeCount"];
+            updateChart(chartModal,nbLike,nbDislike);
+
 
             $('#modalTab').modal("show");
             $('#titre').text(titre);
@@ -327,15 +479,48 @@
             img.setAttribute('width', '100%');
             img.setAttribute('height', '100%');
             elt.appendChild(img);
+
+
+           
+
+
           }
 
- 
         });
 
+       
+
         
-        
-        
-        
+          function createChart(categories)
+          {
+            console.log(categories);
+            var ctx1= document.getElementById("chartCategory").getContext("2d");
+            console.log(ctx1);
+            
+          }
+
+          function updateChart(chartModal,like,dislike)
+          {
+
+
+            var dt = [
+                {
+                    fill: true,
+                    backgroundColor: [
+                        'red',
+                        'blue'],
+                    data: [5, 95],
+        // Notice the borderColor 
+                    borderColor:	['white', 'white'],
+                    borderWidth: [2,2]
+                }
+            ];
+            chartModal.data.datasets[0].data[0] = like;
+            chartModal.data.datasets[0].data[1] = dislike;
+            chartModal.update();
+
+          }
+
       </script>
       
       <style>
