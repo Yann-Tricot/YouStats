@@ -5,13 +5,12 @@ namespace App\Entity;
 use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  *
  * @ORM\Table(name="CATEGORY")
+ * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
  */
-
- //@ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
-
 class Category
 {
     /**
@@ -24,7 +23,7 @@ class Category
 
     /**
      *
-     * @ORM\Column(name="cateory_name", type="string", length=80, nullable=false)
+     * @ORM\Column(name="category_name", type="string", length=80, nullable=false)
      */
     private $categoryName;
 
@@ -34,12 +33,12 @@ class Category
         return (new Slugify())->slugify($this->categoryName);
     }
 
-    public function getId()
+    public function getCategoryId()
     {
         return $this->categoryId;
     }
 
-    public function getName()
+    public function getCategoryName()
     {
         return $this->categoryName;
     }
