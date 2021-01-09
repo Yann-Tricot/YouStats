@@ -39,23 +39,18 @@ class ChannelRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
-    public function findTheTop3(){
-        return $this->createQueryBuilder('c')
-            ->setMaxResults(3)
-            ->getQuery()
-            ->getResult();
-    }
-
-    
-    public function findChannelIdFromVidId(Video $VidId)
+    public function findBestChannelsFromVideos(int $MaxResult): array
     {
-        $query = $this->createQueryBuilder('ch');
+        $entityManager = $this->getEntityManager();
 
-        $query= $query
-            ->join('ch.channelName','vid')
-            ->andWhere('vid.channelId = :vidchannelId')
-            ->setParameter('vidchannelId', $VidId->getVidChannelId());
-
-        return $query->getQuery()->getResult();
+        $query = $entityManager->createQuery(
+            'SELECT c
+            FROM App\Entity\Channel c
+            JOIN App\Entity\Video v
+            WHERE v.channelId = c.channelId
+            GROUP BY v.channelId
+            ORDER BY SUM(v.countView) DESC'
+        )->setMaxResults($MaxResult);
+        return $query->getResult();
     }
 }

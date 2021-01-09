@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
 use App\Repository\ChannelRepository;
 use App\Repository\VideoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,10 +25,12 @@ class HomeController extends AbstractController{
      * @Route ("/home", name="home")
      * @return Response
      */
-    public function index(ChannelRepository $Charepository, VideoRepository $Vidrepository):Response{
-        $channels = $Charepository->findTheTop3();
+    public function index(ChannelRepository $channelRepository, CategoryRepository $categoryRepository, VideoRepository $videoRepository):Response{
+        $channels = $channelRepository->findBestChannelsFromVideos(3);
+        $categories = $categoryRepository->findBestCategoriesOfAllVideos(3);
+
         return $this->render('pages/home.html.twig',[
-            'channels' => $channels,
+            'channels' => $channels,'categories'=>$categories
         ]);
     }
 }
