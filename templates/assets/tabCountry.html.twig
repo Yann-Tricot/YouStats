@@ -288,10 +288,18 @@
 
         {% endfor %}       
 
-        var orderCategories = {};
-        categories.forEach(function(i) { orderCategories[i] = (orderCategories[i]||0) + 1;});
-        console.log(orderCategories[1]);
+        var orderCategories = [];
+       /* categories.forEach(function(i) 
+        {
+          orderCategories.push(orderCategories[i]  : (orderCategories[i]||0) + 1);
+          // {# orderCategories[i] = (orderCategories[i]||0) + 1; #}
+        });*/
         
+        console.log(orderCategories);
+        orderCategories.forEach(function(i)
+        {
+          console.log(i);
+        });
 
         createChart(categories);
         var cors = "https://cors-anywhere.herokuapp.com/";   
