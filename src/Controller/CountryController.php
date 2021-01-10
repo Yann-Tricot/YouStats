@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\Repository\ChannelRepository;
+use App\Repository\CategoryRepository;
 use App\Repository\CountryRepository;
 use App\Repository\VideoRepository;
 use Doctrine\ORM\EntityManagerInterface;
