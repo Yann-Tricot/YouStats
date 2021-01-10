@@ -31,4 +31,11 @@ class CategoryRepository extends ServiceEntityRepository
         )->setMaxResults($MaxResult);
         return $query->getResult();
     }
+
+    public function findAll()
+    {
+        return $this->createQueryBuilder('c')
+            ->getQuery()
+            ->getResult();
+    }
 }

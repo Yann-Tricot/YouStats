@@ -34,12 +34,18 @@ class CountryController extends AbstractController
      */
     private $channelRepository;
 
-    public function __construct(CountryRepository $repository, VideoRepository $vRepo, ChannelRepository $chanRepo, EntityManagerInterface $em)
+    /**
+     * @var CategoryRepository
+     */
+    private $categorRepository;
+
+    public function __construct(CountryRepository $repository, VideoRepository $vRepo, ChannelRepository $chanRepo, CategoryRepository $catRepo, EntityManagerInterface $em)
     {
         $this->repository = $repository;
         $this->entityManager = $em;
         $this->videoRepository = $vRepo;
         $this->channelRepository = $chanRepo;
+        $this->categorRepository = $catRepo;
     }
 
     /**
@@ -78,14 +84,9 @@ class CountryController extends AbstractController
 
         $videos = $this->videoRepository->findAllByCountry($country);
         $channels = $this->channelRepository->findAllByCountry($country->getId());
-
+        $categories = $this->categorRepository->findAll();
         return $this->render('country\showCountry.html.twig', [
-            'country' => $country, 'videos'=>$videos, 'channels'=>$channels, 'countries'=> $countries
+            'country' => $country, 'videos'=>$videos, 'channels'=>$channels, 'countries'=> $countries, 'categories'=> $categories
         ]);
     }
-
-
-
-
-
 }
