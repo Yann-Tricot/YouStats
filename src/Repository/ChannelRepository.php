@@ -4,9 +4,7 @@
 namespace App\Repository;
 
 use App\Entity\Channel;
-use App\Entity\Video;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\EntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 
@@ -22,13 +20,28 @@ class ChannelRepository extends ServiceEntityRepository
 
     public function findAllByCountry($country)
     {
-        return $this->createQueryBuilder('c')
-            ->where('c.countryId = :cnt')
+        return $this->createQueryBuilder('ch')
+            ->where('ch.countryId = :cnt')
             ->setParameter('cnt', $country)
             ->getQuery()
             ->getResult();
     }
 
+
+    public function findAllChannelsByOneDay($day, $country): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT ch
+            FROM App\Entity\Channel ch
+            JOIN App\Entity\Video v
+            WHERE v.country = :country AND v.trendingDate = :day AND ch.channelId = v.channelId
+            GROUP BY ch'
+        )->setParameter('day', $day)
+            ->setParameter('country', $country);
+        return $query->getResult();
+    }
 
     public function findOneBySomeField($value)
     {
