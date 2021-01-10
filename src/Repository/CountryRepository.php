@@ -34,7 +34,7 @@ class CountryRepository extends ServiceEntityRepository
             FROM App\Entity\Country c
             JOIN App\Entity\Video v
             WHERE v.country = c.countryId
-            GROUP BY v.categoryId
+            GROUP BY v.country
             ORDER BY COUNT(v.id) DESC'
         )->setMaxResults($MaxResult);
         return $query->getResult();

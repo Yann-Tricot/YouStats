@@ -31,7 +31,7 @@ class PerfectVideoController extends AbstractController
     public function index(CategoryRepository $categoryRepository, VideoRepository $videoRepository,CountryRepository $countryRepository ):Response{
         $categories = $categoryRepository->findBestCategoriesOfAllVideos(3);
         $videos = $videoRepository->findBestVideoOfAllVideos();
-        $countries = $countryRepository->findBestCountryOfAllVideos();
+        $countries = $countryRepository->findBestCountryOfAllVideos(3);
         return $this->render('pages/perfectVideo.html.twig',[
             'categories'=>$categories, 'videos'=>$videos, 'countries'=>$countries
         ]);
