@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
+use App\Repository\CategoryRepository;
+use App\Repository\VideoRepository;
 
 class PerfectVideoController extends AbstractController
 {
@@ -25,7 +27,11 @@ class PerfectVideoController extends AbstractController
      * @Route ("/perfectVideo", name="perfectVideo")
      * @return Response
      */
-    public function index():Response{
-        return $this->render('pages/perfectVideo.html.twig');
+    public function index(CategoryRepository $categoryRepository, VideoRepository $videoRepository):Response{
+        $categories = $categoryRepository->findBestCategoriesOfAllVideos(3);
+        $videos = $videoRepository->findBestVideoOfAllVideos();
+        return $this->render('pages/perfectVideo.html.twig',[
+            'categories'=>$categories, 'videos'=>$videos
+        ]);
     }
 }
