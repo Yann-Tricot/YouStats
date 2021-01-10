@@ -117,22 +117,13 @@
                 <thead>
                     <tr>
                       <th><strong>Titre de la vidéo</strong></th>
-                      <th><strong>Durée</strong></th>
-                      <th><strong>Classement</strong></th>
+                      <th><strong>Nom de la chaine </strong></th>
+                      <th><strong>Catégorie</strong></th>
                       <th><strong>Nombre de vues</strong></th>
-                      <th><strong>ID</strong></th>
-                      <th><strong>Video ID</strong></th>
-                      <th><strong>Tag ID</strong></th>
-                      <th><strong>Pays</strong></th>
-                      <th><strong>Channel ID</strong></th>
-                      <th><strong>Catégorie ID</strong></th>
-                      <th><strong>Nombre de commentaire</strong></th>
-                      <th><strong>Nombre de j'aime</strong></th>
-                      <th><strong>Nombre de j'aime pas </strong></th>
+                      <th><strong>Durée de la vidéo</strong></th>
                       <th><strong>Date de publication</strong></th>
                       <th><strong>Date de tendance</strong></th>
-                      <th><strong>Nom de la chaine</strong></th>
-                      <th><strong>MiniatureLink</strong></th>
+                      <th><strong>Classement</strong></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -140,22 +131,13 @@
                 <tfoot>
                     <tr>
                       <th><strong>Titre de la vidéo</strong></th>
-                      <th><strong>Durée</strong></th>
-                      <th><strong>Classement</strong></th>
+                      <th><strong>Nom de la chaine </strong></th>
+                      <th><strong>Catégorie</strong></th>
                       <th><strong>Nombre de vues</strong></th>
-                      <th><strong>Video ID</strong></th>
-                      <th><strong>ID</strong></th>
-                      <th><strong>Tag ID</strong></th>
-                      <th><strong>Pays</strong></th>
-                      <th><strong>Channel ID</strong></th>
-                      <th><strong>Catégorie ID</strong></th>
-                      <th><strong>Nombre de commentaire</strong></th>
-                      <th><strong>Nombre de j'aime</strong></th>
-                      <th><strong>Nombre de j'aime pas </strong></th>
+                      <th><strong>Durée de la vidéo</strong></th>
                       <th><strong>Date de publication</strong></th>
                       <th><strong>Date de tendance</strong></th>
-                      <th><strong>Nom de la chaine</strong></th>
-                      <th><strong>MiniatureLink</strong></th>
+                      <th><strong>Classement</strong></th>
                     </tr>
                 </tfoot>
               </table>
@@ -165,7 +147,7 @@
               <div class="card">
                 <div class="card-header" style="background-color:#edf3f0"><span>Répartition par catégorie</span></div>
                 <div class="card-body">
-                <canvas id="chartCategory" width="400" height="400"></canvas>
+                <canvas id="chartCategory" width="400" height="400"> <div id="js-legend" class="chart-legend"></div></canvas>
                 </div>
             </div> 
             <div class="card mt-3">
@@ -177,7 +159,6 @@
                   </div>
                   <div class="col mr-2">
 
-                     <iconify-icon data-icon="mdi:food-apple" style="font-size: 64px; color: #3C8A3F;"></iconify-icon>
                      
                   </div>  
                 {# <canvas id="chartDuration" width="400" height="400"></canvas>       #}
@@ -211,6 +192,8 @@
    </body>      
       
       <script>
+
+
       var optionsLikeDislike = {
         title: {
                   display: true,
@@ -253,18 +236,19 @@
       var durations = [];
       var likes = [];
       var dislikes = [];
+      var dataCategories = [];
 
-
-      
-      {% for v in 0..10 %}
-            {# var object = 
+       {% for v in 0..categories|length-1%}
+            var object = 
             {
-              "Id":"{{channels[loop.index0].getChannelId}}",
-              "Name":"{{channels[loop.index0].getChannelName}}",
-              "CountryId":"{{channels[loop.index0].getChannelCountryID}}"
-            }; #}
-            {# console.log("{{cate[1].getCategoryName}}");         #}
+              "Id":"{{categories[loop.index0].getCategoryId}}",
+              "Name":"{{categories[loop.index0].getCategoryName}}"              
+            };
+
+            listCategories.push(object);            
         {% endfor %}   
+
+
 
       {% for v in 0..channels|length-1%}
             var object = 
@@ -275,11 +259,17 @@
             };
             listChannels.push(object);            
         {% endfor %}   
-        var v = listChannels.find(x => x.Id === "UC--3c8RqSfAqYBdDjIG3UNA");
+        //var v = listChannels.find(x => x.Id === "UC--3c8RqSfAqYBdDjIG3UNA");
 
-        {% for v in 0..99%}
+        {% for v in 0..videos|length-1%}
           var idChannel = "{{videos[loop.index0].getVidChannelId}}";
           var channelName = getChannelName(idChannel,listChannels);
+          var idCategory =  "{{videos[loop.index0].getVidCategoryId}}";
+          {# console.log(categories); #}
+          var categoryName = listCategories.find(x => x.Id == idCategory); 
+          categoryName = categoryName["Name"];
+          dataCategories.push(idCategory);
+
 
           var duration = treatDate("{{videos[loop.index0].getDuration}}");
           durations.push(duration);
@@ -292,7 +282,7 @@
             "Tag" : "{{videos[loop.index0].getVidTagId}}",
             "Country" : "{{videos[loop.index0].getVidCountry}}",
             "ChannelId" : "{{videos[loop.index0].getVidChannelId}}",
-            "CategoryId" : "{{videos[loop.index0].getVidCategoryId}}",
+            "CategoryId" : idCategory,
             "CommentCount" : "{{videos[loop.index0].getVidCommentCount}}",
             "DislikeCount": "{{videos[loop.index0].getVidDislikeCount}}",
             "LikeCount" : "{{videos[loop.index0].getVidLikeCount}}",
@@ -302,72 +292,87 @@
             "Duration" : toHHMMSS(duration),
             "Classement" : "{{videos[loop.index0].getClassement}}",
             "Views" : "{{videos[loop.index0].getCountView}}",
-            "ChannelName" : channelName
-          }; 
-          {# console.log(object); #}
-
- 
+            "ChannelName" : channelName,
+            "Category" : categoryName
+          };  
 
           videos.push(object);
-          {# console.log(object["ChannelName"]); #}
 
-          listCategories.push("{{videos[loop.index0].getVidCategoryId}}");
-        {% endfor %}       
+          {# listCategories.push("{{videos[loop.index0].getVidCategoryId}}"); #}
+        {% endfor %}     
+
+        console.log(videos);
+
         var c = 0;
-
-            
-
-
-
-
 
         var durationTotal = 0;
         var likeTotal = 0;
         var dislikeTotal = 0;
-        {# for (var d in durations)
-        {
-          durationTotal+=durations[d];
-        } #}
 
+        //console.log(durations);
 
         for (i = 0; i < videos.length; i++) {
           durationTotal+=durations[i];
           likeTotal+=likes[i];
           dislikeTotal+=dislikes[i];          
         }
+        
 
         var averageLike = Math.round(likeTotal/likes.length);
         var averageDislike = Math.round(dislikeTotal/dislikes.length);
-        var averageDuration = Math.round(durationTotal/videos.length);
-        var str = toHHMMSS(averageDuration.toString());
+        var averageDuration = Math.round(durationTotal/durations.length);
 
         var avgDuration = document.getElementById("avgDuration");
         var avgLike = document.getElementById("avgLike");
         var avgDislike = document.getElementById("avgDislike");
+
+        var str = toHHMMSS(averageDuration.toString());
         avgDuration.innerText = str;
         avgLike.innerText = averageDislike;
         avgDislike.innerText = averageDuration;
+        var orderCategories = compressArray(dataCategories);
+        {# console.log(orderCategories) #}
 
-        var orderCategories = compressArray(listCategories);
          var labelsCategories = [];
          var countCategories = [];
+         {# console.log(orderCategories); #}
+         console.log(orderCategories);
         for (var l in orderCategories)
         {
-          labelsCategories.push(orderCategories[l]["value"]);
-          countCategories.push(orderCategories[l]["count"]);
+          console.log(orderCategories[l]);
+          var value = (orderCategories[l]["value"]);
+          var c =  listCategories.find(x => x.Id == value); 
+          var count = orderCategories[l]["count"]
+          var name = c["Name"];
+          if (name.includes("&amp;"))
+          {
+            name = name.replace("&amp;","&");
+          }
+   
+          labelsCategories.push(name);
+          countCategories.push(count);          
         };
+        {# console.log(labelsCategories);
+        console.log(countCategories); #}
+
+        if (countCategories.length >= 14)
+        {
+          Chart.defaults.global.legend.display = false;           
+        }
 
       var optionsCategories = {
         title: {
-                  display: true,
+                  display: false,
                   text: "Proportion de catégories ",
                   position: 'top'
               },
               animation : {
                 duration : 500,
                 easing : 'easeInCirc'
-              },          
+              },  
     };
+
+
     var colorsCategories = [];
     while (colorsCategories.length < orderCategories.length) {
         do {
@@ -384,7 +389,7 @@
                     fill: true,
                     backgroundColor:colorsCategories,
                     data: countCategories,
-        // Notice the borderColor 
+                    // Notice the borderColor 
                     borderWidth: [2,2]
                 }
             ]
@@ -396,10 +401,8 @@
             data: dataCategories,
             optionsLikeDislike: optionsCategories
       });
+
     
-
-
-        {# createChart(categories); #}
         var cors = "https://cors-anywhere.herokuapp.com/";   
 
         $(document).ready(function () {
@@ -414,76 +417,38 @@
               {
                 data: "Title",    
                 defaultContent: '-',
-                width : "100"            
+               // width : "100"            
               },
               {
-                data: "Duration",  
-                width : "80"
+                data: "ChannelName",  
+              //  width : "80"
               },
                {
-                data: "Classement",  
-                width : "70"
+                data: "Category",  
+               // width : "70"
               }, 
               
               {
                 data: "Views",  
-                width : "100"
+               // width : "100"
               },
               {
-                data: "VideoId",  
-                width : "50"
-              },
-              {
-                data: "Id",  
-                width : "50"
-              },
-              {
-                data: "Tag", 
-                width : "100"
-              },
-              {
-                data: "Country",
-                width : "100"
+                data: "Duration",
+               // width : "100"
               }, 
               {
-                data: "ChannelId",
-                width : "100"
+                data: "PublishedDate",
+               // width : "100"
               },
               {
-                data: "CategoryId",        
-                width : "100"        
+                data: "TrendingDate",        
+                //width : "100"        
               },
               {
-                data: "CommentCount", 
-                width : "100"
-              },
-              {
-                data: "LikeCount",
-                width : "100"
-              },
-              {
-                data: "DislikeCount",
-                width : "100"
-              },
-              {
-                data: "PublishedDate", 
-                width : "100"
-              },
-              {
-                data: "TrendingDate",
-                width : "100"
-              },
-               {
-                data: "ChannelName",
-                width : "100"
-              },
-                {
-                data: "MiniatureLink",
-                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                $(nTd).html("<a target=_blank href='"+sData+"'>"+sData+"</a>");
-                },
-                
-             },           
+                data: "Classement", 
+                //width : "100"
+              },           
+                          
             
             ],
 
@@ -551,60 +516,44 @@
           //évite les bugs 
           if (e.currentTarget.className != "child" )
           {
+            var titre = $('td', this).eq(0).text();
+
+            var v = videos.findIndex(x => x.Title == titre);
+            var videoFound = videos[v];
             
-            
+           // {# console.log(videoFound); #}
             var lien = cors + videos["MiniatureLink"];
             var lien2 = cors + "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdeveloper.mozilla.org%2Ffr%2Fdocs%2FWeb%2FHTML%2FElement%2FImg&psig=AOvVaw18gr0YP4N_5daIKW_ssPag&ust=1606481499287000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKC8_JagoO0CFQAAAAAdAAAAABAD";
             var elt = document.getElementById("imageMiniature");
             var img = document.getElementById("imgMiniature");
-            var id =  $('td', this).eq(4).text();
+            var id = videoFound["VideoId"];
             var a = document.getElementById("aImageMiniature");
             a.setAttribute("href","https://www.youtube.com/watch?v="+id);
 
-            var titre = $('td', this).eq(0).text();
-            /*var duree = $('td', this).eq(1).text();
-            var classement = $('td', this).eq(2).text();
-            var viewCount = $('td', this).eq(3).text();        
-            var tagId =  $('td', this).eq(5).text();
-            var country = $('td', this).eq(6).text();
-            var channelID =  $('td', this).eq(7).text();
-            var categoryID =  $('td', this).eq(8).text();
-            var CommentCount = + $('td', this).eq(9).text();
-            var LikeCount = $('td', this).eq(10).text();
-            var DislikeCount =  $('td', this).eq(11).text();
-            var PublishedDate = $('td', this).eq(12).text();
-            var TrendingDate =  $('td', this).eq(13).text();
-            var link = cors + $('td', this).eq(14).text();*/
-
-            console.log(videos);
-            var v = videos.findIndex(x => x.Title == titre);
-            var videoFound = videos[v];
-            console.log(videoFound);
             titre = videoFound["Title"];
-            var id =            videoFound["Id"];
-            var videoID =            videoFound["VideoId"];
             
-            var classement =            videoFound["Id"];
-            var channelName =            videoFound["ChannelName"];
-            var duree =         videoFound["Duration"];
-            var classement =    videoFound["Classement"];
-            var viewCount =     videoFound["Views"];        
-            var tagId =         videoFound["Tag"];
-            var country =       videoFound["Country"];
-          var channelID =       videoFound["ChannelId"];
-            var categoryID =    videoFound["CategoryId"];
-          var CommentCount = +  videoFound["CommentCount"];
-            var LikeCount =     videoFound["LikeCount"];;
-            var DislikeCount =  videoFound["DislikeCount"];;
+            var videoID =  videoFound["VideoId"];
+
+            var classement = videoFound["Id"];
+            var channelName =  videoFound["ChannelName"];
+            var duree = videoFound["Duration"];
+            var classement = videoFound["Classement"];
+            var viewCount = videoFound["Views"];        
+            var tagId = videoFound["Tag"];
+            var country = videoFound["Country"];
+            var channelID = videoFound["ChannelId"];
+            var categoryID = videoFound["CategoryId"];
+            var CommentCount = videoFound["CommentCount"];
+            var LikeCount = videoFound["LikeCount"];;
+            var DislikeCount = videoFound["DislikeCount"];;
             var PublishedDate = videoFound["PublishedDate"];;
-            var TrendingDate =  videoFound["TrendingDate"];;
-            var link = cors +   videoFound["MiniatureLink"];;
+            var TrendingDate = videoFound["TrendingDate"];;
+            var link = cors + videoFound["MiniatureLink"];;
             var testLike = videos[classement-1];
 
             var nbLike = testLike["LikeCount"];
             var nbDislike =testLike["DislikeCount"];
             updateChart(chartModal,nbLike,nbDislike);
-
 
             $('#modalTab').modal("show");
             $('#titre').text(titre);
@@ -633,37 +582,15 @@
             request.onload = function()
             {
               if ((request.status >= 200 && request.status < 400) && (link != ""))       
-              {
-                if (link != "")
-                {
+              {            
                    img.src = link;
-                }
-               
-
               }      
             }
           }
 
-        function createChart(categories)
-        {
-          var ctxModal1= document.getElementById("chartCategory").getContext("2d");
-          
-        }
-
       function updateChart(chartModal,like,dislike)
       {
-        var dt = [
-            {
-                fill: true,
-                backgroundColor: [
-                    'red',
-                    'blue'],
-                data: [5, 95],
-      // Notice the borderColor 
-                borderColor:	['white', 'white'],
-                borderWidth: [2,2]
-            }
-        ];
+
         chartModal.data.datasets[0].data[0] = like;
         chartModal.data.datasets[0].data[1] = dislike;
         chartModal.update();
@@ -807,9 +734,15 @@ function treatDate(date){
           background-color: rgb(255, 176, 111);
           border-color: rgb(255, 176, 111);
         } 
-        table{
+        {# table{
 
           table-layout: fixed;
+        } #}
+        .dataTables_scrollBody
+        {
+              border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+            background-color: #FFFFFF;
         }
         
       </style>
