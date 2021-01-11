@@ -150,6 +150,9 @@
                 <canvas id="chartCategory" width="400" height="400"> <div id="js-legend" class="chart-legend"></div></canvas>
                 </div>
             </div> 
+            <div>
+            <input type="checkbox" id="legend" onclick="displayLegend()">Afficher légendes </input> 
+            </div> 
             <div class="card mt-3">
                 <div class="card-header" style="background-color:#edf3f0"><span>Durée Moyenne</span></div>
                 <div class="card-body">
@@ -355,10 +358,18 @@
         {# console.log(labelsCategories);
         console.log(countCategories); #}
 
-        if (countCategories.length >= 14)
+
+         function displayLegend()
+         {
+           var bool = document.getElementById("legend").checked;
+           chartCategory.legend.options.display = !chartCategory.legend.options.display;
+           chartCategory.update();
+         }
+
+        {# if (countCategories.length >= 14)
         {
           Chart.defaults.global.legend.display = false;           
-        }
+        } #}
 
       var optionsCategories = {
         title: {
@@ -370,7 +381,7 @@
                 duration : 500,
                 easing : 'easeInCirc'
               },  
-    };
+      };
 
 
     var colorsCategories = [];
