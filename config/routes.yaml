@@ -13,5 +13,3 @@ homepage:
   defaults:
     path: /home
     permanent: true 
-
-
