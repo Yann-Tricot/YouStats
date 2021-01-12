@@ -3,9 +3,7 @@
 
 namespace App\Repository;
 
-use App\Entity\Category;
 use App\Entity\Video;
-use App\Entity\Channel;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -38,6 +36,20 @@ class VideoRepository extends ServiceEntityRepository
             GROUP BY v.categoryId
             ORDER BY COUNT(v.id) DESC'
         )->setMaxResults($MaxResult);
+        return $query->getResult();
+    }
+
+    public function findAllVideosByOneDay($date, $country): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT v
+            FROM App\Entity\Video v 
+            WHERE v.country = :cnt AND v.trendingDate = :day
+            ORDER BY v.titleVideo ASC'
+        )->setParameter('day',$date)
+        ->setParameter('cnt', $country);
         return $query->getResult();
     }
 }
