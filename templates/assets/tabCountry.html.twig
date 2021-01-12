@@ -582,6 +582,7 @@
           }
         }
 
+      //Méthode permettant de mettre à jour le graphique
       function updateChart(chartModal,like,dislike){
 
         chartModal.data.datasets[0].data[0] = like;
@@ -590,6 +591,7 @@
 
       }
 
+      //Méthode d'obtenir le nom de la chaien a partir de l'ID de la chaine
       function getChannelName(id,listChannels)      {
           var channelName = listChannels.find(x => x.Id == id); 
           
@@ -636,10 +638,12 @@
       return compressed;
     };
 
+    //Permet de retourner une chaine de caractère
     function reverse(str){
       return str.split("").reverse().join("");
     }
 
+    //Fonction permettant de nombre de seconde d'une vidéo à partir de la chaine de caractère fournit par Youtube, Exemple :
     function treatDate(date){
 
       date = date.substr(2);  // Enlève le PT
@@ -650,43 +654,47 @@
 
       for (let i = 0; i < date.length; i++){
         c = date[i]
-        switch(c){
+        switch(c){  //Pour chaque unité, on met dans la variable la valeur indiqué dans la chaine de caractère
           case 'S':
           seconde += date[i+1];
-            if(date[i+2] && (date[i+2] != 'M' && date[i+2] != 'H')){
+            if(date[i+2] && (date[i+2] != 'M' && date[i+2] != 'H')){  //Si la deuxième valeur après l'unité n'est pas une autre unité, on la prend
               seconde += date[i+2];
             }
-            seconde = reverse(seconde)
+            seconde = reverse(seconde)  //On retourne de nouveau la chaine
           break;
           case 'M':
           min += date[i+1];
-            if(date[i+2] && (date[i+2] != 'S' && date[i+2] != 'H')){
+            if(date[i+2] && (date[i+2] != 'S' && date[i+2] != 'H')){  //Si la deuxième valeur après l'unité n'est pas une autre unité, on la prend
               min += date[i+2];
             }
-            min = reverse(min)
+            min = reverse(min)  //On retourne de nouveau la chaine
             break;
           case 'H':
           heure += date[i+1];
-            if(date[i+2] && (date[i+2] != 'M' && date[i+2] != 'S')){
+            if(date[i+2] && (date[i+2] != 'M' && date[i+2] != 'S')){  //Si la deuxième valeur après l'unité n'est pas une autre unité, on la prend
               heure += date[i+2];
             }
-            heure = reverse(heure)
+            heure = reverse(heure)  //On retourne de nouveau la chaine
             break;
         }
       }
+      //On met 0  si il n'y a pas de chiffre associé dans la chaine 
       heure = (heure.length == 0) ? '0' : heure;
       min = (min.length == 0) ? '0' : min;
       seconde = (seconde.length == 0) ? '0' : seconde;
-      var tps = parseInt(min*60) + parseInt(heure*3600) + parseInt(seconde);
+      var tps = parseInt(min*60) + parseInt(heure*3600) + parseInt(seconde);  // On passe tout en seconde
       return tps;
       }
 
+      //Si une des unité n'est n'as pas 2 digits, alors ajoute un 0 a gauche 
       function toHHMMSS(str)  {
-      var sec_num = parseInt(str, 10); // don't forget the second param
+      //On récuprère les unités à partir de la chaine de caractère contenant les secondes
+      var sec_num = parseInt(str, 10); 
       var hours   = Math.floor(sec_num / 3600);
       var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
       var seconds = sec_num - (hours * 3600) - (minutes * 60);
 
+      //Si une des unité n'est n'as pas 2 digits, alors ajoute un 0 a gauche 
       if (hours   < 10) {hours   = "0"+hours;}
       if (minutes < 10) {minutes = "0"+minutes;}
       if (seconds < 10) {seconds = "0"+seconds;}
