@@ -295,9 +295,18 @@
       var dislikeTotal = 0;
 
       for (i = 0; i < videos.length; i++) {
-        durationTotal+=durations[i];
-        likeTotal+=likes[i];
-        dislikeTotal+=dislikes[i];          
+        if (durations[i] != 0 ||durations[i] != null )
+        {
+          durationTotal+=durations[i];          
+        }
+        if (durations[i] != 0 ||durations[i] != null )
+        {
+          likeTotal+=likes[i];          
+        }
+        if (durations[i] != 0 ||durations[i] != null )
+        {
+          dislikeTotal+=dislikes[i]; 
+        }
       }
         
 
@@ -730,7 +739,7 @@
         background-color: #FFFFFF;
     }
 
-    canvas{
+      #chartModal{
       margin-top : 75px;
     }
     
