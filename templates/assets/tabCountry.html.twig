@@ -386,8 +386,6 @@ var optionsLikeDislike = {
   var cors = "https://cors-anywhere.herokuapp.com/";
 
   $(document).ready(function() {
-
-
     var table = $('#myDatatable').DataTable({
       data: videos,
       //dom :"Bfrtip",
@@ -483,6 +481,7 @@ var optionsLikeDislike = {
       ]
     });
     $('#container').css('display', 'block');
+  });
 
     $('#myDatatable tfoot th').each(function() {
       var title = $('table tfoot th').eq($(this).index()).text();
@@ -561,7 +560,7 @@ var optionsLikeDislike = {
       }
     });
 
-  });
+ 
 
 
   function tryCors(link, img) {
@@ -754,7 +753,8 @@ var optionsLikeDislike = {
         background-color: #FFFFFF;
     }
 
-      #chartModal{
+    #chartModal
+    {
       margin-top : 75px;
     }
     
