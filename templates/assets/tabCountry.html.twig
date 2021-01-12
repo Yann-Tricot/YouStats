@@ -237,71 +237,59 @@ var optionsLikeDislike = {
   var dislikes = [];
   var dataCategories = [];
 
-  {
-    %
-    for v in 0..categories | length - 1 %
-  }
-  var object = {
-    "Id": "{{categories[loop.index0].getCategoryId}}",
-    "Name": "{{categories[loop.index0].getCategoryName}}"
-  };
+  {% for v in 0..categories | length - 1 %}
+    var object = {
+      "Id": "{{categories[loop.index0].getCategoryId}}",
+      "Name": "{{categories[loop.index0].getCategoryName}}"
+    };
 
-  listCategories.push(object); {
-    % endfor %
-  }
+    listCategories.push(object); 
+  {% endfor %}
 
-  {
-    %
-    for v in 0..channels | length - 1 %
-  }
-  var object = {
-    "Id": "{{channels[loop.index0].getChannelId}}",
-    "Name": "{{channels[loop.index0].getChannelName}}",
-    "CountryId": "{{channels[loop.index0].getChannelCountryID}}"
-  };
-  listChannels.push(object); {
-    % endfor %
-  }
+  {% for v in 0..channels | length - 1 %}
+    var object = {
+      "Id": "{{channels[loop.index0].getChannelId}}",
+      "Name": "{{channels[loop.index0].getChannelName}}",
+      "CountryId": "{{channels[loop.index0].getChannelCountryID}}"
+    };
+    listChannels.push(object); 
+  {% endfor %}
 
-  {
-    %
-    for v in 0..videos | length - 1 %
-  }
-  var idChannel = "{{videos[loop.index0].getVidChannelId}}";
-  var channelName = getChannelName(idChannel, listChannels);
-  var idCategory = "{{videos[loop.index0].getVidCategoryId}}";
-  var categoryName = listCategories.find(x => x.Id == idCategory);
-  categoryName = categoryName["Name"];
-  dataCategories.push(idCategory);
+  {% for v in 0..videos | length - 1 %}
+    var idChannel = "{{videos[loop.index0].getVidChannelId}}";
+    var channelName = getChannelName(idChannel, listChannels);
+    var idCategory = "{{videos[loop.index0].getVidCategoryId}}";
+    var categoryName = listCategories.find(x => x.Id == idCategory);
+    categoryName = categoryName["Name"];
+    dataCategories.push(idCategory);
 
-  var duration = treatDate("{{videos[loop.index0].getDuration}}");
-  durations.push(duration);
-  likes.push(parseInt("{{videos[loop.index0].getVidLikeCount}}"));
-  dislikes.push(parseInt("{{videos[loop.index0].getVidDislikeCount}}"));
-  var object = {
-    "Title": "{{videos[loop.index0].getVidTitle}}",
-    "Id": "{{videos[loop.index0].getId}}",
-    "VideoId": "{{videos[loop.index0].getVidId}}",
-    "Tag": "{{videos[loop.index0].getVidTagId}}",
-    "Country": "{{videos[loop.index0].getVidCountry}}",
-    "ChannelId": "{{videos[loop.index0].getVidChannelId}}",
-    "CategoryId": idCategory,
-    "CommentCount": "{{videos[loop.index0].getVidCommentCount}}",
-    "DislikeCount": "{{videos[loop.index0].getVidDislikeCount}}",
-    "LikeCount": "{{videos[loop.index0].getVidLikeCount}}",
-    "PublishedDate": "{{videos[loop.index0].getVidPublishDate|date('d-m-Y')}}",
-    "MiniatureLink": "{{videos[loop.index0].getMiniatureLink}}",
-    "TrendingDate": "{{videos[loop.index0].getVidTrendingDate|date('d-m-Y')}}",
-    "Duration": toHHMMSS(duration),
-    "Classement": "{{videos[loop.index0].getClassement}}",
-    "Views": "{{videos[loop.index0].getCountView}}",
-    "ChannelName": channelName,
-    "Category": categoryName
-  };
+    var duration = treatDate("{{videos[loop.index0].getDuration}}");
+    durations.push(duration);
+    likes.push(parseInt("{{videos[loop.index0].getVidLikeCount}}"));
+    dislikes.push(parseInt("{{videos[loop.index0].getVidDislikeCount}}"));
+    var object = {
+      "Title": "{{videos[loop.index0].getVidTitle}}",
+      "Id": "{{videos[loop.index0].getId}}",
+      "VideoId": "{{videos[loop.index0].getVidId}}",
+      "Tag": "{{videos[loop.index0].getVidTagId}}",
+      "Country": "{{videos[loop.index0].getVidCountry}}",
+      "ChannelId": "{{videos[loop.index0].getVidChannelId}}",
+      "CategoryId": idCategory,
+      "CommentCount": "{{videos[loop.index0].getVidCommentCount}}",
+      "DislikeCount": "{{videos[loop.index0].getVidDislikeCount}}",
+      "LikeCount": "{{videos[loop.index0].getVidLikeCount}}",
+      "PublishedDate": "{{videos[loop.index0].getVidPublishDate|date('d-m-Y')}}",
+      "MiniatureLink": "{{videos[loop.index0].getMiniatureLink}}",
+      "TrendingDate": "{{videos[loop.index0].getVidTrendingDate|date('d-m-Y')}}",
+      "Duration": toHHMMSS(duration),
+      "Classement": "{{videos[loop.index0].getClassement}}",
+      "Views": "{{videos[loop.index0].getCountView}}",
+      "ChannelName": channelName,
+      "Category": categoryName
+    };
 
-  videos.push(object); {
-    % endfor %
-  }
+    videos.push(object); 
+  {% endfor %}
 
 
   var c = 0;
@@ -710,6 +698,7 @@ var optionsLikeDislike = {
     return hours + ':' + minutes + ':' + seconds;
   }
 
+  //Méthode permettant de vérifié si il y a des esperluette pour les mettre au bon format
   function checkEsp(string) {
     if (string.includes("&amp;")) {
       var r = string.replace("&amp;", "&");
