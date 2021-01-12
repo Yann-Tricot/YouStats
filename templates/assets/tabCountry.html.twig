@@ -700,8 +700,9 @@ var optionsLikeDislike = {
 
   //Méthode permettant de vérifié si il y a des esperluette pour les mettre au bon format
   function checkEsp(string) {
+    var r = string;
     if (string.includes("&amp;")) {
-      var r = string.replace("&amp;", "&");
+      r = string.replace("&amp;", "&");
     }
     return r;
   }
