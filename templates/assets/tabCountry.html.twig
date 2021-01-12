@@ -140,7 +140,7 @@
             </table>
         </div>
 
-        <div class="col-4">
+        <div class="col-4" id="sidebar">
             <div class="card">
               <div class="card-header" style="background-color:#edf3f0"><span>Répartition par catégorie</span></div>
                 <div class="card-body">
@@ -470,7 +470,6 @@
         $('#container').css( 'display', 'block' );
         table.columns.adjust().draw();
 
-      });      
       
       
       $('#myDatatable tfoot th').each(function () {
@@ -492,7 +491,6 @@
 
 
       $('#myDatatable tbody').on('dblclick', 'tr', function (e, dt, type, indexes) {  
-
       //évite les bugs 
       if (e.currentTarget.className != "child" )
       {
@@ -554,6 +552,8 @@
         img.setAttribute('height', '100%');
       }
       });
+    });      
+
 
       function tryCors(link,img){
         var request = new XMLHttpRequest();
@@ -680,6 +680,7 @@
       if (seconds < 10) {seconds = "0"+seconds;}
       return hours+':'+minutes+':'+seconds;
       }
+
 
   </script>
       
