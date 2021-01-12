@@ -194,341 +194,349 @@
       
   <script>
 
-      var optionsLikeDislike = {
-        title: {
-                  display: true,
-                  text: "Proportion de J'aime / J'aime pas ",
-                  position: 'top',
+var optionsLikeDislike = {
+    title: {
+      display: true,
+      text: "Proportion de J'aime / J'aime pas ",
+      position: 'top',
 
-              },
-              animation : {
-                duration : 500,
-                easing : 'easeInCirc'
-              },
-        };
-      var dataLikeDislike = {
-          labels: ["Nombre de j'aime", "Nombre de j'aime pas"],
-            datasets: [
-              {
-                fill: true,
-                backgroundColor: [
-                  'rgba(255, 176, 111)',
-                  'grey'],
-                data: [5, 95],
-        // Notice the borderColor 
-                 borderColor:	['black', 'black'],
-                borderWidth: [2,2]
-                }
-            ]
-        };
-
-      
-      var ctx= document.getElementById("chartModal").getContext("2d");
-          var chartModal = new Chart(ctx, {
-                type: 'doughnut',
-                data: dataLikeDislike,
-                options: optionsLikeDislike
-      });
-
-      var videos = [];
-      var listChannels = [];
-      var listCategories = [];
-      var durations = [];
-      var likes = [];
-      var dislikes = [];
-      var dataCategories = [];
-
-      {% for v in 0..categories|length-1%}
-        var object = 
-        {
-          "Id":"{{categories[loop.index0].getCategoryId}}",
-          "Name":"{{categories[loop.index0].getCategoryName}}"              
-        };
-
-        listCategories.push(object);            
-      {% endfor %}   
-
-      {% for v in 0..channels|length-1%}
-        var object = 
-        {
-          "Id":"{{channels[loop.index0].getChannelId}}",
-          "Name":"{{channels[loop.index0].getChannelName}}",
-          "CountryId":"{{channels[loop.index0].getChannelCountryID}}"
-        };
-        listChannels.push(object);            
-      {% endfor %}   
-
-      {% for v in 0..videos|length-1%}
-        var idChannel = "{{videos[loop.index0].getVidChannelId}}";
-        var channelName = getChannelName(idChannel,listChannels);
-        var idCategory =  "{{videos[loop.index0].getVidCategoryId}}";
-        var categoryName = listCategories.find(x => x.Id == idCategory); 
-        categoryName = categoryName["Name"];
-        dataCategories.push(idCategory);
-
-        var duration = treatDate("{{videos[loop.index0].getDuration}}");
-        durations.push(duration);
-        likes.push(parseInt("{{videos[loop.index0].getVidLikeCount}}"));
-        dislikes.push(parseInt("{{videos[loop.index0].getVidDislikeCount}}"));
-        var object = {
-          "Title" : "{{videos[loop.index0].getVidTitle}}",
-          "Id" : "{{videos[loop.index0].getId}}",
-          "VideoId" : "{{videos[loop.index0].getVidId}}",
-          "Tag" : "{{videos[loop.index0].getVidTagId}}",
-          "Country" : "{{videos[loop.index0].getVidCountry}}",
-          "ChannelId" : "{{videos[loop.index0].getVidChannelId}}",
-          "CategoryId" : idCategory,
-          "CommentCount" : "{{videos[loop.index0].getVidCommentCount}}",
-          "DislikeCount": "{{videos[loop.index0].getVidDislikeCount}}",
-          "LikeCount" : "{{videos[loop.index0].getVidLikeCount}}",
-          "PublishedDate" : "{{videos[loop.index0].getVidPublishDate|date('d-m-Y')}}",
-          "MiniatureLink" : "{{videos[loop.index0].getMiniatureLink}}",
-          "TrendingDate" : "{{videos[loop.index0].getVidTrendingDate|date('d-m-Y')}}",
-          "Duration" : toHHMMSS(duration),
-          "Classement" : "{{videos[loop.index0].getClassement}}",
-          "Views" : "{{videos[loop.index0].getCountView}}",
-          "ChannelName" : channelName,
-          "Category" : categoryName
-        };  
-
-        console.log(object["VideoId"])
-
-        videos.push(object);
-      {% endfor %}     
+    },
+    animation: {
+      duration: 500,
+      easing: 'easeInCirc'
+    },
+  };
+  var dataLikeDislike = {
+    labels: ["Nombre de j'aime", "Nombre de j'aime pas"],
+    datasets: [{
+      fill: true,
+      backgroundColor: [
+        'rgba(255, 176, 111)',
+        'grey'
+      ],
+      data: [5, 95],
+      // Notice the borderColor 
+      borderColor: ['black', 'black'],
+      borderWidth: [2, 2]
+    }]
+  };
 
 
-      var c = 0;
-      var compteurDuration = 0
+  var ctx = document.getElementById("chartModal").getContext("2d");
+  var chartModal = new Chart(ctx, {
+    type: 'doughnut',
+    data: dataLikeDislike,
+    options: optionsLikeDislike
+  });
 
-      var durationTotal = 0;
-      var likeTotal = 0;
-      var dislikeTotal = 0;
+  var videos = [];
+  var listChannels = [];
+  var listCategories = [];
+  var durations = [];
+  var likes = [];
+  var dislikes = [];
+  var dataCategories = [];
 
-      for (i = 0; i < videos.length; i++) {
-        if (durations[i] != 0 ||durations[i] != null )
-        {
-          durationTotal+=durations[i];          
-        }
-        if (durations[i] != 0 ||durations[i] != null )
-        {
-          likeTotal+=likes[i];          
-        }
-        if (durations[i] != 0 ||durations[i] != null )
-        {
-          dislikeTotal+=dislikes[i]; 
-        }
-      }
-        
+  {
+    %
+    for v in 0..categories | length - 1 %
+  }
+  var object = {
+    "Id": "{{categories[loop.index0].getCategoryId}}",
+    "Name": "{{categories[loop.index0].getCategoryName}}"
+  };
 
-      var averageLike = Math.round(likeTotal/likes.length);
-      var averageDislike = Math.round(dislikeTotal/dislikes.length);
-      var averageDuration = Math.round(durationTotal/durations.length);
+  listCategories.push(object); {
+    % endfor %
+  }
 
-      var avgDuration = document.getElementById("avgDuration");
-      var avgLike = document.getElementById("avgLike");
-      var avgDislike = document.getElementById("avgDislike");
+  {
+    %
+    for v in 0..channels | length - 1 %
+  }
+  var object = {
+    "Id": "{{channels[loop.index0].getChannelId}}",
+    "Name": "{{channels[loop.index0].getChannelName}}",
+    "CountryId": "{{channels[loop.index0].getChannelCountryID}}"
+  };
+  listChannels.push(object); {
+    % endfor %
+  }
 
-      var str = toHHMMSS(averageDuration.toString());
-      avgDuration.innerText = str;
-      avgLike.innerText = averageDislike;
-      avgDislike.innerText = averageDuration;
-      var orderCategories = compressArray(dataCategories);
+  {
+    %
+    for v in 0..videos | length - 1 %
+  }
+  var idChannel = "{{videos[loop.index0].getVidChannelId}}";
+  var channelName = getChannelName(idChannel, listChannels);
+  var idCategory = "{{videos[loop.index0].getVidCategoryId}}";
+  var categoryName = listCategories.find(x => x.Id == idCategory);
+  categoryName = categoryName["Name"];
+  dataCategories.push(idCategory);
 
-      var labelsCategories = [];
-      var countCategories = [];
-      console.log(orderCategories);
-      for (var l in orderCategories)
-      {
-        console.log(orderCategories[l]);
-        var value = (orderCategories[l]["value"]);
-        var c =  listCategories.find(x => x.Id == value); 
-        var count = orderCategories[l]["count"]
-        var name = checkEsp(c["Name"]);
-  
-        labelsCategories.push(name);
-        countCategories.push(count);          
-      }
+  var duration = treatDate("{{videos[loop.index0].getDuration}}");
+  durations.push(duration);
+  likes.push(parseInt("{{videos[loop.index0].getVidLikeCount}}"));
+  dislikes.push(parseInt("{{videos[loop.index0].getVidDislikeCount}}"));
+  var object = {
+    "Title": "{{videos[loop.index0].getVidTitle}}",
+    "Id": "{{videos[loop.index0].getId}}",
+    "VideoId": "{{videos[loop.index0].getVidId}}",
+    "Tag": "{{videos[loop.index0].getVidTagId}}",
+    "Country": "{{videos[loop.index0].getVidCountry}}",
+    "ChannelId": "{{videos[loop.index0].getVidChannelId}}",
+    "CategoryId": idCategory,
+    "CommentCount": "{{videos[loop.index0].getVidCommentCount}}",
+    "DislikeCount": "{{videos[loop.index0].getVidDislikeCount}}",
+    "LikeCount": "{{videos[loop.index0].getVidLikeCount}}",
+    "PublishedDate": "{{videos[loop.index0].getVidPublishDate|date('d-m-Y')}}",
+    "MiniatureLink": "{{videos[loop.index0].getMiniatureLink}}",
+    "TrendingDate": "{{videos[loop.index0].getVidTrendingDate|date('d-m-Y')}}",
+    "Duration": toHHMMSS(duration),
+    "Classement": "{{videos[loop.index0].getClassement}}",
+    "Views": "{{videos[loop.index0].getCountView}}",
+    "ChannelName": channelName,
+    "Category": categoryName
+  };
 
-      function displayLegend()
-      {
-        var bool = document.getElementById("legend").checked;
-        chartCategory.legend.options.display = !chartCategory.legend.options.display;
-        chartCategory.update();
-      }
-
-      var optionsCategories = {
-        title: {
-                  display: false,
-                  text: "Proportion de catégories ",
-                  position: 'top'
-              },
-              animation : {
-                duration : 500,
-                easing : 'easeInCirc'
-              },  
-      };
+  videos.push(object); {
+    % endfor %
+  }
 
 
-      var colorsCategories = [];
-      while (colorsCategories.length < orderCategories.length) {
-          do {
-              var color = Math.floor((Math.random()*1000000)+1);
-          } while (colorsCategories.indexOf(color) >= 0);
-          colorsCategories.push("#" + ("FFFFFF" + color.toString(16)).slice(-6));
-      }
+  var c = 0;
+  var compteurDuration = 0
 
-      var dataCategories = {
-          labels: labelsCategories,
-                datasets: [
-                  {
-                      fill: true,
-                      backgroundColor:colorsCategories,
-                      data: countCategories,
-                      // Notice the borderColor 
-                      borderWidth: [2,2]
-                  }
-              ]
-          };
+  var durationTotal = 0;
+  var likeTotal = 0;
+  var dislikeTotal = 0;
 
-      var ctxCategories = document.getElementById("chartCategory").getContext("2d");
-      var chartCategory = new Chart(ctxCategories, {
-              type: 'doughnut',
-              data: dataCategories,
-              optionsLikeDislike: optionsCategories
-        });
+  for (i = 0; i < videos.length; i++) {
+    if (durations[i] != 0 || durations[i] != null) {
+      durationTotal += durations[i];
+    }
+    if (durations[i] != 0 || durations[i] != null) {
+      likeTotal += likes[i];
+    }
+    if (durations[i] != 0 || durations[i] != null) {
+      dislikeTotal += dislikes[i];
+    }
+  }
 
-      var cors = "https://cors-anywhere.herokuapp.com/";   
 
-      $(document).ready(function () {
-        
+  var averageLike = Math.round(likeTotal / likes.length);
+  var averageDislike = Math.round(dislikeTotal / dislikes.length);
+  var averageDuration = Math.round(durationTotal / durations.length);
 
-        var table = $('#myDatatable').DataTable({
-          data: videos,
-          //dom :"Bfrtip",
-          dom: '<"row d-flex justify-content-between"<"col-6"B><"col-3"f><"col-3"l>>t<"row"<"col-11"p>>',
-          autoWidth : false,
-          fixedColumns: true,
-          columns: [ 
-            {
-              data: "Title",    
-              defaultContent: '-',
-              // width : "100"            
-            },
-            {
-              data: "ChannelName",  
-            //  width : "80"
-            },
-              {
-              data: "Category",  
-              // width : "70"
-            }, 
-            
-            {
-              data: "Views",  
-              // width : "100"
-            },
-            {
-              data: "Duration",
-              // width : "100"
-            }, 
-            {
-              data: "PublishedDate",
-              // width : "100"
-            },
-            {
-              data: "TrendingDate",        
-              //width : "100"        
-            },
-            {
-              data: "Classement", 
-              //width : "100"
-            },           
-                        
-          
-          ],
+  var avgDuration = document.getElementById("avgDuration");
+  var avgLike = document.getElementById("avgLike");
+  var avgDislike = document.getElementById("avgDislike");
 
-          responsive: true,
-          paging: true,
-          fixedHeader: true,
-          searching: true,
-          colReorder: true,
-          select: true,
-          keys: true,
-          scrollX : true,
-          details : true,
-          paginate:
-          {
-            "previous": "Previous page"
-          },
-          rowReorder: false,
-          lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-          pageLength: 15,
-          initComplete: function () {
-            this.api().columns().every(function () {
-              var that = this;                
-              $('input', this.footer()).on('keyup change clear', function () {
-                if (that.search() !== this.value) {
-                  that
-                  .search(this.value)
-                  .draw();
-                }
-              });
-            });
-          },
-          buttons: [
-          { extend: 'csv', className: 'btn btn-secondary testBouton' },
-          { extend: 'excel', className: 'btn btn-secondary testBouton' },
-          { extend: 'pdfHtml5', className: 'btn btn-secondary testBouton', orientation: 'landscape', pageSize: 'A3' },
-          { extend: 'print', className: 'btn btn-secondary testBouton' },
-          ]
-        });
-        $('#container').css( 'display', 'block' );     
-      
-      $('#myDatatable tfoot th').each(function () {
-        var title = $('table tfoot th').eq($(this).index()).text();
-        $(this).html('<input type="text" placeholder="Search ' + title + '" />');
-      });
-      
-      $.extend(true, $.fn.dataTable.defaults, {
-        columnDefs: [
-        {
-          targets: '_all',
-          defaultContent: '-'
-        }
-        ],
-        language: {
-          processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>Processing...'
+  var str = toHHMMSS(averageDuration.toString());
+  avgDuration.innerText = str;
+  avgLike.innerText = averageDislike;
+  avgDislike.innerText = averageDuration;
+  var orderCategories = compressArray(dataCategories);
+
+  var labelsCategories = [];
+  var countCategories = [];
+  for (var l in orderCategories) {
+    var value = (orderCategories[l]["value"]);
+    var c = listCategories.find(x => x.Id == value);
+    var count = orderCategories[l]["count"]
+    var name = checkEsp(c["Name"]);
+
+    labelsCategories.push(name);
+    countCategories.push(count);
+  }
+
+  function displayLegend() {
+    var bool = document.getElementById("legend").checked;
+    chartCategory.legend.options.display = !chartCategory.legend.options.display;
+    chartCategory.update();
+  }
+
+  var optionsCategories = {
+    title: {
+      display: false,
+      text: "Proportion de catégories ",
+      position: 'top'
+    },
+    animation: {
+      duration: 500,
+      easing: 'easeInCirc'
+    },
+  };
+
+
+  var colorsCategories = [];
+  while (colorsCategories.length < orderCategories.length) {
+    do {
+      var color = Math.floor((Math.random() * 1000000) + 1);
+    } while (colorsCategories.indexOf(color) >= 0);
+    colorsCategories.push("#" + ("FFFFFF" + color.toString(16)).slice(-6));
+  }
+
+  var dataCategories = {
+    labels: labelsCategories,
+    datasets: [{
+      fill: true,
+      backgroundColor: colorsCategories,
+      data: countCategories,
+      // Notice the borderColor 
+      borderWidth: [2, 2]
+    }]
+  };
+
+  var ctxCategories = document.getElementById("chartCategory").getContext("2d");
+  var chartCategory = new Chart(ctxCategories, {
+    type: 'doughnut',
+    data: dataCategories,
+    optionsLikeDislike: optionsCategories
+  });
+
+  var cors = "https://cors-anywhere.herokuapp.com/";
+
+  $(document).ready(function() {
+
+
+    var table = $('#myDatatable').DataTable({
+      data: videos,
+      //dom :"Bfrtip",
+      dom: '<"row d-flex justify-content-between"<"col-6"B><"col-3"f><"col-3"l>>t<"row"<"col-11"p>>',
+      autoWidth: false,
+      fixedColumns: true,
+      columns: [{
+          data: "Title",
+          defaultContent: '-',
+          // width : "100"            
         },
-      });
+        {
+          data: "ChannelName",
+          //  width : "80"
+        },
+        {
+          data: "Category",
+          // width : "70"
+        },
+
+        {
+          data: "Views",
+          // width : "100"
+        },
+        {
+          data: "Duration",
+          // width : "100"
+        },
+        {
+          data: "PublishedDate",
+          // width : "100"
+        },
+        {
+          data: "TrendingDate",
+          //width : "100"        
+        },
+        {
+          data: "Classement",
+          //width : "100"
+        },
 
 
-      $('#myDatatable tbody').on('dblclick', 'tr', function (e, dt, type, indexes) {  
+      ],
+
+      responsive: true,
+      paging: true,
+      fixedHeader: true,
+      searching: true,
+      colReorder: true,
+      select: true,
+      keys: true,
+      scrollX: true,
+      details: true,
+      paginate: {
+        "previous": "Previous page"
+      },
+      rowReorder: false,
+      lengthMenu: [
+        [10, 25, 50, -1],
+        [10, 25, 50, "All"]
+      ],
+      pageLength: 15,
+      initComplete: function() {
+        this.api().columns().every(function() {
+          var that = this;
+          $('input', this.footer()).on('keyup change clear', function() {
+            if (that.search() !== this.value) {
+              that
+                .search(this.value)
+                .draw();
+            }
+          });
+        });
+      },
+      buttons: [{
+          extend: 'csv',
+          className: 'btn btn-secondary testBouton'
+        },
+        {
+          extend: 'excel',
+          className: 'btn btn-secondary testBouton'
+        },
+        {
+          extend: 'pdfHtml5',
+          className: 'btn btn-secondary testBouton',
+          orientation: 'landscape',
+          pageSize: 'A3'
+        },
+        {
+          extend: 'print',
+          className: 'btn btn-secondary testBouton'
+        },
+      ]
+    });
+    $('#container').css('display', 'block');
+
+    $('#myDatatable tfoot th').each(function() {
+      var title = $('table tfoot th').eq($(this).index()).text();
+      $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+    });
+
+    $.extend(true, $.fn.dataTable.defaults, {
+      columnDefs: [{
+        targets: '_all',
+        defaultContent: '-'
+      }],
+      language: {
+        processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>Processing...'
+      },
+    });
+
+
+    $('#myDatatable tbody').on('dblclick', 'tr', function(e, dt, type, indexes) {
       //évite les bugs 
-      if (e.currentTarget.className != "child" )
-      {
+      if (e.currentTarget.className != "child") {
         var classement = $('td', this).eq(7).text();
 
         var v = videos.findIndex(x => x.Classement == classement);
         var videoFound = videos[v];
-        
-        // {# console.log(videoFound); #}
+
         var lien = cors + videos["MiniatureLink"];
         var lien2 = cors + "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdeveloper.mozilla.org%2Ffr%2Fdocs%2FWeb%2FHTML%2FElement%2FImg&psig=AOvVaw18gr0YP4N_5daIKW_ssPag&ust=1606481499287000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKC8_JagoO0CFQAAAAAdAAAAABAD";
         var elt = document.getElementById("imageMiniature");
         var img = document.getElementById("imgMiniature");
         var id = videoFound["VideoId"];
         var a = document.getElementById("aImageMiniature");
-        a.setAttribute("href","https://www.youtube.com/watch?v="+id);
+        a.setAttribute("href", "https://www.youtube.com/watch?v=" + id);
 
         titre = videoFound["Title"];
-        
-        var videoID =  videoFound["VideoId"];
+
+        var videoID = videoFound["VideoId"];
 
         var classement = videoFound["Classement"];
-        var channelName =  videoFound["ChannelName"];
+        var channelName = videoFound["ChannelName"];
         var duree = videoFound["Duration"];
         var classement = videoFound["Classement"];
-        var viewCount = videoFound["Views"];        
+        var viewCount = videoFound["Views"];
         var tagId = videoFound["Tag"];
         var country = videoFound["Country"];
         var channelID = videoFound["ChannelId"];
@@ -539,11 +547,11 @@
         var PublishedDate = videoFound["PublishedDate"];
         var TrendingDate = videoFound["TrendingDate"];
         var link = cors + videoFound["MiniatureLink"];
-        var testLike = videos[classement-1];
+        var testLike = videos[classement - 1];
 
         var nbLike = videoFound["LikeCount"];
-        var nbDislike =videoFound["DislikeCount"];
-        updateChart(chartModal,nbLike,nbDislike);
+        var nbDislike = videoFound["DislikeCount"];
+        updateChart(chartModal, nbLike, nbDislike);
 
         $('#modalTab').modal("show");
         $('#titre').text(titre);
@@ -557,165 +565,158 @@
         $('#classement').text(classement);
         $('#duree').text(duree);
         $('#trending').text(TrendingDate);
-      
+
         img.crossOrigin = "anonymous";
-        tryCors(link,img);
+        tryCors(link, img);
         img.setAttribute('width', '100%');
         img.setAttribute('height', '100%');
       }
-      });
+    });
 
-    });      
+  });
 
 
-      function tryCors(link,img){
-        var request = new XMLHttpRequest();
-          request.open('GET', link)
-          request.send();
-          img.src = "../../images/miniature_default.png" ;
-          request.onload = function()
-          {
-            if ((request.status >= 200 && request.status < 400) && (link != ""))       
-            {            
-                  img.src = link;
-            }      
-          }
-        }
-
-      //Méthode permettant de mettre à jour le graphique
-      function updateChart(chartModal,like,dislike){
-
-        chartModal.data.datasets[0].data[0] = like;
-        chartModal.data.datasets[0].data[1] = dislike;
-        chartModal.update();
-
+  function tryCors(link, img) {
+    var request = new XMLHttpRequest();
+    request.open('GET', link)
+    request.send();
+    img.src = "../../images/miniature_default.png";
+    request.onload = function() {
+      if ((request.status >= 200 && request.status < 400) && (link != "")) {
+        img.src = link;
       }
+    }
+  }
 
-      //Méthode d'obtenir le nom de la chaien a partir de l'ID de la chaine
-      function getChannelName(id,listChannels)      {
-          var channelName = listChannels.find(x => x.Id == id); 
-          
-          if (channelName != undefined) 
-          {
-            
-            channelName = channelName["Name"];
-          }
-          else 
-          {
-            channelName = "";
-          }
-          return channelName;
-      }
-      
-      function compressArray(original) {
-    
-      var compressed = [];
-      // make a copy of the input array
-      var copy = original.slice(0);
-    
-      // first loop goes over every element
-      for (var i = 0; i < original.length; i++) {
-    
-        var myCount = 0;	
-        // loop over every element in the copy and see if it's the same
-        for (var w = 0; w < copy.length; w++) {
-          if (original[i] == copy[w]) {
-            // increase amount of times duplicate is found
-            myCount++;
-            // sets item to undefined
-            delete copy[w];
-          }
-        }
-    
-        if (myCount > 0) {
-          var a = new Object();
-          a.value = original[i];
-          a.count = myCount;
-          compressed.push(a);
+  //Méthode permettant de mettre à jour le graphique
+  function updateChart(chartModal, like, dislike) {
+
+    chartModal.data.datasets[0].data[0] = like;
+    chartModal.data.datasets[0].data[1] = dislike;
+    chartModal.update();
+
+  }
+
+  //Méthode d'obtenir le nom de la chaien a partir de l'ID de la chaine
+  function getChannelName(id, listChannels) {
+    var channelName = listChannels.find(x => x.Id == id);
+
+    if (channelName != undefined) {
+
+      channelName = channelName["Name"];
+    } else {
+      channelName = "";
+    }
+    return channelName;
+  }
+
+  function compressArray(original) {
+
+    var compressed = [];
+    // make a copy of the input array
+    var copy = original.slice(0);
+
+    // first loop goes over every element
+    for (var i = 0; i < original.length; i++) {
+
+      var myCount = 0;
+      // loop over every element in the copy and see if it's the same
+      for (var w = 0; w < copy.length; w++) {
+        if (original[i] == copy[w]) {
+          // increase amount of times duplicate is found
+          myCount++;
+          // sets item to undefined
+          delete copy[w];
         }
       }
-    
-      return compressed;
-    };
 
-    //Permet de retourner une chaine de caractère
-    function reverse(str){
-      return str.split("").reverse().join("");
+      if (myCount > 0) {
+        var a = new Object();
+        a.value = original[i];
+        a.count = myCount;
+        compressed.push(a);
+      }
     }
 
-    //Fonction permettant de nombre de seconde d'une vidéo à partir de la chaine de caractère fournit par Youtube, Exemple :
-    function treatDate(date){
+    return compressed;
+  };
 
-      date = date.substr(2);  // Enlève le PT
-      date = reverse(date);
-      var heure = '';
-      var min = '';
-      var seconde = '';
+  //Permet de retourner une chaine de caractère
+  function reverse(str) {
+    return str.split("").reverse().join("");
+  }
 
-      for (let i = 0; i < date.length; i++){
-        c = date[i]
-        switch(c){  //Pour chaque unité, on met dans la variable la valeur indiqué dans la chaine de caractère
-          case 'S':
-          seconde += date[i+1];
-            if(date[i+2] && (date[i+2] != 'M' && date[i+2] != 'H')){  //Si la deuxième valeur après l'unité n'est pas une autre unité, on la prend
-              seconde += date[i+2];
-            }
-            seconde = reverse(seconde)  //On retourne de nouveau la chaine
+  //Fonction permettant de nombre de seconde d'une vidéo à partir de la chaine de caractère fournit par Youtube, Exemple :
+  function treatDate(date) {
+
+    date = date.substr(2); // Enlève le PT
+    date = reverse(date);
+    var heure = '';
+    var min = '';
+    var seconde = '';
+
+    for (let i = 0; i < date.length; i++) {
+      c = date[i]
+      switch (c) { //Pour chaque unité, on met dans la variable la valeur indiqué dans la chaine de caractère
+        case 'S':
+          seconde += date[i + 1];
+          if (date[i + 2] && (date[i + 2] != 'M' && date[i + 2] != 'H')) { //Si la deuxième valeur après l'unité n'est pas une autre unité, on la prend
+            seconde += date[i + 2];
+          }
+          seconde = reverse(seconde) //On retourne de nouveau la chaine
           break;
-          case 'M':
-          min += date[i+1];
-            if(date[i+2] && (date[i+2] != 'S' && date[i+2] != 'H')){  //Si la deuxième valeur après l'unité n'est pas une autre unité, on la prend
-              min += date[i+2];
-            }
-            min = reverse(min)  //On retourne de nouveau la chaine
-            break;
-          case 'H':
-          heure += date[i+1];
-            if(date[i+2] && (date[i+2] != 'M' && date[i+2] != 'S')){  //Si la deuxième valeur après l'unité n'est pas une autre unité, on la prend
-              heure += date[i+2];
-            }
-            heure = reverse(heure)  //On retourne de nouveau la chaine
-            break;
-        }
+        case 'M':
+          min += date[i + 1];
+          if (date[i + 2] && (date[i + 2] != 'S' && date[i + 2] != 'H')) { //Si la deuxième valeur après l'unité n'est pas une autre unité, on la prend
+            min += date[i + 2];
+          }
+          min = reverse(min) //On retourne de nouveau la chaine
+          break;
+        case 'H':
+          heure += date[i + 1];
+          if (date[i + 2] && (date[i + 2] != 'M' && date[i + 2] != 'S')) { //Si la deuxième valeur après l'unité n'est pas une autre unité, on la prend
+            heure += date[i + 2];
+          }
+          heure = reverse(heure) //On retourne de nouveau la chaine
+          break;
       }
-      //On met 0  si il n'y a pas de chiffre associé dans la chaine 
-      heure = (heure.length == 0) ? '0' : heure;
-      min = (min.length == 0) ? '0' : min;
-      seconde = (seconde.length == 0) ? '0' : seconde;
-      var tps = parseInt(min*60) + parseInt(heure*3600) + parseInt(seconde);  // On passe tout en seconde
-      return tps;
-      }
-
-      //Si une des unité n'est n'as pas 2 digits, alors ajoute un 0 a gauche 
-      function toHHMMSS(str)  {
-      //On récuprère les unités à partir de la chaine de caractère contenant les secondes
-      var sec_num = parseInt(str, 10); 
-      var hours   = Math.floor(sec_num / 3600);
-      var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-      var seconds = sec_num - (hours * 3600) - (minutes * 60);
-
-      //Si une des unité n'est n'as pas 2 digits, alors ajoute un 0 a gauche 
-      if (hours   < 10) {hours   = "0"+hours;}
-      if (minutes < 10) {minutes = "0"+minutes;}
-      if (seconds < 10) {seconds = "0"+seconds;}
-      return hours+':'+minutes+':'+seconds;
     }
+    //On met 0  si il n'y a pas de chiffre associé dans la chaine 
+    heure = (heure.length == 0) ? '0' : heure;
+    min = (min.length == 0) ? '0' : min;
+    seconde = (seconde.length == 0) ? '0' : seconde;
+    var tps = parseInt(min * 60) + parseInt(heure * 3600) + parseInt(seconde); // On passe tout en seconde
+    return tps;
+  }
 
-    function checkEsp(string)
-    {
-      if (string.includes("&amp;"))
-        {
-          var r = string.replace("&amp;","&");
-        }
-      return r;
+  //Si une des unité n'est n'as pas 2 digits, alors ajoute un 0 a gauche 
+  function toHHMMSS(str) {
+    //On récuprère les unités à partir de la chaine de caractère contenant les secondes
+    var sec_num = parseInt(str, 10);
+    var hours = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    //Si une des unité n'est n'as pas 2 digits, alors ajoute un 0 a gauche 
+    if (hours < 10) {
+      hours = "0" + hours;
     }
+    if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+    return hours + ':' + minutes + ':' + seconds;
+  }
 
-
-
-
- 
- 
-  </script>
+  function checkEsp(string) {
+    if (string.includes("&amp;")) {
+      var r = string.replace("&amp;", "&");
+    }
+    return r;
+  }
+</script>
       
   <style>
 
