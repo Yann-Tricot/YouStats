@@ -92,8 +92,11 @@ class CountryController extends AbstractController
 
         $date = new \DateTime();
 
-        $dateForm = $this->createForm(DateType::class, $date);
-
+        $dateForm = $this->createForm(DateType::class, $date, [
+            'widget' => 'single_text',
+            'attr' => ['class' => 'js-datepicker'],
+            'html5' => false,
+        ]);
         $dateForm->handleRequest($request);
         if ($dateForm->isSubmitted() && $dateForm->isValid()) {
             $date = $dateForm->getData();
