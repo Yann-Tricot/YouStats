@@ -3,12 +3,12 @@
 #    controller: App\Controller\CountryController::index
 controllers:
   resource: ../src/Controller/HomeController.php
-  type:     annotation
-  prefix:   /
+  type: annotation
+  prefix: /
 
 # redirecting the homepage
 homepage:
-  path: /home
+  path: /
   controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
   defaults:
     path: /home
