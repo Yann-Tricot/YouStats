@@ -12,4 +12,4 @@ homepage:
   controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
   defaults:
     path: /home
-    permanent: true 
+    permanent: true
