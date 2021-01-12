@@ -24,4 +24,19 @@ class CountryRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findBestCountryOfAllVideos(int $MaxResult): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT c
+            FROM App\Entity\Country c
+            JOIN App\Entity\Video v
+            WHERE v.country = c.countryId
+            GROUP BY v.country
+            ORDER BY COUNT(v.id) DESC'
+        )->setMaxResults($MaxResult);
+        return $query->getResult();
+    }
 }

@@ -3,21 +3,25 @@
 
 namespace App\Controller;
 
+use App\Repository\CategoryRepository;
 use App\Repository\ChannelRepository;
 use App\Repository\CountryRepository;
 use App\Repository\VideoRepository;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
+
 
 class CountryController extends AbstractController
 {
     /**
      * @var CountryRepository
      */
-    private $repository;
+    private $countryRepository;
 
     /**
      * @var EntityManagerInterface
@@ -34,12 +38,21 @@ class CountryController extends AbstractController
      */
     private $channelRepository;
 
-    public function __construct(CountryRepository $repository, VideoRepository $vRepo, ChannelRepository $chanRepo, EntityManagerInterface $em)
+    /**
+     * @var CategoryRepository
+     */
+    private $categoryRepository;
+
+    private $videos, $channels, $categories;
+
+    public function __construct(CountryRepository $countryRepository, VideoRepository $vRepo, CategoryRepository $categoryRepository,
+                                ChannelRepository $chanRepo, EntityManagerInterface $em)
     {
-        $this->repository = $repository;
+        $this->countryRepository = $countryRepository;
         $this->entityManager = $em;
         $this->videoRepository = $vRepo;
         $this->channelRepository = $chanRepo;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -47,7 +60,7 @@ class CountryController extends AbstractController
     **/
     public function list(EntityManagerInterface $em)
     {
-        $countries = $this->repository->findAll();
+        $countries = $this->countryRepository->findAll();
 
         if(!$countries)
         {
@@ -57,15 +70,14 @@ class CountryController extends AbstractController
 
     }
 
-//changer les slugs -> on recup le country depuis les videos et les channels
-
-
     /**
      * @Route("/countries/{slug}-{id}", name="country.showCountry")
      **/
     #requirements={"slug": "[a-z0-9\-]*"})
-    public function show(\App\Entity\Country $country, string $slug) : Response
+    public function show(\App\Entity\Country $country, string $slug,Request $request) : Response
     {
+        $countries = $this->countryRepository->findAll();
+
         if ($country->getSlug() !== $slug) {
             return $this->redirectToRoute('country.showCountry', [
                 'id' => $country->getId(),
@@ -74,16 +86,47 @@ class CountryController extends AbstractController
 
         }
 
-        $videos = $this->videoRepository->findAllByCountry($country);
-        $channels = $this->channelRepository->findAllByCountry($country->getId());
+        $this->videos = $this->videoRepository->findAllByCountry($country);
+        $this->channels = $this->channelRepository->findAllByCountry($country->getId());
+        $this->categories = $this->categoryRepository->findAllByCountry($country->getId());
+
+        $date = new \DateTime();
+
+        $dateForm = $this->createForm(DateType::class, $date);
+
+        $dateForm->handleRequest($request);
+        if ($dateForm->isSubmitted() && $dateForm->isValid()) {
+            $date = $dateForm->getData();
+            if ($date != null) {
+                $this->sortByDateAndCountry($date,$country);
+
+                return $this->render('country\showCountry.html.twig', [
+                    'country' => $country,
+                    'videos' => $this->videos,
+                    'channels' => $this->channels,
+                    'countries' => $countries,
+                    'categories' => $this->categories,
+                    'date' => $date,
+                    'dateForm' => $dateForm->createView()
+                ]);
+            }
+        }
 
         return $this->render('country\showCountry.html.twig', [
-            'country' => $country, 'videos'=>$videos, 'channels'=>$channels
+            'country' => $country,
+            'videos'=>$this->videos,
+            'channels'=>$this->channels,
+            'countries'=> $countries,
+            'categories'=>$this->categories,
+            'date'=>$date,
+            'dateForm' => $dateForm->createView()
         ]);
     }
 
-
-
-
-
+    public function sortByDateAndCountry(DateTime $date, $country)
+    {
+        $this->videos = $this->videoRepository->findAllVideosByOneDay($date, $country->getId());
+        $this->channels = $this->channelRepository->findAllChannelsByOneDay($date, $country->getId());
+        $this->categories = $this->categoryRepository->findAllCategoriesByOneDay($date, $country->getId());
+    }
 }

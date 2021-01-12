@@ -19,12 +19,12 @@
             </div>
         </div>
     </div>
-
+    <script>console.log({{ channels | json_encode | raw }});</script>
     <div class="container mt-5">
         <div class="row">
             <div class="col">
                 <div class="row mt-3" style="justify-content: center">
-                    <p style="color:black">Top 3 mondial</p>
+                    <p style="color:black">Top 3 chaînes mondiales</p>
                 </div>
 
                 {% for channel in channels %} <!-- METTRE LES 3 MEILLEURES CHAINES EN TENDANCES-->
@@ -38,13 +38,13 @@
             </div>
             <div class="col">
                 <div class="row mt-3" style="justify-content: center">
-                    <p style="color:black;">Top 3 catégorie</p> <!-- METTRE LES TROIS MEILLEURES CATEGORIES-->
+                    <p style="color:black;">Top 3 catégories mondiales</p> <!-- METTRE LES TROIS MEILLEURES CATEGORIES-->
                 </div>
-                {% for channel in channels %} <!-- METTRE LES 3 MEILLEURES CHAINES EN TENDANCES-->
+                {% for category in categories %} <!-- METTRE LES 3 MEILLEURES CATEGORIES EN TENDANCES-->
                     <div class="row mt-3" style="justify-content: center">
                         <div class="border rounded shadow-sm" style="width: 50%; background-color:white">
                             <img src="images/award-icon-06.png" title="my image" alt="my Image" style="height:20px; width: 20px">
-                            <p class="text-center">...</p>
+                            <p class="text-center">{{ category.categoryName }}</p>
                         </div>
                     </div>
                 {% endfor %}

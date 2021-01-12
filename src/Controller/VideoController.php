@@ -17,7 +17,7 @@ class VideoController extends AbstractController
     /**
      * @var VideoRepository
      */
-    private $repository;
+    private $videoRepository;
 
     /**
      * @var EntityManagerInterface
@@ -26,42 +26,7 @@ class VideoController extends AbstractController
 
     public function __construct(VideoRepository $repository, EntityManagerInterface $em)
     {
-        $this->repository = $repository;
+        $this->videoRepository = $repository;
         $this->em = $em;
     }
-
-    /**
-     * @Route("/videos")
-     **/
-    public function list(EntityManagerInterface $em)
-    {
-        $country = 'FR';
-
-        $videos = $this->repository->findAllByCountry($country);
-
-        if(!$videos)
-        {
-            throw $this->createNotFoundException('Error no videos found !');
-        }
-        return $this->render('/country/indexVideo.html.twig', ['videos'=> $videos]);
-        #  return new JsonResponse($channels);
-    }
-
-//    /**
-//     * @Route("/videos/{slug}-{id}", name="country.show")
-//     **/
-//    #requirements={"slug": "[a-z0-9\-]*"})
-//    public function show(\App\Entity\Video $video, string $slug) : Response
-//    {
-//        if ($video->getSlug() !== $slug)
-//        {
-//            return $this->redirectToRoute('country.show', [
-//                'name' => $video->getId(),
-//                'slug' => $video->getSlug()
-//            ], 301);
-//        }
-//        return $this->render('/country/indexCountry.html.twig', [
-//            'video' => $video,
-//        ]);
-//    }
 }

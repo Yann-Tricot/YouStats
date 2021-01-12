@@ -44,21 +44,27 @@ class Video
     /**
      *
      * @ORM\Column(name="published_date", type="date", nullable=true)
-     #* @ORM\Column(name="published_date", type="date", nullable=true, options={"default"="NULL"})
+    #* @ORM\Column(name="published_date", type="date", nullable=true, options={"default"="NULL"})
      */
     private $publishedDate;
 
     /**
      *
      * @ORM\Column(name="count_like", type="integer", nullable=true)
-     #* @ORM\Column(name="count_like", type="integer", nullable=true, options={"default"="NULL"})
+    #* @ORM\Column(name="count_like", type="integer", nullable=true, options={"default"="NULL"})
      */
     private $countLike;
 
     /**
      *
+     * @ORM\Column(name="count_view", type="integer", nullable=true)
+     */
+    private $countView;
+
+    /**
+     *
      * @ORM\Column(name="count_dislike", type="integer", nullable=true)
-     #* @ORM\Column(name="count_dislike", type="integer", nullable=true, options={"default"="NULL"})
+    #* @ORM\Column(name="count_dislike", type="integer", nullable=true, options={"default"="NULL"})
      */
     private $countDislike;
 
@@ -76,21 +82,21 @@ class Video
     /**
      *
      * @ORM\Column(name="category_id", type="integer", nullable=true)
-     #* @ORM\Column(name="category_id", type="integer", nullable=true, options={"default"="NULL"})
+    #* @ORM\Column(name="category_id", type="integer", nullable=true, options={"default"="NULL"})
      */
     private $categoryId;
 
     /**
      *
      * @ORM\Column(name="trending_date", type="date", nullable=true)
-     #* @ORM\Column(name="trending_date", type="date", nullable=true, options={"default"="NULL"})
+    #* @ORM\Column(name="trending_date", type="date", nullable=true, options={"default"="NULL"})
      */
     private $trendingDate;
 
     /**
      *
      * @ORM\Column(name="miniature_link", type="string", length=50, nullable=true)
-     #* @ORM\Column(name="miniature_link", type="string", length=50, nullable=true, options={"default"="NULL"})
+    #* @ORM\Column(name="miniature_link", type="string", length=50, nullable=true, options={"default"="NULL"})
      */
     private $miniatureLink;
     #private $miniatureLink = 'NULL';
@@ -99,7 +105,7 @@ class Video
      * @var int|null
      *
      * @ORM\Column(name="tag_id", type="integer", nullable=true)
-     #* @ORM\Column(name="tag_id", type="integer", nullable=true, options={"default"="NULL"})
+    #* @ORM\Column(name="tag_id", type="integer", nullable=true, options={"default"="NULL"})
      */
     private $tagId;
     #private $tagId = 'NULL';
@@ -107,7 +113,7 @@ class Video
     /**
      *
      * @ORM\Column(name="channel_id", type="string", length=50, nullable=true)
-     #* @ORM\Column(name="channel_id", type="string", length=50, nullable=true, options={"default"="NULL"})
+    #* @ORM\Column(name="channel_id", type="string", length=50, nullable=true, options={"default"="NULL"})
      */
     private $channelId;
     #private $channelId = 'NULL';
@@ -115,7 +121,7 @@ class Video
     /**
      *
      * @ORM\Column(name="country", type="string", length=2, nullable=true)
-     #* @ORM\Column(name="country", type="string", length=2, nullable=true, options={"default"="NULL"})
+    #* @ORM\Column(name="country", type="string", length=2, nullable=true, options={"default"="NULL"})
      */
     private $country;
     #private $country = 'NULL';
@@ -166,5 +172,17 @@ class Video
 
     public function getMiniatureLink(){
         return $this->miniatureLink;
+    }
+
+    public function getDuration(){
+        return $this->duration;
+    }
+
+    public function getClassement(){
+        return $this->classement;
+    }
+
+    public function getCountView(){
+        return $this->countView;
     }
 }

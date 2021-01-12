@@ -13,6 +13,7 @@ var/
 vendor/
 /vendor/
 /node_modules/
+.env
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
@@ -24,3 +25,7 @@ vendor/
 ###> symfony/web-server-bundle ###
 /.web-server-pid
 ###< symfony/web-server-bundle ###
+
+### IDE
+.idea/
+/.idea/

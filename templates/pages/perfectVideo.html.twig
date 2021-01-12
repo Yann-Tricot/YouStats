@@ -1,0 +1,64 @@
+{% extends 'assets/base.html.twig' %}
+
+{% block body %}
+    <div class="row" style="margin-top : 170px; justify-content: center">
+        <h1>Comment créer votre vidéo parfaite ? </h1>
+    </div>
+    <div class="row mt-5">
+        <div class="col-4" style="margin-top: 6%">
+            <div class="row mt-3" style="justify-content: center">
+                <p style="color:black;">Top 3 catégorie</p> <!-- METTRE LES TROIS MEILLEURES CATEGORIES-->
+            </div>
+            {% for category in categories %} <!-- METTRE LES 3 MEILLEURES CATEGORIES EN TENDANCES-->
+                <div class="row mt-3" style="justify-content: center">
+                    <div class="border rounded shadow-sm" style="width: 50%; background-color:white">
+                        <img src="images/award-icon-06.png" title="my image" alt="my Image" style="height:20px; width: 20px">
+                        <p class="text-center">{{ category.categoryName }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="col-4">
+            <div class="row mt-3" style="justify-content: center">
+                <p>La vidéo la plus vu en ce moment</p>
+                {% for video in videos %}
+                <a href={{"https://www.youtube.com/watch?v="~video.getVidId}}><img src={{video.miniatureLink}} title="miniature" alt="miniature" class="mt-3" style="height:100%; width: 100%"></a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-4"  style="margin-top: 6%">
+            <div class="row mt-3" style="justify-content: center">
+                <p style="color:black;">Top 3 des pays</p> <!-- METTRE LES TROIS MEILLEURES CATEGORIES-->
+            </div>
+            {% for country in countries %} <!-- METTRE LES 3 MEILLEURES PAYS EN TENDANCES-->
+                <div class="row mt-3" style="justify-content: center">
+                    <div class="border rounded shadow-sm" style="width: 50%; background-color:white">
+                        <img src="images/award-icon-06.png" title="my image" alt="my Image" style="height:20px; width: 20px">
+                        <p class="text-center">{{ country.getName }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row mt-3" style="justify-content: center">
+        <p>Durée de la vidéo : </p>
+    </div>
+
+    <style>
+        .translateBox:hover{
+            -webkit-transform: translate(0.5em,0);
+            -moz-transform: translate(0.5em,0);
+            -o-transform: translate(0.5em,0);
+            -ms-transform: translate(0.5em,0);
+            transform: translate(0.5em,0);
+
+            -webkit-transition: 1s ease-in-out;
+            -moz-transition: 1s ease-in-out;
+            -o-transition: 1s ease-in-out;
+            transition: 1s ease-in-out;
+        }
+    </style>
+{% endblock %}
