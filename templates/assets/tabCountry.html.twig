@@ -31,105 +31,89 @@
     </head>
     
     <body>
-
-      <!-- modal -->
-      <div class="modal " id="modalTab" role="dialog">
-        <div class="modal-dialog modal-lg" >
-          <div class="modal-content">
-
+   <!-- modal -->
+   <div class="modal " id="modalTab" role="dialog">
+      <div class="modal-dialog modal-lg" >
+         <div class="modal-content">
             <div class="modal-header" style="background-color:#edf3f0">
-              <h3 class="modal-title">Vidéo</h3>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+               <h3 class="modal-title">Vidéo</h3>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+               </button>
             </div>
-            
             <div class="modal-body">
-              <div class="container">
-                <div class="row">
-                  <div id="imageMiniature" class="col-7"><a id="aImageMiniature"><img id="imgMiniature"></a></div>
-                  <div class="col-5">
-                    <h5>Titre : </h5>
-                    <div id="titre"></div>
-                    <h5 >Nom de la chaine : </h5><div id="chaine"></div>
+               <div class="container">
+                  <div class="row">
+                     <div id="imageMiniature" class="col-7"><a id="aImageMiniature"><img id="imgMiniature"></a></div>
+                     <div class="col-5">
+                        <h5>Titre : </h5>
+                        <div id="titre"></div>
+                        <h5 >Nom de la chaine : </h5>
+                        <div id="chaine"></div>
+                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-7">
-                    <div class="card" style="margin-top : 1em" >
-                      <div class="card-body" >
-                        <div class="table table-striped" >
-                          <table>
-                            <tbody>  
-                              <tr>
-                                <td>Classement :</td>
-                                <td id ="classement"> </td>
-                              </tr>                                       
-                              <tr>
-                                <td>Durée :</td>
-                                <td id ="duree"> </td>
-                              </tr>
-                              <tr>
-                                <td>Pays : </td>                                          
-                                <td id ="pays"> Tag </td>
-                              </tr>                                        
-                              <tr>
-                                <td>Nombre de commentaires : </td>
-                                <td id ="comment"> Tag </td>
-                              </tr>
-                              <tr>
-                                <td>Nombre de j'aime : </td>
-                                <td id ="like"> Tag </td>
-                              </tr>
-                              <tr>
-                                <td>Nombre de j'aime pas : </td>
-                                <td id ="dislike"> Tag </td>
-                              </tr>
-                              <tr>
-                                <td>Date de publication : </td>
-                                <td id ="published"> Tag </td>
-                              </tr>
-                              <tr>
-                                <td>Date de tendance : </td>
-                                <td id ="trending"> Tag </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                  <div class="row">
+                     <div class="col-7">
+                        <div class="card" style="margin-top : 1em" >
+                           <div class="card-body" >
+                              <div class="table table-striped" >
+                                 <table>
+                                    <tbody>
+                                       <tr>
+                                          <td>Classement :</td>
+                                          <td id ="classement"> </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Durée :</td>
+                                          <td id ="duree"> </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Pays : </td>
+                                          <td id ="pays"> Tag </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Nombre de commentaires : </td>
+                                          <td id ="comment"> Tag </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Nombre de j'aime : </td>
+                                          <td id ="like"> Tag </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Nombre de j'aime pas : </td>
+                                          <td id ="dislike"> Tag </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Date de publication : </td>
+                                          <td id ="published"> Tag </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Date de tendance : </td>
+                                          <td id ="trending"> Tag </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+                           </div>
                         </div>
-                      </div>
-                    </div> 
-                  </div>                        
-                  <div class="col-5">
-                      <canvas id="chartModal" width="400" height="400" class="align-middle"></canvas>
+                     </div>
+                     <div class="col-5">
+                        <canvas id="chartModal" width="400" height="400" class="align-middle"></canvas>
+                     </div>
                   </div>
-                </div>
-
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                  </div>
+               </div>
             </div>
-          </div>
-        </div>
+         </div>
       </div>
-
-      <div class="row">
-        <div class="col-7 ml-5 mr-5">
-            <table class="table" id="myDatatable">
-              <thead>
-                  <tr>
-                    <th><strong>Titre de la vidéo</strong></th>
-                    <th><strong>Nom de la chaine </strong></th>
-                    <th><strong>Catégorie</strong></th>
-                    <th><strong>Nombre de vues</strong></th>
-                    <th><strong>Durée de la vidéo</strong></th>
-                    <th><strong>Date de publication</strong></th>
-                    <th><strong>Date de tendance</strong></th>
-                    <th><strong>Classement</strong></th>
-                  </tr>
-              </thead>
-              <tfoot>
-                <tr>
+   </div>
+   <div class="row">
+      <div class="col-7 ml-5 mr-5">
+         <table class="table" id="myDatatable">
+            <thead>
+               <tr>
                   <th><strong>Titre de la vidéo</strong></th>
                   <th><strong>Nom de la chaine </strong></th>
                   <th><strong>Catégorie</strong></th>
@@ -138,59 +122,95 @@
                   <th><strong>Date de publication</strong></th>
                   <th><strong>Date de tendance</strong></th>
                   <th><strong>Classement</strong></th>
-                </tr>
-              </tfoot>
-            </table>
-        </div>
-
-        <div class="col-4" id="sidebar">
-            <div class="card">
-              <div class="card-header" style="background-color:#edf3f0"><span>Répartition par catégorie</span></div>
-                <div class="card-body">
-                  <canvas id="chartCategory" width="400" height="400"> <div id="js-legend" class="chart-legend"></div></canvas>
-                </div>
-              </div> 
-              <div>
-                <input type="checkbox" id="legend" onclick="displayLegend()"> Afficher légendes </input> 
-              </div> 
-
-            <div class="card mt-3">
-                <div class="card-header" style="background-color:#edf3f0"><span>Durée Moyenne</span></div>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col mr-2">
-                      <div class="row"><span class="iconify mr-2 mt-1" data-icon="radix-icons:lap-timer" data-inline="false"></span>
-                      <div class="text-dark font-weight-bold h5 mb-0" id="avgDuration"></div></div>
-                    </div>  
-                  </div>
-                </div>
-            </div>
-
-            <div class="card mt-3">
-              <div class="card-header" style="background-color:#edf3f0"><span>Like moyen| Dislike moyens</span></div>
-                <div class="card-body">
-                  <div class="row align-items-center no-gutters">
-                    <div class="col mr-2">
-                      <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"></div>
-
-                      <div class="row"><span class="iconify mr-2 mt-1" data-icon="flat-color-icons:like-placeholder" data-inline="false"></span>
-                      <div class="text-dark font-weight-bold h5 mb-0" id="avgLike"></div></div>
-
-                      <div class="row"><span class="iconify mr-2 mt-1" data-icon="ion:heart-dislike-sharp" data-inline="false"></span>
-                      <div class="text-dark font-weight-bold h5 mb-0" id="avgDislike"></div></div>
-                    </div>
-                      <div class="col-auto"><i class="icon ion-person-stalker fa-2x text-gray-300"></i></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-             {# <div>
-        <iconify-icon data-icon="mdi:food-apple" style="font-size: 64px; color: #3C8A3F;"></iconify-icon> 
-        </div> #}
+               </tr>
+            </thead>
+            <tfoot>
+               <tr>
+                  <th><strong>Titre de la vidéo</strong></th>
+                  <th><strong>Nom de la chaine </strong></th>
+                  <th><strong>Catégorie</strong></th>
+                  <th><strong>Nombre de vues</strong></th>
+                  <th><strong>Durée de la vidéo</strong></th>
+                  <th><strong>Date de publication</strong></th>
+                  <th><strong>Date de tendance</strong></th>
+                  <th><strong>Classement</strong></th>
+               </tr>
+            </tfoot>
+         </table>
       </div>
-
-    </body>      
+      <div class="col-4" id="sidebar">
+         <div class="card" >
+            <div class="card-header" style="background-color:#edf3f0"><span>Répartition par catégorie</span></div>
+            <div class="card-body">
+               <canvas id="chartCategory" width="400" height="400">
+                  <div id="js-legend" class="chart-legend"></div>
+               </canvas>
+            </div>
+         </div>
+         <div>
+            <input type="checkbox" id="legend" onclick="displayLegend()"> Afficher légendes </input> 
+         </div>
+         <div class="row">
+            <div class="card mt-3 col-4" >
+               <div class="card-header" style="background-color:#edf3f0"><span>Durée Moyenne</span></div>
+               <div class="card-body">
+                  <div class="row">
+                     <div class="col mr-2">
+                        <div class="row">
+                           <span class="iconify mr-2 mt-1" data-icon="radix-icons:lap-timer" data-inline="false"></span>
+                           <div class="text-dark font-weight-bold h5 mb-0" id="avgDuration">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="card mt-3 col-4">
+               <div class="card-header" style="background-color:#edf3f0"><span>Like moyen</span>
+               </div>
+               <div class="card-body">
+                  <div class="row align-items-center no-gutters">
+                     <div class="col mr-2">
+                        <div class="text-uppercase text-primary font-weight-bold text-xs mb-1">
+                        </div>
+                        <div class="row">
+                           <span class="iconify mr-2 mt-1" data-icon="flat-color-icons:like-placeholder" data-inline="false"></span>
+                           <div class="text-dark font-weight-bold h5 mb-0" id="avgLike"></div>
+                        </div>
+                     </div>
+                     <div class="col-auto"><i class="icon ion-person-stalker fa-2x text-gray-300"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="card mt-3 col-4">
+               <div class="card-header" style="background-color:#edf3f0"><span>Dislike moyens</span>
+               </div>
+               <div class="card-body">
+                  <div class="row align-items-center no-gutters">
+                     <div class="col mr-2">
+                        <div class="text-uppercase text-primary font-weight-bold text-xs mb-1">
+                        </div>
+                        <div class="row">
+                           <span class="iconify mr-2 mt-1" data-icon="ion:heart-dislike-sharp" data-inline="false"></span>
+                           <div class="text-dark font-weight-bold h5 mb-0" id="avgDislike"></div>
+                        </div>
+                     </div>
+                     <div class="col-auto"><i class="icon ion-person-stalker fa-2x text-gray-300"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   {# 
+   <div>
+      <iconify-icon data-icon="mdi:food-apple" style="font-size: 64px; color: #3C8A3F;"></iconify-icon>
+   </div>
+   #}
+   </div>
+</body>
       
   <script>
 
@@ -262,7 +282,6 @@ var optionsLikeDislike = {
     var categoryName = listCategories.find(x => x.Id == idCategory);
     categoryName = categoryName["Name"];
     dataCategories.push(idCategory);
-
     var duration = treatDate("{{videos[loop.index0].getDuration}}");
     durations.push(duration);
     likes.push(parseInt("{{videos[loop.index0].getVidLikeCount}}"));
@@ -298,7 +317,7 @@ var optionsLikeDislike = {
   var durationTotal = 0;
   var likeTotal = 0;
   var dislikeTotal = 0;
-
+  console.log(durations);
   for (i = 0; i < videos.length; i++) {
     if (durations[i] != 0 || durations[i] != null) {
       durationTotal += durations[i];
@@ -482,7 +501,7 @@ var optionsLikeDislike = {
     });
     $('#container').css('display', 'block');
        
-    $(function() {
+ /*   $(function() {
         var offset = $('#sidebar').offset();
         var topPadding = 15;
         $(window).scroll(function() {
@@ -496,7 +515,7 @@ var optionsLikeDislike = {
                 });
             };
         });
-    });
+    });*/
 });
 
     $('#myDatatable tfoot th').each(function() {
