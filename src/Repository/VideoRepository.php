@@ -38,6 +38,18 @@ class VideoRepository extends ServiceEntityRepository
         )->setMaxResults($MaxResult);
         return $query->getResult();
     }
+  
+    public function findBestVideoOfAllVideos(): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT v
+             FROM App\Entity\Video v
+            ORDER BY v.countView DESC'
+        )->setMaxResults(1);
+        return $query->getResult();
+    }
 
     public function findAllVideosByOneDay($date, $country): array
     {

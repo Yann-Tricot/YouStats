@@ -89,6 +89,7 @@ class Video
     /**
      *
      * @ORM\Column(name="trending_date", type="date", nullable=true)
+    #* @ORM\Column(name="trending_date", type="date", nullable=true, options={"default"="NULL"})
      */
     private $trendingDate;
 

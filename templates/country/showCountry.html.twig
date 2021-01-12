@@ -3,8 +3,7 @@
 {% block title "showCountry" %}
 
 {% block body %}
-    <div class="container mt-5">
-        <div style="margin-top : 190px">
+        <div style="margin-top : 200px">
             {% include 'assets/carousel.html.twig' %}
             {{ form_start(dateForm) }}
             {{ form_widget(dateForm) }}
@@ -12,10 +11,13 @@
             {{ form_end(dateForm) }}
 
         </div>
+
+        <div class="mt-5 mb-5 ml-5">
+            <h1>Tendances {{country.getName}}</h1>
+        </div>
         {% if (videos is defined) and (channels is defined) %}
             {% include 'assets/tabCountry.html.twig' %}
         {% endif %}
-    </div>
 {% endblock %}
 
 
