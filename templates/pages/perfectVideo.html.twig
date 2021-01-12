@@ -1,6 +1,8 @@
 {% extends 'assets/base.html.twig' %}
 
 {% block body %}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <div class="row" style="margin-top : 170px; justify-content: center">
         <h1>Comment créer votre vidéo parfaite ? </h1>
     </div>
@@ -45,7 +47,74 @@
 
     <div class="row mt-3" style="justify-content: center">
         <p>Durée de la vidéo : </p>
+         <div id="duration"> </div>
     </div>
+
+<script>
+{% for v in 0..videos|length-1%}
+    var object = 
+    {
+        "Duration" :"{{videos[loop.index0].getDuration}}"
+    };
+{% endfor %}   
+var duration = toHHMMSS(treatDate(object["Duration"]));
+ $('#duration').text(duration);
+    
+function reverse(str){
+   return str.split("").reverse().join("");
+}
+function treatDate(date){
+  date = date.substr(2);  // Enlève le PT
+  date = reverse(date);
+  var heure = '';
+  var min = '';
+  var seconde = '';
+  for (let i = 0; i < date.length; i++){
+    c = date[i]
+    switch(c){
+      case 'S':
+      seconde += date[i+1];
+        if(date[i+2] && (date[i+2] != 'M' && date[i+2] != 'H')){
+          seconde += date[i+2];
+        }
+        seconde = reverse(seconde)
+      break;
+      case 'M':
+      min += date[i+1];
+        if(date[i+2] && (date[i+2] != 'S' && date[i+2] != 'H')){
+          min += date[i+2];
+        }
+        min = reverse(min)
+        break;
+      case 'H':
+      heure += date[i+1];
+        if(date[i+2] && (date[i+2] != 'M' && date[i+2] != 'S')){
+          heure += date[i+2];
+        }
+        heure = reverse(heure)
+        break;
+    }
+  }
+  heure = (heure.length == 0) ? '0' : heure;
+  min = (min.length == 0) ? '0' : min;
+  seconde = (seconde.length == 0) ? '0' : seconde;
+  var tps = parseInt(min*60) + parseInt(heure*3600) + parseInt(seconde);
+  return tps;
+}
+
+function toHHMMSS(str)  {
+    var sec_num = parseInt(str, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    return hours+':'+minutes+':'+seconds;
+}
+
+    </script>
 
     <style>
         .translateBox:hover{
