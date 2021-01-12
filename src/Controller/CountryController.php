@@ -5,7 +5,6 @@ namespace App\Controller;
 
 use App\Repository\CategoryRepository;
 use App\Repository\ChannelRepository;
-use App\Repository\CategoryRepository;
 use App\Repository\CountryRepository;
 use App\Repository\VideoRepository;
 use DateTime;
