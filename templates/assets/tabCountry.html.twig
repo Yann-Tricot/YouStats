@@ -2,6 +2,8 @@
 <html lang="en">
    <head>
       <meta charset="utf-8">
+      <title>Test      </title>
+
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <!--Nouveaux imports-->
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -250,8 +252,6 @@
             listCategories.push(object);            
         {% endfor %}   
 
-
-
       {% for v in 0..channels|length-1%}
             var object = 
             {
@@ -271,7 +271,6 @@
           var categoryName = listCategories.find(x => x.Id == idCategory); 
           categoryName = categoryName["Name"];
           dataCategories.push(idCategory);
-
 
           var duration = treatDate("{{videos[loop.index0].getDuration}}");
           durations.push(duration);
@@ -412,11 +411,11 @@
             optionsLikeDislike: optionsCategories
       });
 
-    
         var cors = "https://cors-anywhere.herokuapp.com/";   
 
         $(document).ready(function () {
           
+
           var table = $('#myDatatable').DataTable({
             data: videos,
             //dom :"Bfrtip",

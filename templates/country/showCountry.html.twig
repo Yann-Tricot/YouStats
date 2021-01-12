@@ -5,6 +5,11 @@
 {% block body %}
         <div style="margin-top : 200px">
             {% include 'assets/carousel.html.twig' %}
+            {{ form_start(dateForm) }}
+            {{ form_widget(dateForm) }}
+            <button type="submit" class="btn btn-primary">Save</button>
+            {{ form_end(dateForm) }}
+
         </div>
 
         <div class="mt-5 mb-5 ml-5">
@@ -18,6 +23,5 @@
 
 {% block javascripts %}
     {{ parent() }}
-
 
 {% endblock %}
