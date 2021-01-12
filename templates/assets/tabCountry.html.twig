@@ -140,7 +140,7 @@
             </table>
         </div>
 
-        <div class="col-4">
+        <div class="col-4" id="sidebar">
             <div class="card">
               <div class="card-header" style="background-color:#edf3f0"><span>Répartition par catégorie</span></div>
                 <div class="card-body">
@@ -680,6 +680,22 @@
       if (seconds < 10) {seconds = "0"+seconds;}
       return hours+':'+minutes+':'+seconds;
       }
+
+       $(function() {
+            var offset = $("#sidebar").offset();
+            var topPadding = 15;
+            $(window).scroll(function() {
+                if ($(window).scrollTop() > offset.top) {
+                    $("#sidebar").stop().animate({
+                        marginTop: $(window).scrollTop() - offset.top + topPadding
+                    });
+                } else {
+                    $("#sidebar").stop().animate({
+                        marginTop: 0
+                    });
+                };
+            });
+        });
 
   </script>
       
