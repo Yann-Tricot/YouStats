@@ -481,7 +481,23 @@ var optionsLikeDislike = {
       ]
     });
     $('#container').css('display', 'block');
-  });
+       
+    $(function() {
+        var offset = $('#sidebar').offset();
+        var topPadding = 15;
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > offset.top) {
+                $('#sidebar').stop().animate({
+                    marginTop: $(window).scrollTop() - offset.top + topPadding
+                });
+            } else {
+                $('#sidebar').stop().animate({
+                    marginTop: 0
+                });
+            };
+        });
+    });
+});
 
     $('#myDatatable tfoot th').each(function() {
       var title = $('table tfoot th').eq($(this).index()).text();
@@ -559,6 +575,8 @@ var optionsLikeDislike = {
         img.setAttribute('height', '100%');
       }
     });
+
+    
 
  
 
