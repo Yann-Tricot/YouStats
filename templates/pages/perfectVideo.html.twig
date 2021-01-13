@@ -49,14 +49,17 @@
     </div>
 
 <script>
+
 {% for v in 0..videos|length-1%}
     var object = 
     {
         "Duration" :"{{videos[loop.index0].getDuration}}"
     };
 {% endfor %}   
+
 var duration = toHHMMSS(treatDate(object["Duration"]));
-document.getElementById('duration').text(duration);
+var elem = document.getElementById('duration');
+elem.innerHTML = duration;
     
 function reverse(str){
    return str.split("").reverse().join("");
