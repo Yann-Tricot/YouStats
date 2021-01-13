@@ -296,32 +296,42 @@ var optionsLikeDislike = {
     videos.push(object); 
   {% endfor %}
   var c = 0;
-  var compteurDuration = 0
+  var compteurDuration = 0;
+  var compteurLike = 0;
+  var compteurDislike = 0;
+
   var durationTotal = 0;
   var likeTotal = 0;
   var dislikeTotal = 0;
-  console.log(durations);
+
+
   for (i = 0; i < videos.length; i++) {
     if (durations[i] != 0 || durations[i] != null) {
       durationTotal += durations[i];
+      compteurDuration++;
     }
-    if (durations[i] != 0 || durations[i] != null) {
+    if (likes[i] != 0 || likes[i] != null) {
       likeTotal += likes[i];
+      compteurLike+=1;
     }
-    if (durations[i] != 0 || durations[i] != null) {
+    if (dislikes[i] != 0 || dislikes[i] != null) {
       dislikeTotal += dislikes[i];
+      compteurDislike++;
     }
   }
-  var averageLike = Math.round(likeTotal / likes.length);
-  var averageDislike = Math.round(dislikeTotal / dislikes.length);
-  var averageDuration = Math.round(durationTotal / durations.length);
+
+  var averageLike = Math.round(likeTotal /compteurLike );
+  var averageDislike = Math.round(dislikeTotal / compteurDislike);
+  var averageDuration = Math.round(durationTotal / compteurDuration);
+
   var avgDuration = document.getElementById("avgDuration");
   var avgLike = document.getElementById("avgLike");
   var avgDislike = document.getElementById("avgDislike");
+
   var str = toHHMMSS(averageDuration.toString());
-  avgDuration.innerText = str;
-  avgLike.innerText = averageDislike;
-  avgDislike.innerText = averageDuration;
+  avgDuration.innerHTML = str;
+  avgLike.innerHTML = averageLike;
+  avgDislike.innerHTML = averageDislike;
   var orderCategories = compressArray(dataCategories);
   var labelsCategories = [];
   var countCategories = [];
