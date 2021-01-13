@@ -66,7 +66,7 @@ class CountryController extends AbstractController
     }
 
     /**
-     * @Route("/countries", name="countries")
+     * @Route("/alexsbogoss", name="countries")
      **/
     public function list(EntityManagerInterface $em)
     {
