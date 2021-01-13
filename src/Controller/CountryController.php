@@ -67,16 +67,15 @@ class CountryController extends AbstractController
 
     /**
      * @Route("/countries", name="countries")
-    **/
+     **/
     public function list(EntityManagerInterface $em)
     {
         $countries = $this->countryRepository->findAll();
 
-        if(!$countries)
-        {
+        if (!$countries) {
             throw $this->createNotFoundException('Error no videos found !');
         }
-        return $this->render('country\indexCountry.html.twig', ['countries'=> $countries]);
+        return $this->render('country\indexCountry.html.twig', ['countries' => $countries]);
 
     }
 
@@ -84,7 +83,7 @@ class CountryController extends AbstractController
      * @Route("/countries/{slug}-{id}", name="country.showCountry")
      **/
     #requirements={"slug": "[a-z0-9\-]*"})
-    public function show(\App\Entity\Country $country, string $slug,Request $request) : Response
+    public function show(\App\Entity\Country $country, string $slug, Request $request): Response
     {
         $countries = $this->countryRepository->findAll();
 
@@ -99,9 +98,9 @@ class CountryController extends AbstractController
 
         $date = new \DateTime();
         //Formatage de la date
-        $date->setTime(00,00,00.000000);
+        $date->setTime(00, 00, 00.000000);
         //Soustraction d'un jour pour récuperer les données du jour d'avant à l'affichage de showCountry
-        $date->sub(new \DateInterval('P1D'));
+        $date->sub(new \DateInterval('P2D'));
         //$date->add(\DateInterval::createFromDateString('yesterday'));
 
         $this->sortByDateAndCountry($date, $country);
@@ -109,13 +108,23 @@ class CountryController extends AbstractController
 
         $dateForm = $this->createForm(DateType::class, $date);
         $dateForm->handleRequest($request);
-        
+
+        if (empty($this->videos) | empty($this->channels) | empty($this->categories)) {
+            return $this->render('pages\error404.html.twig', [
+                'id' => $country->getId(),
+                'slug' => $country->getSlug()
+            ]);
+        }
+
         if ($dateForm->isSubmitted() && $dateForm->isValid()) {
             $date = $dateForm->getData();
             if ($date != null) {
-                $this->sortByDateAndCountry($date,$country);
-                if(!$this->videos ){
-
+                $this->sortByDateAndCountry($date, $country);
+                if (empty($this->videos) | empty($this->channels) | empty($this->categories)) {
+                    return $this->render('pages\error404.html.twig', [
+                        'id' => $country->getId(),
+                        'slug' => $country->getSlug()
+                    ]);
                 }
                 return $this->render('country\showCountry.html.twig', [
                     'country' => $country,
@@ -128,14 +137,14 @@ class CountryController extends AbstractController
                 ]);
             }
         }
-      
+
         return $this->render('country\showCountry.html.twig', [
             'country' => $country,
-            'videos'=>$this->videos,
-            'channels'=>$this->channels,
-            'countries'=> $countries,
-            'categories'=>$this->categories,
-            'date'=>$date,
+            'videos' => $this->videos,
+            'channels' => $this->channels,
+            'countries' => $countries,
+            'categories' => $this->categories,
+            'date' => $date,
             'dateForm' => $dateForm->createView()
         ]);
     }
