@@ -111,7 +111,7 @@
    </div>
    <div class="row">
       <div class="col-6 ml-5 mr-5">
-         <table class="table" id="myDatatable">
+          <table class="table hover" id="myDatatable">
             <thead>
                <tr>
                   <th><strong>Titre de la vidéo</strong></th>
@@ -750,6 +750,10 @@ var optionsLikeDislike = {
         
     .card-header{
       width: 100%;
+    }
+
+    table#myDatatable.dataTable tbody tr:hover {
+      cursor: pointer;
     }
 
   </style>
