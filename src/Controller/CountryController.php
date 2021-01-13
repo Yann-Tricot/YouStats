@@ -100,7 +100,7 @@ class CountryController extends AbstractController
         //Formatage de la date
         $date->setTime(00, 00, 00.000000);
         //Soustraction d'un jour pour récuperer les données du jour d'avant à l'affichage de showCountry
-        $date->sub(new \DateInterval('P2D'));
+        $date->sub(new \DateInterval('P1D'));
         //$date->add(\DateInterval::createFromDateString('yesterday'));
 
         $this->sortByDateAndCountry($date, $country);
