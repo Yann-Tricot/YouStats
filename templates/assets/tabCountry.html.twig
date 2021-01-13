@@ -539,8 +539,10 @@ var optionsLikeDislike = {
     $(function() {
         var offset = $('#sidebar').offset();
         var topPadding = 15;
+        var scrollBottom = $(window).scrollTop() + $(window).height();
+        var bottom = $(window).height() - offset.top - link.height();
         $(window).scroll(function() {
-            if ($(window).scrollTop() > offset.top) {
+            if ($(window).scrollTop() > offset.top || scrollBottom < bottom) {
                 $('#sidebar').stop().animate({
                     marginTop: $(window).scrollTop() - offset.top + topPadding
                 });
