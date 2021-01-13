@@ -537,14 +537,15 @@ var optionsLikeDislike = {
       }
     });
     $(function() {
+        var elem = $('#sidebar');
         var offset = $('#sidebar').offset();
         var topPadding = 15;
         var scrollBottom = $(window).scrollTop() + $(window).height();
-        var bottom = $(window).height() - offset.top - link.height();
+        var bottom = $(window).height() - offset.top - elem.height();
         console.log('scroll' +scrollBottom);
         console.log('bottom' +bottom);
         $(window).scroll(function() {
-            if ($(window).scrollTop() > offset.top || scrollBottom > bottom) {
+            if ($(window).scrollTop() > offset.top || scrollBottom < bottom) {
                 $('#sidebar').stop().animate({
                     marginTop: $(window).scrollTop() - offset.top + topPadding
                 });
