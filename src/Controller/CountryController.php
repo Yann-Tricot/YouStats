@@ -114,11 +114,9 @@ class CountryController extends AbstractController
             $date = $dateForm->getData();
             if ($date != null) {
                 $this->sortByDateAndCountry($date,$country);
-
                 if(!$this->videos ){
 
                 }
-
                 return $this->render('country\showCountry.html.twig', [
                     'country' => $country,
                     'videos' => $this->videos,
@@ -130,6 +128,7 @@ class CountryController extends AbstractController
                 ]);
             }
         }
+      
         return $this->render('country\showCountry.html.twig', [
             'country' => $country,
             'videos'=>$this->videos,
