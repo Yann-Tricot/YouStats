@@ -139,7 +139,7 @@
          </table>
       </div>
       <div class="col-5" id="sidebar">
-         <div class="card" >
+         <div class="card align-items-center text-center" >
             <div class="card-header" style="background-color:#edf3f0"><span>Répartition par catégorie</span></div>
             <div class="card-body">
                <canvas id="chartCategory" width="400" height="400">
@@ -148,11 +148,11 @@
             </div>
          </div>
          <div>
-            <input type="checkbox" id="legend" onclick="displayLegend()"> Afficher légendes </input> 
+            <input type="checkbox" id="legend" onclick="displayLegend()"> Cacher la légende </input> 
          </div>
          <div class="row">
-            <div class="card mt-3 col-4" >
-               <div class="card-header" style="background-color:#edf3f0"><span>Durée Moyenne</span></div>
+            <div class="card mt-3 col-4 text-center" >
+               <div class="card-header" style="background-color:#edf3f0"><span>Durée moyenne</span></div>
                <div class="card-body">
                   <div class="row">
                      <div class="col mr-2">
@@ -165,7 +165,7 @@
                   </div>
                </div>
             </div>
-            <div class="card mt-3 col-4">
+            <div class="card mt-3 col-4 text-center">
                <div class="card-header" style="background-color:#edf3f0"><span>Like moyen</span>
                </div>
                <div class="card-body">
@@ -183,8 +183,8 @@
                   </div>
                </div>
             </div>
-            <div class="card mt-3 col-4">
-               <div class="card-header" style="background-color:#edf3f0"><span>Dislike moyens</span>
+            <div class="card mt-3 col-4 text-center">
+               <div class="card-header" style="background-color:#edf3f0"><span>Dislike moyen</span>
                </div>
                <div class="card-body">
                   <div class="row align-items-center no-gutters">
@@ -737,6 +737,14 @@ var optionsLikeDislike = {
       max-width: 570px;
     }
     
+    #sidebar{
+      padding-top: 4.75%;
+    }
+        
+    .card-header{
+      width: 100%;
+    }
+
   </style>
       
 </html>
