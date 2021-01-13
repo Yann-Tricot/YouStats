@@ -49,7 +49,7 @@
                         <h5>Titre : </h5>
                         <div id="titre"></div>
                         <h5 >Nom de la chaine : </h5>
-                        <div id="chaine"></div>
+                        <a id="aChannel"><div id="chaine"></div></a>
                      </div>
                   </div>
                   <div class="row">
@@ -504,24 +504,26 @@ var optionsLikeDislike = {
        
        $('#myDatatable tbody').on('dblclick', 'tr', function(e, dt, type, indexes) {
       //évite les bugs 
-      console.log("TEst");
       if (e.currentTarget.className != "child") {
         var classement = $('td', this).eq(7).text();
 
         var v = videos.findIndex(x => x.Classement == classement);
         var videoFound = videos[v];
-
+        var channelID = videoFound["ChannelId"];
         var lien = cors + videos["MiniatureLink"];
         var lien2 = cors + "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdeveloper.mozilla.org%2Ffr%2Fdocs%2FWeb%2FHTML%2FElement%2FImg&psig=AOvVaw18gr0YP4N_5daIKW_ssPag&ust=1606481499287000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKC8_JagoO0CFQAAAAAdAAAAABAD";
         var elt = document.getElementById("imageMiniature");
         var img = document.getElementById("imgMiniature");
+        var videoID = videoFound["VideoId"];
         var id = videoFound["VideoId"];
         var a = document.getElementById("aImageMiniature");
         a.setAttribute("href", "https://www.youtube.com/watch?v=" + id);
+        var aChannel = document.getElementById("aChannel");
+        aChannel.setAttribute("href", "https://www.youtube.com/channel/" + channelID);
+
 
         titre = videoFound["Title"];
 
-        var videoID = videoFound["VideoId"];
 
         var classement = videoFound["Classement"];
         var channelName = videoFound["ChannelName"];
@@ -530,7 +532,6 @@ var optionsLikeDislike = {
         var viewCount = videoFound["Views"];
         var tagId = videoFound["Tag"];
         var country = videoFound["Country"];
-        var channelID = videoFound["ChannelId"];
         var categoryID = videoFound["CategoryId"];
         var CommentCount = videoFound["CommentCount"];
         var LikeCount = videoFound["LikeCount"];
@@ -563,7 +564,7 @@ var optionsLikeDislike = {
         img.setAttribute('height', '100%');
       }
     });
-    
+
     $(function() {
         var offset = $('#sidebar').offset();
         var topPadding = 15;
