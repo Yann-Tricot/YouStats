@@ -540,12 +540,10 @@ var optionsLikeDislike = {
         var elem = $('#sidebar');
         var offset = $('#sidebar').offset();
         var topPadding = 15;
-        var scrollBottom = $(window).scrollTop() + $(window).height();
-        var bottom = $(window).height() - offset.top - elem.height();
-        console.log('scroll' +scrollBottom);
-        console.log('bottom' +bottom);
         $(window).scroll(function() {
-            if ($(window).scrollTop() > offset.top || scrollBottom < bottom) {
+          console.log($(window).scrollTop());
+          console.log(offset.top);
+            if ($(window).scrollTop() > offset.top) {
                 $('#sidebar').stop().animate({
                     marginTop: $(window).scrollTop() - offset.top + topPadding
                 });
