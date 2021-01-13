@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -326,7 +327,6 @@ var optionsLikeDislike = {
     }
   }
 
-
   var averageLike = Math.round(likeTotal / likes.length);
   var averageDislike = Math.round(dislikeTotal / dislikes.length);
   var averageDuration = Math.round(durationTotal / durations.length);
@@ -579,7 +579,6 @@ var optionsLikeDislike = {
   });
   
 
-
     $('#myDatatable tfoot th').each(function() {
       var title = $('table tfoot th').eq($(this).index()).text();
       $(this).html('<input type="text" placeholder="Search ' + title + '" />');
@@ -594,9 +593,6 @@ var optionsLikeDislike = {
         processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>Processing...'
       },
     });
-
-
-    
 
 
   function tryCors(link, img) {
