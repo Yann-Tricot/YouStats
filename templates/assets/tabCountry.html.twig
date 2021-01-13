@@ -3,8 +3,7 @@
 <html lang="en">
    <head>
       <meta charset="utf-8">
-      <title>Test      </title>
-
+      <title>Test</title>
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <!--Nouveaux imports-->
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -19,100 +18,6 @@
       <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js" defer></script>  
       <script src="https://cdn.datatables.net/colreorder/1.5.3/js/dataTables.colReorder.min.js" defer></script>  
       <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> 
-
-
-      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.23/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.3/fc-3.3.2/fh-3.1.7/kt-2.5.3/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.1/datatables.min.css"/>
-      
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-      <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.23/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.3/fc-3.3.2/fh-3.1.7/kt-2.5.3/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.1/datatables.min.js"></script>
-      {# <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script> #}
-    </head>
-    
-    <body>
-
-    <!-- modal -->
-       <div class="modal " id="modalTab" role="dialog">
-            <div class="modal-dialog modal-lg" >
-               <div class="modal-content">
-                  <div class="modal-header" style="background-color:#edf3f0">
-                     <h3 class="modal-title">Vidéo</h3>
-                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-                  <div class="modal-body">
-                     <div class="container">
-                        <div class="row">
-                           <div id="imageMiniature" class="col-7"><a id="aImageMiniature"><img id="imgMiniature"></a></div>
-                           <div class="col-5">
-                              <h5>Titre : </h5>
-                              <div id="titre">
-                              </div>
-                              <h5 >Nom de la chaine : </h5>
-                              <div id="chaine">    </div>
-                           </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-7">
-                         <div class="card" style="margin-top : 1em" >
-                              <div class="card-body" >
-                                 <div class="table table-striped" >
-                                    <table >
-                                       <tbody>  
-                                        <tr>
-                                             <td>Classement :</td>
-                                             <td id ="classement"> </td>
-                                          </tr>                                       
-                                          <tr>
-                                             <td>Durée :</td>
-                                             <td id ="duree"> </td>
-                                          </tr>
-                                          <tr>
-                                              <td>Pays : </td>                                          
-                                             <td id ="pays"> Tag </td>
-                                          </tr>
-                                                                         
-                                          <tr>
-                                            <td>Nombre de commentaires : </td>
-                                             <td id ="comment"> Tag </td>
-                                          </tr>
-                                          <tr>
-                                            <td>Nombre de j'aime : </td>
-                                             <td id ="like"> Tag </td>
-                                          </tr>
-                                          <tr>
-                                            <td>Nombre de j'aime pas : </td>
-                                             <td id ="dislike"> Tag </td>
-                                          </tr>
-                                          <tr>
-                                           <td>Date de publication : </td>
-                                             <td id ="published"> Tag </td>
-                                          </tr>
-                                          <tr>
-                                            <td>Date de tendance : </td>
-                                             <td id ="trending"> Tag </td>
-                                          </tr>
-                                    </table>
-                                 </div>
-                              </div>
-                           </div> 
-                        </div>                        
-                        <div class="col-5">
-                            <canvas id="chartModal" width="400" height="400" class="align-middle"></canvas>
-                        </div>
-                     </div>
-                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                     </div>
-                  </div>
-                  <!-- /.modal-content -->
-               </div>
-               <!-- /.modal-dialog -->
-            </div>
-         </div>
-      </div>
-
         <div class="row">
           <div class="col-7 ml-5 mr-5">
               <table class="table" id="myDatatable">
@@ -145,618 +50,774 @@
               </table>
          </div>
 
-          <div class="col-4">
-              <div class="card">
-                <div class="card-header" style="background-color:#edf3f0"><span>Répartition par catégorie</span></div>
-                <div class="card-body">
-                <canvas id="chartCategory" width="400" height="400"> <div id="js-legend" class="chart-legend"></div></canvas>
-                </div>
-            </div> 
-            <div>
-            <input type="checkbox" id="legend" onclick="displayLegend()">Afficher légendes </input> 
-            </div> 
-            <div class="card mt-3">
-                <div class="card-header" style="background-color:#edf3f0"><span>Durée Moyenne</span></div>
-                <div class="card-body">
-                <div class="row">
-                  <div class="col mr-2">
-                     <div class="text-dark font-weight-bold h5 mb-0" id="avgDuration"> 
-                  </div>
-                  <div class="col mr-2">
-
-                     
-                  </div>  
-                {# <canvas id="chartDuration" width="400" height="400"></canvas>       #}
-                </div>
-            </div>
-            </div>
-            <div class="card mt-3">
-              <div class="card-header" style="background-color:#edf3f0"><span>Like moyen| Dislike moyens</span></div>
-              <div class="card-body">
-                <div class="row align-items-center no-gutters">
-                  <div class="col mr-2">
-                    <div class="text-uppercase text-primary font-weight-bold text-xs mb-1">
-                    </div>
-                    <div class="text-dark font-weight-bold h5 mb-0" id="avgLike"><span></span>
-                    </div>
-                     <div class="text-dark font-weight-bold h5 mb-0" id="avgDislike"><span></span>
-                    </div>
-                  </div>
-                    <div class="col-auto"><i class="icon ion-person-stalker fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              </div>
-            </div>
-             <div>
-        <iconify-icon data-icon="mdi:food-apple" style="font-size: 64px; color: #3C8A3F;"></iconify-icon>
-  </div>
-  </div>
-  
-   </body>      
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.23/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.3/fc-3.3.2/fh-3.1.7/kt-2.5.3/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.1/datatables.min.css"/>
       
-      <script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.23/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.3/fc-3.3.2/fh-3.1.7/kt-2.5.3/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.1/datatables.min.js"></script>
+
+      <!--Incones-->
+      <script src="https://code.iconify.design/1/1.0.7/iconify.min.js" defer></script>
+    </head>
+    
+    <body>
+   <!-- modal -->
+   <div class="modal " id="modalTab" role="dialog">
+      <div class="modal-dialog modal-lg" >
+         <div class="modal-content">
+            <div class="modal-header" style="background-color:#edf3f0">
+               <h3 class="modal-title">Vidéo</h3>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <div class="container">
+                  <div class="row">
+                     <div id="imageMiniature" class="col-7"><a id="aImageMiniature"><img id="imgMiniature"></a></div>
+                     <div class="col-5">
+                        <h5>Titre : </h5>
+                        <div id="titre"></div>
+                        <h5 >Nom de la chaine : </h5>
+                        <a id="aChannel"><div id="chaine"></div></a>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-7">
+                        <div class="card" style="margin-top : 1em" >
+                           <div class="card-body" >
+                              <div class="table table-striped" >
+                                 <table>
+                                    <tbody>
+                                       <tr>
+                                          <td>Classement :</td>
+                                          <td id ="classement"> </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Durée :</td>
+                                          <td id ="duree"> </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Pays : </td>
+                                          <td id ="pays"> Tag </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Nombre de commentaires : </td>
+                                          <td id ="comment"> Tag </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Nombre de j'aime : </td>
+                                          <td id ="like"> Tag </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Nombre de j'aime pas : </td>
+                                          <td id ="dislike"> Tag </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Date de publication : </td>
+                                          <td id ="published"> Tag </td>
+                                       </tr>
+                                       <tr>
+                                          <td>Date de tendance : </td>
+                                          <td id ="trending"> Tag </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-5">
+                        <canvas id="chartModal" width="400" height="400" class="align-middle"></canvas>
+                     </div>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-6 ml-5 mr-5">
+         <table class="table" id="myDatatable">
+            <thead>
+               <tr>
+                  <th><strong>Titre de la vidéo</strong></th>
+                  <th><strong>Nom de la chaine </strong></th>
+                  <th><strong>Catégorie</strong></th>
+                  <th><strong>Nombre de vues</strong></th>
+                  <th><strong>Durée de la vidéo</strong></th>
+                  <th><strong>Date de publication</strong></th>
+                  <th><strong>Date de tendance</strong></th>
+                  <th><strong>Classement</strong></th>
+               </tr>
+            </thead>
+            <tfoot>
+               <tr>
+                  <th><strong>Titre de la vidéo</strong></th>
+                  <th><strong>Nom de la chaine </strong></th>
+                  <th><strong>Catégorie</strong></th>
+                  <th><strong>Nombre de vues</strong></th>
+                  <th><strong>Durée de la vidéo</strong></th>
+                  <th><strong>Date de publication</strong></th>
+                  <th><strong>Date de tendance</strong></th>
+                  <th><strong>Classement</strong></th>
+               </tr>
+            </tfoot>
+         </table>
+      </div>
+      <div class="col-5" id="sidebar">
+         <div class="card" >
+            <div class="card-header" style="background-color:#edf3f0"><span>Répartition par catégorie</span></div>
+            <div class="card-body">
+               <canvas id="chartCategory" width="400" height="400">
+                  <div id="js-legend" class="chart-legend"></div>
+               </canvas>
+            </div>
+         </div>
+         <div>
+            <input type="checkbox" id="legend" onclick="displayLegend()"> Afficher légendes </input> 
+         </div>
+         <div class="row">
+            <div class="card mt-3 col-4" >
+               <div class="card-header" style="background-color:#edf3f0"><span>Durée Moyenne</span></div>
+               <div class="card-body">
+                  <div class="row">
+                     <div class="col mr-2">
+                        <div class="row">
+                           <span class="iconify mr-2 mt-1" data-icon="radix-icons:lap-timer" data-inline="false"></span>
+                           <div class="text-dark font-weight-bold h5 mb-0" id="avgDuration">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="card mt-3 col-4">
+               <div class="card-header" style="background-color:#edf3f0"><span>Like moyen</span>
+               </div>
+               <div class="card-body">
+                  <div class="row align-items-center no-gutters">
+                     <div class="col mr-2">
+                        <div class="text-uppercase text-primary font-weight-bold text-xs mb-1">
+                        </div>
+                        <div class="row">
+                           <span class="iconify mr-2 mt-1" data-icon="flat-color-icons:like-placeholder" data-inline="false"></span>
+                           <div class="text-dark font-weight-bold h5 mb-0" id="avgLike"></div>
+                        </div>
+                     </div>
+                     <div class="col-auto"><i class="icon ion-person-stalker fa-2x text-gray-300"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="card mt-3 col-4">
+               <div class="card-header" style="background-color:#edf3f0"><span>Dislike moyens</span>
+               </div>
+               <div class="card-body">
+                  <div class="row align-items-center no-gutters">
+                     <div class="col mr-2">
+                        <div class="text-uppercase text-primary font-weight-bold text-xs mb-1">
+                        </div>
+                        <div class="row">
+                           <span class="iconify mr-2 mt-1" data-icon="ion:heart-dislike-sharp" data-inline="false"></span>
+                           <div class="text-dark font-weight-bold h5 mb-0" id="avgDislike"></div>
+                        </div>
+                     </div>
+                     <div class="col-auto"><i class="icon ion-person-stalker fa-2x text-gray-300"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   </div>
+</body>
+      
+  <script>
+
+var optionsLikeDislike = {
+    title: {
+      display: true,
+      text: "Proportion de J'aime / J'aime pas ",
+      position: 'top',
+
+    },
+    animation: {
+      duration: 500,
+      easing: 'easeInCirc'
+    },
+  };
+  var dataLikeDislike = {
+    labels: ["Nombre de j'aime", "Nombre de j'aime pas"],
+    datasets: [{
+      fill: true,
+      backgroundColor: [
+        'rgba(255, 176, 111)',
+        'grey'
+      ],
+      data: [5, 95],
+      // Notice the borderColor 
+      borderColor: ['black', 'black'],
+      borderWidth: [2, 2]
+    }]
+  };
 
 
-      var optionsLikeDislike = {
-        title: {
-                  display: true,
-                  text: "Proportion de J'aime / J'aime pas ",
-                  position: 'top',
+  var ctx = document.getElementById("chartModal").getContext("2d");
+  var chartModal = new Chart(ctx, {
+    type: 'doughnut',
+    data: dataLikeDislike,
+    options: optionsLikeDislike
+  });
 
-              },
-              animation : {
-                duration : 500,
-                easing : 'easeInCirc'
-              },
+  var videos = [];
+  var listChannels = [];
+  var listCategories = [];
+  var durations = [];
+  var likes = [];
+  var dislikes = [];
+  var dataCategories = [];
+
+  {% for v in 0..categories | length - 1 %}
+    var object = {
+      "Id": "{{categories[loop.index0].getCategoryId}}",
+      "Name": "{{categories[loop.index0].getCategoryName}}"
     };
-      var dataLikeDislike = {
-          labels: ["Nombre de j'aime", "Nombre de j'aime pas"],
-            datasets: [
-              {
-                fill: true,
-                backgroundColor: [
-                  'rgba(255, 176, 111)',
-                  'grey'],
-                data: [5, 95],
-        // Notice the borderColor 
-                 borderColor:	['black', 'black'],
-                borderWidth: [2,2]
-                }
-            ]
-        };
 
-      
-      var ctx= document.getElementById("chartModal").getContext("2d");
-          var chartModal = new Chart(ctx, {
-                type: 'doughnut',
-                data: dataLikeDislike,
-                options: optionsLikeDislike
-      });
+    listCategories.push(object); 
+  {% endfor %}
 
-      var videos = [];
-      var listChannels = [];
-      var listCategories = [];
-      var durations = [];
-      var likes = [];
-      var dislikes = [];
-      var dataCategories = [];
+  {% for v in 0..channels | length - 1 %}
+    var object = {
+      "Id": "{{channels[loop.index0].getChannelId}}",
+      "Name": "{{channels[loop.index0].getChannelName}}",
+      "CountryId": "{{channels[loop.index0].getChannelCountryID}}"
+    };
+    listChannels.push(object); 
+  {% endfor %}
 
-       {% for v in 0..categories|length-1%}
-            var object = 
-            {
-              "Id":"{{categories[loop.index0].getCategoryId}}",
-              "Name":"{{categories[loop.index0].getCategoryName}}"              
-            };
+  {% for v in 0..videos | length - 1 %}
+    var idChannel = "{{videos[loop.index0].getVidChannelId}}";
+    var channelName = getChannelName(idChannel, listChannels);
+    var idCategory = "{{videos[loop.index0].getVidCategoryId}}";
+    var categoryName = listCategories.find(x => x.Id == idCategory);
+    categoryName = categoryName["Name"];
+    dataCategories.push(idCategory);
+    var duration = treatDate("{{videos[loop.index0].getDuration}}");
+    durations.push(duration);
+    likes.push(parseInt("{{videos[loop.index0].getVidLikeCount}}"));
+    dislikes.push(parseInt("{{videos[loop.index0].getVidDislikeCount}}"));
+    var object = {
+      "Title": "{{videos[loop.index0].getVidTitle}}",
+      "Id": "{{videos[loop.index0].getId}}",
+      "VideoId": "{{videos[loop.index0].getVidId}}",
+      "Tag": "{{videos[loop.index0].getVidTagId}}",
+      "Country": "{{videos[loop.index0].getVidCountry}}",
+      "ChannelId": "{{videos[loop.index0].getVidChannelId}}",
+      "CategoryId": idCategory,
+      "CommentCount": "{{videos[loop.index0].getVidCommentCount}}",
+      "DislikeCount": "{{videos[loop.index0].getVidDislikeCount}}",
+      "LikeCount": "{{videos[loop.index0].getVidLikeCount}}",
+      "PublishedDate": "{{videos[loop.index0].getVidPublishDate|date('d-m-Y')}}",
+      "MiniatureLink": "{{videos[loop.index0].getMiniatureLink}}",
+      "TrendingDate": "{{videos[loop.index0].getVidTrendingDate|date('d-m-Y')}}",
+      "Duration": toHHMMSS(duration),
+      "Classement": "{{videos[loop.index0].getClassement}}",
+      "Views": "{{videos[loop.index0].getCountView}}",
+      "ChannelName": channelName,
+      "Category": categoryName
+    };
 
-            listCategories.push(object);            
-        {% endfor %}   
-
-      {% for v in 0..channels|length-1%}
-            var object = 
-            {
-              "Id":"{{channels[loop.index0].getChannelId}}",
-              "Name":"{{channels[loop.index0].getChannelName}}",
-              "CountryId":"{{channels[loop.index0].getChannelCountryID}}"
-            };
-            listChannels.push(object);            
-        {% endfor %}   
-        //var v = listChannels.find(x => x.Id === "UC--3c8RqSfAqYBdDjIG3UNA");
-
-        {% for v in 0..videos|length-1%}
-          var idChannel = "{{videos[loop.index0].getVidChannelId}}";
-          var channelName = getChannelName(idChannel,listChannels);
-          var idCategory =  "{{videos[loop.index0].getVidCategoryId}}";
-          {# console.log(categories); #}
-          var categoryName = listCategories.find(x => x.Id == idCategory); 
-          categoryName = categoryName["Name"];
-          dataCategories.push(idCategory);
-
-          var duration = treatDate("{{videos[loop.index0].getDuration}}");
-          durations.push(duration);
-          likes.push(parseInt("{{videos[loop.index0].getVidLikeCount}}"));
-          dislikes.push(parseInt("{{videos[loop.index0].getVidDislikeCount}}"));
-          var object = {
-            "Title" : "{{videos[loop.index0].getVidTitle}}",
-            "Id" : "{{videos[loop.index0].getId}}",
-            "VideoId" : "{{videos[loop.index0].getVidId}}",
-            "Tag" : "{{videos[loop.index0].getVidTagId}}",
-            "Country" : "{{videos[loop.index0].getVidCountry}}",
-            "ChannelId" : "{{videos[loop.index0].getVidChannelId}}",
-            "CategoryId" : idCategory,
-            "CommentCount" : "{{videos[loop.index0].getVidCommentCount}}",
-            "DislikeCount": "{{videos[loop.index0].getVidDislikeCount}}",
-            "LikeCount" : "{{videos[loop.index0].getVidLikeCount}}",
-            "PublishedDate" : "{{videos[loop.index0].getVidPublishDate|date('d-m-Y')}}",
-            "MiniatureLink" : "{{videos[loop.index0].getMiniatureLink}}",
-            "TrendingDate" : "{{videos[loop.index0].getVidTrendingDate|date('d-m-Y')}}",
-            "Duration" : toHHMMSS(duration),
-            "Classement" : "{{videos[loop.index0].getClassement}}",
-            "Views" : "{{videos[loop.index0].getCountView}}",
-            "ChannelName" : channelName,
-            "Category" : categoryName
-          };  
-
-          videos.push(object);
-
-          {# listCategories.push("{{videos[loop.index0].getVidCategoryId}}"); #}
-        {% endfor %}     
-
-        console.log(videos);
-
-        var c = 0;
-
-        var durationTotal = 0;
-        var likeTotal = 0;
-        var dislikeTotal = 0;
-
-        //console.log(durations);
-
-        for (i = 0; i < videos.length; i++) {
-          durationTotal+=durations[i];
-          likeTotal+=likes[i];
-          dislikeTotal+=dislikes[i];          
-        }
-        
-
-        var averageLike = Math.round(likeTotal/likes.length);
-        var averageDislike = Math.round(dislikeTotal/dislikes.length);
-        var averageDuration = Math.round(durationTotal/durations.length);
-
-        var avgDuration = document.getElementById("avgDuration");
-        var avgLike = document.getElementById("avgLike");
-        var avgDislike = document.getElementById("avgDislike");
-
-        var str = toHHMMSS(averageDuration.toString());
-        avgDuration.innerText = str;
-        avgLike.innerText = averageDislike;
-        avgDislike.innerText = averageDuration;
-        var orderCategories = compressArray(dataCategories);
-        {# console.log(orderCategories) #}
-
-         var labelsCategories = [];
-         var countCategories = [];
-         {# console.log(orderCategories); #}
-         console.log(orderCategories);
-        for (var l in orderCategories)
-        {
-          console.log(orderCategories[l]);
-          var value = (orderCategories[l]["value"]);
-          var c =  listCategories.find(x => x.Id == value); 
-          var count = orderCategories[l]["count"]
-          var name = c["Name"];
-          if (name.includes("&amp;"))
-          {
-            name = name.replace("&amp;","&");
-          }
-   
-          labelsCategories.push(name);
-          countCategories.push(count);          
-        };
-        {# console.log(labelsCategories);
-        console.log(countCategories); #}
+    videos.push(object); 
+  {% endfor %}
 
 
-         function displayLegend()
-         {
-           var bool = document.getElementById("legend").checked;
-           chartCategory.legend.options.display = !chartCategory.legend.options.display;
-           chartCategory.update();
-         }
+  var c = 0;
+  var compteurDuration = 0
 
-        {# if (countCategories.length >= 14)
-        {
-          Chart.defaults.global.legend.display = false;           
-        } #}
-
-      var optionsCategories = {
-        title: {
-                  display: false,
-                  text: "Proportion de catégories ",
-                  position: 'top'
-              },
-              animation : {
-                duration : 500,
-                easing : 'easeInCirc'
-              },  
-      };
-
-
-    var colorsCategories = [];
-    while (colorsCategories.length < orderCategories.length) {
-        do {
-            var color = Math.floor((Math.random()*1000000)+1);
-        } while (colorsCategories.indexOf(color) >= 0);
-        colorsCategories.push("#" + ("FFFFFF" + color.toString(16)).slice(-6));
+  var durationTotal = 0;
+  var likeTotal = 0;
+  var dislikeTotal = 0;
+  console.log(durations);
+  for (i = 0; i < videos.length; i++) {
+    if (durations[i] != 0 || durations[i] != null) {
+      durationTotal += durations[i];
     }
-
-
-    var dataCategories = {
-        labels: labelsCategories,
-              datasets: [
-                {
-                    fill: true,
-                    backgroundColor:colorsCategories,
-                    data: countCategories,
-                    // Notice the borderColor 
-                    borderWidth: [2,2]
-                }
-            ]
-        };
-
-    var ctxCategories = document.getElementById("chartCategory").getContext("2d");
-    var chartCategory = new Chart(ctxCategories, {
-            type: 'doughnut',
-            data: dataCategories,
-            optionsLikeDislike: optionsCategories
-      });
-
-        var cors = "https://cors-anywhere.herokuapp.com/";   
-
-        $(document).ready(function () {
-          
-          var table = $('#myDatatable').DataTable({
-            data: videos,
-            //dom :"Bfrtip",
-            dom: '<"row d-flex justify-content-between"<"col-6"B><"col-3"f><"col-3"l>>t<"row"<"col-11"p>>',
-            autoWidth : false,
-            fixedColumns: true,
-            columns: [ 
-              {
-                data: "Title",    
-                defaultContent: '-',
-               // width : "100"            
-              },
-              {
-                data: "ChannelName",  
-              //  width : "80"
-              },
-               {
-                data: "Category",  
-               // width : "70"
-              }, 
-              
-              {
-                data: "Views",  
-               // width : "100"
-              },
-              {
-                data: "Duration",
-               // width : "100"
-              }, 
-              {
-                data: "PublishedDate",
-               // width : "100"
-              },
-              {
-                data: "TrendingDate",        
-                //width : "100"        
-              },
-              {
-                data: "Classement", 
-                //width : "100"
-              },           
-                          
-            
-            ],
-
-            responsive: true,
-            paging: true,
-            fixedHeader: true,
-            searching: true,
-            colReorder: true,
-            select: true,
-            keys: true,
-            scrollX : true,
-            details : true,
-            paginate:
-            {
-              "previous": "Previous page"
-            },
-            rowReorder: false,
-            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-            pageLength: 15,
-            initComplete: function () {
-              this.api().columns().every(function () {
-                var that = this;                
-                $('input', this.footer()).on('keyup change clear', function () {
-                  if (that.search() !== this.value) {
-                    that
-                    .search(this.value)
-                    .draw();
-                  }
-                });
-              });
-            },
-            buttons: [
-            { extend: 'csv', className: 'btn btn-secondary testBouton' },
-            { extend: 'excel', className: 'btn btn-secondary testBouton' },
-            { extend: 'pdfHtml5', className: 'btn btn-secondary testBouton', orientation: 'landscape', pageSize: 'A3' },
-            { extend: 'print', className: 'btn btn-secondary testBouton' },
-            ]
-          });
-          $('#container').css( 'display', 'block' );
-          table.columns.adjust().draw();
-
-        });      
-        
-        
-        $('#myDatatable tfoot th').each(function () {
-          var title = $('table tfoot th').eq($(this).index()).text();
-          $(this).html('<input type="text" placeholder="Search ' + title + '" />');
-        });
-        
-        $.extend(true, $.fn.dataTable.defaults, {
-          columnDefs: [
-          {
-            targets: '_all',
-            defaultContent: '-'
-          }
-          ],
-          language: {
-            processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>Processing...'
-          },
-        });
-
-        $('#myDatatable tbody').on('dblclick', 'tr', function (e, dt, type, indexes) {  
-
-          //évite les bugs 
-          if (e.currentTarget.className != "child" )
-          {
-            var titre = $('td', this).eq(0).text();
-
-            var v = videos.findIndex(x => x.Title == titre);
-            var videoFound = videos[v];
-            
-           // {# console.log(videoFound); #}
-            var lien = cors + videos["MiniatureLink"];
-            var lien2 = cors + "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdeveloper.mozilla.org%2Ffr%2Fdocs%2FWeb%2FHTML%2FElement%2FImg&psig=AOvVaw18gr0YP4N_5daIKW_ssPag&ust=1606481499287000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKC8_JagoO0CFQAAAAAdAAAAABAD";
-            var elt = document.getElementById("imageMiniature");
-            var img = document.getElementById("imgMiniature");
-            var id = videoFound["VideoId"];
-            var a = document.getElementById("aImageMiniature");
-            a.setAttribute("href","https://www.youtube.com/watch?v="+id);
-
-            titre = videoFound["Title"];
-            
-            var videoID =  videoFound["VideoId"];
-
-            var classement = videoFound["Classement"];
-            var channelName =  videoFound["ChannelName"];
-            var duree = videoFound["Duration"];
-            var classement = videoFound["Classement"];
-            var viewCount = videoFound["Views"];        
-            var tagId = videoFound["Tag"];
-            var country = videoFound["Country"];
-            var channelID = videoFound["ChannelId"];
-            var categoryID = videoFound["CategoryId"];
-            var CommentCount = videoFound["CommentCount"];
-            var LikeCount = videoFound["LikeCount"];
-            var DislikeCount = videoFound["DislikeCount"];
-            var PublishedDate = videoFound["PublishedDate"];
-            var TrendingDate = videoFound["TrendingDate"];
-            var link = cors + videoFound["MiniatureLink"];
-            var testLike = videos[classement-1];
-
-            var nbLike = videoFound["LikeCount"];
-            var nbDislike =videoFound["DislikeCount"];
-            updateChart(chartModal,nbLike,nbDislike);
-
-            $('#modalTab').modal("show");
-            $('#titre').text(titre);
-            $('#chaine').text(channelName);
-            $('#pays').text(country);
-            $('#comment').text(CommentCount);
-            $('#like').text(LikeCount);
-            $('#dislike').text(DislikeCount);
-            $('#published').text(PublishedDate);
-            $('#trending').text(TrendingDate);
-            $('#classement').text(classement);
-            $('#duree').text(duree);
-            $('#trending').text(TrendingDate);
-         
-            img.crossOrigin = "anonymous";
-            tryCors(link,img);
-            img.setAttribute('width', '100%');
-            img.setAttribute('height', '100%');
-          }
-        });
-
-        function tryCors(link,img){
-          var request = new XMLHttpRequest();
-            request.open('GET', link)
-            request.send();
-            img.src = "../../images/miniature_default.png" ;
-            request.onload = function()
-            {
-              if ((request.status >= 200 && request.status < 400) && (link != ""))       
-              {            
-                   img.src = link;
-              }      
-            }
-          }
-
-      function updateChart(chartModal,like,dislike)
-      {
-
-        chartModal.data.datasets[0].data[0] = like;
-        chartModal.data.datasets[0].data[1] = dislike;
-        chartModal.update();
-
-      }
-
-      function getChannelName(id,listChannels)
-      {
-          var channelName = listChannels.find(x => x.Id == id); 
-          
-          if (channelName !== undefined) 
-          {
-            
-            channelName = channelName["Name"];
-          }
-          else 
-          {
-            channelName = "";
-          }
-          return channelName;
-      }
-
-function compressArray(original) {
- 
-	var compressed = [];
-	// make a copy of the input array
-	var copy = original.slice(0);
- 
-	// first loop goes over every element
-	for (var i = 0; i < original.length; i++) {
- 
-		var myCount = 0;	
-		// loop over every element in the copy and see if it's the same
-		for (var w = 0; w < copy.length; w++) {
-			if (original[i] == copy[w]) {
-				// increase amount of times duplicate is found
-				myCount++;
-				// sets item to undefined
-				delete copy[w];
-			}
-		}
- 
-		if (myCount > 0) {
-			var a = new Object();
-			a.value = original[i];
-			a.count = myCount;
-			compressed.push(a);
-		}
-	}
- 
-	return compressed;
-};
-
-function reverse(str){
-   return str.split("").reverse().join("");
-}
-function treatDate(date){
-  date = date.substr(2);  // Enlève le PT
-  date = reverse(date);
-  var heure = '';
-  var min = '';
-  var seconde = '';
-  for (let i = 0; i < date.length; i++){
-    c = date[i]
-    switch(c){
-      case 'S':
-      seconde += date[i+1];
-        if(date[i+2] && (date[i+2] != 'M' && date[i+2] != 'H')){
-          seconde += date[i+2];
-        }
-        seconde = reverse(seconde)
-      break;
-      case 'M':
-      min += date[i+1];
-        if(date[i+2] && (date[i+2] != 'S' && date[i+2] != 'H')){
-          min += date[i+2];
-        }
-        min = reverse(min)
-        break;
-      case 'H':
-      heure += date[i+1];
-        if(date[i+2] && (date[i+2] != 'M' && date[i+2] != 'S')){
-          heure += date[i+2];
-        }
-        heure = reverse(heure)
-        break;
+    if (durations[i] != 0 || durations[i] != null) {
+      likeTotal += likes[i];
+    }
+    if (durations[i] != 0 || durations[i] != null) {
+      dislikeTotal += dislikes[i];
     }
   }
-  heure = (heure.length == 0) ? '0' : heure;
-  min = (min.length == 0) ? '0' : min;
-  seconde = (seconde.length == 0) ? '0' : seconde;
-  var tps = parseInt(min*60) + parseInt(heure*3600) + parseInt(seconde);
-  return tps;
-}
 
-    function toHHMMSS(str)  {
-    var sec_num = parseInt(str, 10); // don't forget the second param
-    var hours   = Math.floor(sec_num / 3600);
+  var averageLike = Math.round(likeTotal / likes.length);
+  var averageDislike = Math.round(dislikeTotal / dislikes.length);
+  var averageDuration = Math.round(durationTotal / durations.length);
+
+  var avgDuration = document.getElementById("avgDuration");
+  var avgLike = document.getElementById("avgLike");
+  var avgDislike = document.getElementById("avgDislike");
+
+  var str = toHHMMSS(averageDuration.toString());
+  avgDuration.innerText = str;
+  avgLike.innerText = averageDislike;
+  avgDislike.innerText = averageDuration;
+  var orderCategories = compressArray(dataCategories);
+
+  var labelsCategories = [];
+  var countCategories = [];
+  for (var l in orderCategories) {
+    var value = (orderCategories[l]["value"]);
+    var c = listCategories.find(x => x.Id == value);
+    var count = orderCategories[l]["count"]
+    var name = checkEsp(c["Name"]);
+
+    labelsCategories.push(name);
+    countCategories.push(count);
+  }
+
+  function displayLegend() {
+    var bool = document.getElementById("legend").checked;
+    chartCategory.legend.options.display = !chartCategory.legend.options.display;
+    chartCategory.update();
+  }
+
+  var optionsCategories = {
+    title: {
+      display: false,
+      text: "Proportion de catégories ",
+      position: 'top'
+    },
+    animation: {
+      duration: 500,
+      easing: 'easeInCirc'
+    },
+  };
+
+
+  var colorsCategories = [];
+  while (colorsCategories.length < orderCategories.length) {
+    do {
+      var color = Math.floor((Math.random() * 1000000) + 1);
+    } while (colorsCategories.indexOf(color) >= 0);
+    colorsCategories.push("#" + ("FFFFFF" + color.toString(16)).slice(-6));
+  }
+
+  var dataCategories = {
+    labels: labelsCategories,
+    datasets: [{
+      fill: true,
+      backgroundColor: colorsCategories,
+      data: countCategories,
+      // Notice the borderColor 
+      borderWidth: [2, 2]
+    }]
+  };
+
+  var ctxCategories = document.getElementById("chartCategory").getContext("2d");
+  var chartCategory = new Chart(ctxCategories, {
+    type: 'doughnut',
+    data: dataCategories,
+    optionsLikeDislike: optionsCategories
+  });
+
+  var cors = "https://cors-anywhere.herokuapp.com/";
+
+  $(document).ready(function() {
+    var table = $('#myDatatable').DataTable({
+      data: videos,
+      //dom :"Bfrtip",
+      dom: '<"row d-flex justify-content-between"<"col-6"B><"col-3"f><"col-3"l>>t<"row"<"col-11"p>>',
+      autoWidth: false,
+      fixedColumns: true,
+      columns: [{
+          data: "Title",
+          defaultContent: '-',
+          // width : "100"            
+        },
+        {
+          data: "ChannelName",
+          //  width : "80"
+        },
+        {
+          data: "Category",
+          // width : "70"
+        },
+
+        {
+          data: "Views",
+          // width : "100"
+        },
+        {
+          data: "Duration",
+          // width : "100"
+        },
+        {
+          data: "PublishedDate",
+          // width : "100"
+        },
+        {
+          data: "TrendingDate",
+          //width : "100"        
+        },
+        {
+          data: "Classement",
+          //width : "100"
+        },
+
+
+      ],
+
+      responsive: true,
+      paging: true,
+      fixedHeader: true,
+      searching: true,
+      colReorder: true,
+      select: true,
+      keys: true,
+      scrollX: true,
+      details: true,
+      paginate: {
+        "previous": "Previous page"
+      },
+      rowReorder: false,
+      lengthMenu: [
+        [10, 25, 50, -1],
+        [10, 25, 50, "All"]
+      ],
+      pageLength: 15,
+      initComplete: function() {
+        this.api().columns().every(function() {
+          var that = this;
+          $('input', this.footer()).on('keyup change clear', function() {
+            if (that.search() !== this.value) {
+              that
+                .search(this.value)
+                .draw();
+            }
+          });
+        });
+      },
+      buttons: [{
+          extend: 'csv',
+          className: 'btn btn-secondary testBouton'
+        },
+        {
+          extend: 'excel',
+          className: 'btn btn-secondary testBouton'
+        },
+        {
+          extend: 'pdfHtml5',
+          className: 'btn btn-secondary testBouton',
+          orientation: 'landscape',
+          pageSize: 'A3'
+        },
+        {
+          extend: 'print',
+          className: 'btn btn-secondary testBouton'
+        },
+      ]
+    });
+    //$('#container').css('display', 'block');
+    table.columns.adjust().draw();
+       
+       $('#myDatatable tbody').on('dblclick', 'tr', function(e, dt, type, indexes) {
+      //évite les bugs 
+      if (e.currentTarget.className != "child") {
+        var classement = $('td', this).eq(7).text();
+
+        var v = videos.findIndex(x => x.Classement == classement);
+        var videoFound = videos[v];
+        var channelID = videoFound["ChannelId"];
+        var lien = cors + videos["MiniatureLink"];
+        var lien2 = cors + "https://www.google.com/url?sa=i&url=https%3A%2F%2Fdeveloper.mozilla.org%2Ffr%2Fdocs%2FWeb%2FHTML%2FElement%2FImg&psig=AOvVaw18gr0YP4N_5daIKW_ssPag&ust=1606481499287000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKC8_JagoO0CFQAAAAAdAAAAABAD";
+        var elt = document.getElementById("imageMiniature");
+        var img = document.getElementById("imgMiniature");
+        var videoID = videoFound["VideoId"];
+        var id = videoFound["VideoId"];
+        var a = document.getElementById("aImageMiniature");
+        a.setAttribute("href", "https://www.youtube.com/watch?v=" + id);
+        var aChannel = document.getElementById("aChannel");
+        aChannel.setAttribute("href", "https://www.youtube.com/channel/" + channelID);
+
+
+        titre = videoFound["Title"];
+
+
+        var classement = videoFound["Classement"];
+        var channelName = videoFound["ChannelName"];
+        var duree = videoFound["Duration"];
+        var classement = videoFound["Classement"];
+        var viewCount = videoFound["Views"];
+        var tagId = videoFound["Tag"];
+        var country = videoFound["Country"];
+        var categoryID = videoFound["CategoryId"];
+        var CommentCount = videoFound["CommentCount"];
+        var LikeCount = videoFound["LikeCount"];
+        var DislikeCount = videoFound["DislikeCount"];
+        var PublishedDate = videoFound["PublishedDate"];
+        var TrendingDate = videoFound["TrendingDate"];
+        var link = cors + videoFound["MiniatureLink"];
+        var testLike = videos[classement - 1];
+
+        var nbLike = videoFound["LikeCount"];
+        var nbDislike = videoFound["DislikeCount"];
+        updateChart(chartModal, nbLike, nbDislike);
+
+        $('#modalTab').modal("show");
+        $('#titre').text(titre);
+        $('#chaine').text(channelName);
+        $('#pays').text(country);
+        $('#comment').text(CommentCount);
+        $('#like').text(LikeCount);
+        $('#dislike').text(DislikeCount);
+        $('#published').text(PublishedDate);
+        $('#trending').text(TrendingDate);
+        $('#classement').text(classement);
+        $('#duree').text(duree);
+        $('#trending').text(TrendingDate);
+
+        img.crossOrigin = "anonymous";
+        tryCors(link, img);
+        img.setAttribute('width', '100%');
+        img.setAttribute('height', '100%');
+      }
+    });
+
+    $(function() {
+        var offset = $('#sidebar').offset();
+        var topPadding = 15;
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > offset.top) {
+                $('#sidebar').stop().animate({
+                    marginTop: $(window).scrollTop() - offset.top + topPadding
+                });
+            } else {
+                $('#sidebar').stop().animate({
+                    marginTop: 0
+                });
+            };
+        });
+    });
+  });
+  
+
+    $('#myDatatable tfoot th').each(function() {
+      var title = $('table tfoot th').eq($(this).index()).text();
+      $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+    });
+
+    $.extend(true, $.fn.dataTable.defaults, {
+      columnDefs: [{
+        targets: '_all',
+        defaultContent: '-'
+      }],
+      language: {
+        processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>Processing...'
+      },
+    });
+
+
+  function tryCors(link, img) {
+    var request = new XMLHttpRequest();
+    request.open('GET', link)
+    request.send();
+    img.src = "../../images/miniature_default.png";
+    request.onload = function() {
+      if ((request.status >= 200 && request.status < 400) && (link != "")) {
+        img.src = link;
+      }
+    }
+  }
+
+  //Méthode permettant de mettre à jour le graphique
+  function updateChart(chartModal, like, dislike) {
+
+    chartModal.data.datasets[0].data[0] = like;
+    chartModal.data.datasets[0].data[1] = dislike;
+    chartModal.update();
+
+  }
+
+  //Méthode d'obtenir le nom de la chaien a partir de l'ID de la chaine
+  function getChannelName(id, listChannels) {
+    var channelName = listChannels.find(x => x.Id == id);
+
+    if (channelName != undefined) {
+
+      channelName = channelName["Name"];
+    } else {
+      channelName = "";
+    }
+    return channelName;
+  }
+
+  function compressArray(original) {
+
+    var compressed = [];
+    // make a copy of the input array
+    var copy = original.slice(0);
+
+    // first loop goes over every element
+    for (var i = 0; i < original.length; i++) {
+
+      var myCount = 0;
+      // loop over every element in the copy and see if it's the same
+      for (var w = 0; w < copy.length; w++) {
+        if (original[i] == copy[w]) {
+          // increase amount of times duplicate is found
+          myCount++;
+          // sets item to undefined
+          delete copy[w];
+        }
+      }
+
+      if (myCount > 0) {
+        var a = new Object();
+        a.value = original[i];
+        a.count = myCount;
+        compressed.push(a);
+      }
+    }
+
+    return compressed;
+  };
+
+  //Permet de retourner une chaine de caractère
+  function reverse(str) {
+    return str.split("").reverse().join("");
+  }
+
+  //Fonction permettant de nombre de seconde d'une vidéo à partir de la chaine de caractère fournit par Youtube, Exemple :
+  function treatDate(date) {
+
+    date = date.substr(2); // Enlève le PT
+    date = reverse(date);
+    var heure = '';
+    var min = '';
+    var seconde = '';
+
+    for (let i = 0; i < date.length; i++) {
+      c = date[i]
+      switch (c) { //Pour chaque unité, on met dans la variable la valeur indiqué dans la chaine de caractère
+        case 'S':
+          seconde += date[i + 1];
+          if (date[i + 2] && (date[i + 2] != 'M' && date[i + 2] != 'H')) { //Si la deuxième valeur après l'unité n'est pas une autre unité, on la prend
+            seconde += date[i + 2];
+          }
+          seconde = reverse(seconde) //On retourne de nouveau la chaine
+          break;
+        case 'M':
+          min += date[i + 1];
+          if (date[i + 2] && (date[i + 2] != 'S' && date[i + 2] != 'H')) { //Si la deuxième valeur après l'unité n'est pas une autre unité, on la prend
+            min += date[i + 2];
+          }
+          min = reverse(min) //On retourne de nouveau la chaine
+          break;
+        case 'H':
+          heure += date[i + 1];
+          if (date[i + 2] && (date[i + 2] != 'M' && date[i + 2] != 'S')) { //Si la deuxième valeur après l'unité n'est pas une autre unité, on la prend
+            heure += date[i + 2];
+          }
+          heure = reverse(heure) //On retourne de nouveau la chaine
+          break;
+      }
+    }
+    //On met 0  si il n'y a pas de chiffre associé dans la chaine 
+    heure = (heure.length == 0) ? '0' : heure;
+    min = (min.length == 0) ? '0' : min;
+    seconde = (seconde.length == 0) ? '0' : seconde;
+    var tps = parseInt(min * 60) + parseInt(heure * 3600) + parseInt(seconde); // On passe tout en seconde
+    return tps;
+  }
+
+  //Si une des unité n'est n'as pas 2 digits, alors ajoute un 0 a gauche 
+  function toHHMMSS(str) {
+    //On récuprère les unités à partir de la chaine de caractère contenant les secondes
+    var sec_num = parseInt(str, 10);
+    var hours = Math.floor(sec_num / 3600);
     var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
     var seconds = sec_num - (hours * 3600) - (minutes * 60);
 
-    if (hours   < 10) {hours   = "0"+hours;}
-    if (minutes < 10) {minutes = "0"+minutes;}
-    if (seconds < 10) {seconds = "0"+seconds;}
-    return hours+':'+minutes+':'+seconds;
-}
+    //Si une des unité n'est n'as pas 2 digits, alors ajoute un 0 a gauche 
+    if (hours < 10) {
+      hours = "0" + hours;
+    }
+    if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+    return hours + ':' + minutes + ':' + seconds;
+  }
 
-  </script>
+  //Méthode permettant de vérifié si il y a des esperluette pour les mettre au bon format
+  function checkEsp(string) {
+    var r = string;
+    if (string.includes("&amp;")) {
+      r = string.replace("&amp;", "&");
+    }
+    return r;
+  }
+</script>
       
   <style>
 
-        th{
-          color:rgba(255, 176, 111);
-        }
-        
-        .ui-state-active {
-          background-color: rgba(255, 176, 111,0.9);
-          color: black;
-          font-weight: bold;
-        } 
-        
-        .ui-autocomplete {
-          max-height: 200px;
-          overflow-y: scroll;
-          overflow-x: hidden;
-        }
-        
-        .list-group-item {
-          right: 20px;
-        }
-        .page-item.active .page-link{
-          z-index: 1;
-          color: #fff;
-          background-color: rgb(255, 176, 111);
-          border-color: rgb(255, 176, 111);
-        }
-        
-        .page-link{
-          color: #000000;
-          background-color: rgb(255, 176, 111);
-          border-color: rgb(255, 176, 111);
-        } 
-        {# table{
+    th{
+      color:rgba(255, 176, 111);
+    }
+    
+    .ui-state-active {
+      background-color: rgba(255, 176, 111,0.9);
+      color: black;
+      font-weight: bold;
+    } 
+    
+    .ui-autocomplete {
+      max-height: 200px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+    
+    .list-group-item {
+      right: 20px;
+    }
 
-          table-layout: fixed;
-        } #}
-        .dataTables_scrollBody
-        {
-              border-radius: 10px;
-            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-            background-color: #FFFFFF;
-        }
+    .page-item.active .page-link{
+      z-index: 1;
+      color: #fff;
+      background-color: rgb(255, 176, 111);
+      border-color: rgb(255, 176, 111);
+    }
+    
+    .page-link{
+      color: #000000;
+      background-color: rgb(255, 176, 111);
+      border-color: rgb(255, 176, 111);
+    } 
 
-        canvas{
-          margin-top : 75px;
-        }
-        
-      </style>
-      
-      </html>
+    .paginate_button{
+      flex-wrap:wrap;
+    }
+
+    .dataTables_scrollBody
+    {
+          border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #FFFFFF;
+    }
+
+    #chartModal
+    {
+      margin-top : 75px;
+    }
+    
+  </style>
+</html>

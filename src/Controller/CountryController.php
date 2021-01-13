@@ -14,10 +14,19 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Twig\Environment;
 
+/*
+ * Controller qui permet la gestion / recuperation et affichage des données en fonction des pays sélectionnés
+ */
 
 class CountryController extends AbstractController
 {
+    /**
+     * @var Environment
+     */
+    private $twig;
+
     /**
      * @var CountryRepository
      */
@@ -45,9 +54,10 @@ class CountryController extends AbstractController
 
     private $videos, $channels, $categories;
 
-    public function __construct(CountryRepository $countryRepository, VideoRepository $vRepo, CategoryRepository $categoryRepository,
+    public function __construct(Environment $twig, CountryRepository $countryRepository, VideoRepository $vRepo, CategoryRepository $categoryRepository,
                                 ChannelRepository $chanRepo, EntityManagerInterface $em)
     {
+        $this->twig = $twig;
         $this->countryRepository = $countryRepository;
         $this->entityManager = $em;
         $this->videoRepository = $vRepo;
@@ -78,6 +88,7 @@ class CountryController extends AbstractController
     {
         $countries = $this->countryRepository->findAll();
 
+        //Renvoi des données pour la génération de l'url de la route
         if ($country->getSlug() !== $slug) {
             return $this->redirectToRoute('country.showCountry', [
                 'id' => $country->getId(),
@@ -86,20 +97,26 @@ class CountryController extends AbstractController
 
         }
 
-        $this->videos = $this->videoRepository->findAllByCountry($country);
-        $this->channels = $this->channelRepository->findAllByCountry($country->getId());
-        $this->categories = $this->categoryRepository->findAllByCountry($country->getId());
-
         $date = new \DateTime();
+        //Formatage de la date
+        $date->setTime(00,00,00.000000);
+        //Soustraction d'un jour pour récuperer les données du jour d'avant à l'affichage de showCountry
+        $date->sub(new \DateInterval('P1D'));
+        //$date->add(\DateInterval::createFromDateString('yesterday'));
+
+        $this->sortByDateAndCountry($date, $country);
+
 
         $dateForm = $this->createForm(DateType::class, $date);
-
         $dateForm->handleRequest($request);
+        
         if ($dateForm->isSubmitted() && $dateForm->isValid()) {
             $date = $dateForm->getData();
             if ($date != null) {
                 $this->sortByDateAndCountry($date,$country);
+                if(!$this->videos ){
 
+                }
                 return $this->render('country\showCountry.html.twig', [
                     'country' => $country,
                     'videos' => $this->videos,
@@ -111,7 +128,7 @@ class CountryController extends AbstractController
                 ]);
             }
         }
-
+      
         return $this->render('country\showCountry.html.twig', [
             'country' => $country,
             'videos'=>$this->videos,
