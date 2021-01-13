@@ -541,8 +541,8 @@ var optionsLikeDislike = {
         var offset = $('#sidebar').offset();
         var topPadding = 15;
         $(window).scroll(function() {
-          console.log($(window).scrollTop());
-          console.log(offset.top);
+          console.log("scroll : " +$(window).scrollTop());
+          console.log("offset : " + offset.top);
             if ($(window).scrollTop() > offset.top) {
                 $('#sidebar').stop().animate({
                     marginTop: $(window).scrollTop() - offset.top + topPadding
