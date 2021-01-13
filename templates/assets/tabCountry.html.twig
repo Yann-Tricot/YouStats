@@ -543,7 +543,7 @@ var optionsLikeDislike = {
         $(window).scroll(function() {
           console.log("scroll : " +$(window).scrollTop());
           console.log("offset : " + offset.top);
-            if ($(window).scrollTop() > offset.top) {
+            if ($(window).scrollTop() > $('#sidebar').offset().top) {
                 $('#sidebar').stop().animate({
                     marginTop: $(window).scrollTop() - offset.top + topPadding
                 });
