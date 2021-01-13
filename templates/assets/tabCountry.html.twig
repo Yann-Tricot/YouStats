@@ -540,7 +540,7 @@ var optionsLikeDislike = {
         var elem = $('#sidebar');
         var offset = $('#sidebar').offset();
         var topPadding = 15;
-        if($(window).height() == 955)
+        if($(window).height() >= 955)
           $(window).scroll(function() {
               if ($(window).scrollTop() > offset.top) {
                   $('#sidebar').stop().animate({
