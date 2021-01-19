@@ -98,9 +98,10 @@ class CountryController extends AbstractController
 
         $date = new \DateTime();
         //Formatage de la date
+        $date->setDate(2021,01,11);
         $date->setTime(00, 00, 00.000000);
         //Soustraction d'un jour pour récuperer les données du jour d'avant à l'affichage de showCountry
-        $date->sub(new \DateInterval('P1D'));
+        //$date->sub(new \DateInterval('P1D'));
         //$date->add(\DateInterval::createFromDateString('yesterday'));
 
         $this->sortByDateAndCountry($date, $country);
